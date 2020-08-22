@@ -8,14 +8,27 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITabBarController {
 
+    let selectedColor = UIColor.blue
+    let deselectedColor = UIColor.gray
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //view.backgroundColor = .blue
+        
+        //self.delegate = self as! UITabBarControllerDelegate
+        tabBar.tintColor = selectedColor
+        tabBar.unselectedItemTintColor = deselectedColor
+        tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
+        
+        
+        //setUp()
+        
+        //self.selectPage(at: 1)
         // Do any additional setup after loading the view.
         
     }
 
-
+   
 }
 
