@@ -1,15 +1,15 @@
 //
-//  HomeViewCoordinator.swift
+//  ProductsViewCoordinator.swift
 //  Grow4U
 //
-//  Created by Sumeet Yedula on 21/8/20.
+//  Created by vaishali wahi on 22/8/20.
 //  Copyright © 2020 Grow4U. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class HomeViewCoordinator : MainCoordinator {
+class ProductsViewCoordinator : MainCoordinator {
     let parentViewController: UIViewController
     
     init(parentViewController: UIViewController) {
@@ -17,8 +17,7 @@ class HomeViewCoordinator : MainCoordinator {
     }
     
     func start() {
-        let homeViewController = HomeViewController()
-       
-        parentViewController.present(homeViewController, animated: true)
+        let productsViewController = ProductsViewController()
+        parentViewController.present(productsViewController, animated: true)
     }
 }
