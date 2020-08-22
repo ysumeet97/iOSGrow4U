@@ -12,21 +12,21 @@ class HomeViewController: UITabBarController {
 
     let selectedColor = UIColor.blue
     let deselectedColor = UIColor.gray
-    
+     var window: UIWindow?
     override func viewDidLoad() {
-        //view.backgroundColor = .blue
+        super.viewDidLoad()
+        self.delegate = self as? UITabBarControllerDelegate;        //view.backgroundColor = .blue
         
         //self.delegate = self as! UITabBarControllerDelegate
         tabBar.tintColor = selectedColor
         tabBar.unselectedItemTintColor = deselectedColor
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
         
+     
         
-        //setUp()
-        
-        //self.selectPage(at: 1)
-        // Do any additional setup after loading the view.
-        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let userProfileVC = storyBoard.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
+        self.viewControllers?[2] = userProfileVC
     }
 
    

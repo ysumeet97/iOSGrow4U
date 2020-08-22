@@ -47,7 +47,7 @@
         <!--Products View Controller-->
         <scene sceneID="yro-Q6-wPL">
             <objects>
-                <viewController id="IxS-YW-mmU" customClass="ProductsViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IxS-YW-mmU" customClass="ProductsViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vUx-zq-qwc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,11 +93,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Home-icon" landscapeImage="Home-icon" selectedImage="Home-icon" id="IPX-Sw-km1"/>
                     <connections>
-                        <outlet property="SearchBar" destination="S9b-DY-fkc" id="nK3-Y0-CXB"/>
+                        <outlet property="navigation" destination="f4M-t1-dTT" id="KM0-lG-1tb"/>
+                        <outlet property="search" destination="sLv-ru-t8J" id="xei-r2-pxn"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-5T-MX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" text="" placeholder="Location" id="S9b-DY-fkc">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-5T-MX8" userLabel="First Responder" propertyAccessControl="none" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="sLv-ru-t8J">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>

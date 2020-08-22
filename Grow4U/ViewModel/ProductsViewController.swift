@@ -10,10 +10,14 @@ import UIKit
 
 class ProductsViewController: UIViewController {
     
-    @IBOutlet var SearchBar: UISearchBar!
+    //@IBOutlet var SearchBar: UISearchBar!
+   // @IBOutlet var searchBar: [UISearchBar]!
+    @IBOutlet var search: UISearchBar!
+    @IBOutlet weak var navigation: UINavigationBar!
     override func viewDidLoad() {
-        navigationItem.titleView = SearchBar
-        
+        super.viewDidLoad()
+        navigation.topItem?.titleView = search
+        //self.tabBarController?.navigationItem.leftBarButtonItem = settingsButton
     }
     
     
