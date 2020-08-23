@@ -208,27 +208,69 @@
             </objects>
             <point key="canvasLocation" x="1264.9553571428571" y="1150.7246376811595"/>
         </scene>
-        <!--View Controller-->
+        <!--Products View Controller-->
         <scene sceneID="yro-Q6-wPL">
             <objects>
-                <viewController id="IxS-YW-mmU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IxS-YW-mmU" customClass="ProductsViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vUx-zq-qwc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xHu-yk-pqJ">
-                                <rect key="frame" x="87" y="205" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QyU-Ba-Sqh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqt-Tj-Vdd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <subviews>
+                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-t1-dTT">
+                                                <rect key="frame" x="0.0" y="33" width="414" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <items>
+                                                    <navigationItem id="3t8-xx-piw"/>
+                                                </items>
+                                            </navigationBar>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="leading" secondItem="QyU-Ba-Sqh" secondAttribute="leading" id="1Of-u8-ucw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lqt-Tj-Vdd" secondAttribute="bottom" id="UNO-dl-Iae"/>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="height" secondItem="QyU-Ba-Sqh" secondAttribute="height" id="ced-mf-DQ7"/>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="centerY" secondItem="QyU-Ba-Sqh" secondAttribute="centerY" id="nna-M4-B21"/>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="centerX" secondItem="QyU-Ba-Sqh" secondAttribute="centerX" id="rso-2P-auV"/>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="width" secondItem="QyU-Ba-Sqh" secondAttribute="width" id="tgS-iF-BYs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lqt-Tj-Vdd" secondAttribute="trailing" id="tlY-HW-s0L"/>
+                                    <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="top" secondItem="QyU-Ba-Sqh" secondAttribute="top" id="wlf-sv-z7D"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QyU-Ba-Sqh" firstAttribute="width" secondItem="vUx-zq-qwc" secondAttribute="width" id="1ic-3B-OXy"/>
+                            <constraint firstItem="QyU-Ba-Sqh" firstAttribute="centerY" secondItem="vUx-zq-qwc" secondAttribute="centerY" id="2Kv-Dm-y08"/>
+                            <constraint firstItem="QyU-Ba-Sqh" firstAttribute="height" secondItem="vUx-zq-qwc" secondAttribute="height" id="7sg-cb-ADe"/>
+                            <constraint firstItem="QyU-Ba-Sqh" firstAttribute="centerX" secondItem="vUx-zq-qwc" secondAttribute="centerX" id="xG3-fX-2Bc"/>
+                            <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="width" secondItem="vUx-zq-qwc" secondAttribute="width" id="y18-dw-QfA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JoL-be-JKx"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Home-icon" landscapeImage="Home-icon" selectedImage="Home-icon" id="IPX-Sw-km1"/>
+                    <connections>
+                        <outlet property="navigation" destination="f4M-t1-dTT" id="KM0-lG-1tb"/>
+                        <outlet property="search" destination="sLv-ru-t8J" id="xei-r2-pxn"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-5T-MX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-5T-MX8" userLabel="First Responder" propertyAccessControl="none" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="sLv-ru-t8J">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
+
             <point key="canvasLocation" x="1291" y="-1104"/>
+
         </scene>
         <!--View Controller-->
         <scene sceneID="ft5-rx-srD">
@@ -317,10 +359,10 @@
             </objects>
             <point key="canvasLocation" x="1292" y="339"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home View Controller-->
         <scene sceneID="Jbu-cx-bHv">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZWG-4R-RrR" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZWG-4R-RrR" customClass="HomeViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Tn-P5-Ddh">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
