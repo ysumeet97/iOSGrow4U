@@ -8,14 +8,27 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITabBarController {
 
+    let selectedColor = UIColor.blue
+    let deselectedColor = UIColor.gray
+     var window: UIWindow?
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.delegate = self as? UITabBarControllerDelegate;        //view.backgroundColor = .blue
         
+        //self.delegate = self as! UITabBarControllerDelegate
+        tabBar.tintColor = selectedColor
+        tabBar.unselectedItemTintColor = deselectedColor
+        tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
+        
+     
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let userProfileVC = storyBoard.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
+        self.viewControllers?[2] = userProfileVC
     }
 
-
+   
 }
 
