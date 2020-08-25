@@ -18,6 +18,8 @@
 		C44B46B824EF304A00870CA3 /* Grow4UUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46B724EF304A00870CA3 /* Grow4UUITests.swift */; };
 		C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46CB24EF721300870CA3 /* MainCoordinator.swift */; };
 		C44B46CE24EF73F000870CA3 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46CD24EF73F000870CA3 /* HomeViewCoordinator.swift */; };
+		CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3A47824F3ECA40025C58F /* SearchViewController.swift */; };
+		CEB3A47B24F3ECBC0025C58F /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3A47A24F3ECBC0025C58F /* SearchViewCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		C44B46B924EF304A00870CA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44B46CB24EF721300870CA3 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		C44B46CD24EF73F000870CA3 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
+		CEB3A47824F3ECA40025C58F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEB3A47A24F3ECBC0025C58F /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 				C44B46CB24EF721300870CA3 /* MainCoordinator.swift */,
 				C44B46CD24EF73F000870CA3 /* HomeViewCoordinator.swift */,
 				C057BD0224F0FB09001EB853 /* ProductsViewCoordinator.swift */,
+				CEB3A47A24F3ECBC0025C58F /* SearchViewCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				C44B469924EF304500870CA3 /* HomeViewController.swift */,
 				C057BD0024F0F9CA001EB853 /* ProductsViewController.swift */,
+				CEB3A47824F3ECA40025C58F /* SearchViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -301,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C44B46CE24EF73F000870CA3 /* HomeViewCoordinator.swift in Sources */,
+				CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */,
 				C057BD0324F0FB09001EB853 /* ProductsViewCoordinator.swift in Sources */,
+				CEB3A47B24F3ECBC0025C58F /* SearchViewCoordinator.swift in Sources */,
 				C44B469A24EF304500870CA3 /* HomeViewController.swift in Sources */,
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
 				C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */,
