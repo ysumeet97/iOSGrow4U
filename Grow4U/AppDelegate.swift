@@ -12,11 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var coordinator: HomeViewCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Thread.sleep(forTimeInterval: 4.0)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let tabController = HomeViewController()
+        let appCoordinator = HomeViewCoordinator(tabController: tabController, window: window)
+        coordinator = appCoordinator
+        appCoordinator.start()
         return true
     }
 

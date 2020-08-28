@@ -22,13 +22,6 @@ class HomeViewController: UITabBarController {
         tabBar.unselectedItemTintColor = deselectedColor
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
         
-     
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let userProfileVC = storyBoard.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
-        self.viewControllers?[2] = userProfileVC
     }
-
-   
 }
 
