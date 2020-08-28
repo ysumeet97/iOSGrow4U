@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZWG-4R-RrR">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -284,27 +284,68 @@
             </objects>
             <point key="canvasLocation" x="1291" y="-1104"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="ft5-rx-srD">
             <objects>
-                <viewController id="8Ns-lD-AVi" sceneMemberID="viewController">
+                <viewController id="8Ns-lD-AVi" userLabel="Search View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="om5-9I-B0G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Person" translatesAutoresizingMaskIntoConstraints="NO" id="qYH-18-uc2">
-                                <rect key="frame" x="87" y="188" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgz-zz-8l3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQy-Ei-adR">
+                                        <rect key="frame" x="8" y="5.5" width="116" height="52"/>
+                                        <state key="normal" title="Home" image="arrow" backgroundImage="button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ZWG-4R-RrR" kind="show" id="9Sx-zV-Ede"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.00097240025339999999" green="0.72214577489999998" blue="0.2003905439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lQy-Ei-adR" secondAttribute="trailing" constant="20" symbolic="YES" id="FWN-Pd-BGE"/>
+                                    <constraint firstItem="lQy-Ei-adR" firstAttribute="leading" secondItem="vgz-zz-8l3" secondAttribute="leading" constant="8" id="QCP-fl-Kpf"/>
+                                    <constraint firstItem="lQy-Ei-adR" firstAttribute="centerY" secondItem="vgz-zz-8l3" secondAttribute="centerY" id="e2r-Fu-GY5"/>
+                                    <constraint firstAttribute="height" constant="63" id="u3L-46-z70"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-9i-1YA">
+                                <rect key="frame" x="0.0" y="107" width="414" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="KPf-1J-lJi"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xa6-L1-bMJ">
+                                <rect key="frame" x="0.0" y="170" width="414" height="643"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vgz-zz-8l3" firstAttribute="width" secondItem="kNu-3F-ZBW" secondAttribute="width" id="LAg-ft-0Dv"/>
+                            <constraint firstItem="Hid-9i-1YA" firstAttribute="width" secondItem="kNu-3F-ZBW" secondAttribute="width" id="LW2-3d-f47"/>
+                            <constraint firstItem="Hid-9i-1YA" firstAttribute="leading" secondItem="kNu-3F-ZBW" secondAttribute="leading" id="Lks-gD-D0Y"/>
+                            <constraint firstItem="vgz-zz-8l3" firstAttribute="leading" secondItem="kNu-3F-ZBW" secondAttribute="leading" id="NKg-lB-ztY"/>
+                            <constraint firstItem="Xa6-L1-bMJ" firstAttribute="trailing" secondItem="kNu-3F-ZBW" secondAttribute="trailing" id="NUI-2P-bWP"/>
+                            <constraint firstItem="vgz-zz-8l3" firstAttribute="centerX" secondItem="kNu-3F-ZBW" secondAttribute="centerX" id="eIT-tG-5E8"/>
+                            <constraint firstItem="vgz-zz-8l3" firstAttribute="top" secondItem="kNu-3F-ZBW" secondAttribute="top" id="h7A-cu-TOu"/>
+                            <constraint firstItem="Hid-9i-1YA" firstAttribute="centerX" secondItem="kNu-3F-ZBW" secondAttribute="centerX" id="h9w-9F-HYY"/>
+                            <constraint firstItem="Hid-9i-1YA" firstAttribute="top" secondItem="vgz-zz-8l3" secondAttribute="bottom" id="kDQ-wd-8eJ"/>
+                            <constraint firstItem="Xa6-L1-bMJ" firstAttribute="leading" secondItem="kNu-3F-ZBW" secondAttribute="leading" id="oRT-Hf-MEq"/>
+                            <constraint firstItem="Xa6-L1-bMJ" firstAttribute="centerY" secondItem="kNu-3F-ZBW" secondAttribute="centerY" constant="63" id="ubo-fD-Y0r"/>
+                            <constraint firstItem="Xa6-L1-bMJ" firstAttribute="height" secondItem="kNu-3F-ZBW" secondAttribute="height" constant="-126" id="uv2-1w-ZvP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kNu-3F-ZBW"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Search-icon" landscapeImage="Search-icon" selectedImage="Search-icon" id="w3a-Mo-O7e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c3-yq-6Av" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280" y="-398"/>
+            <point key="canvasLocation" x="1275.3623188405797" y="-401.78571428571428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qRc-Ee-1SM">
@@ -326,19 +367,19 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="86" translatesAutoresizingMaskIntoConstraints="NO" id="Kdy-Ms-AdK">
-                                        <rect key="frame" x="171.66666666666666" y="298" width="31" height="378.66666666666674"/>
+                                        <rect key="frame" x="171.5" y="298" width="31" height="379"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5un-t6-Sem">
                                                 <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile-icon" translatesAutoresizingMaskIntoConstraints="NO" id="A3N-tJ-rc0">
-                                                <rect key="frame" x="0.0" y="115.99999999999999" width="31" height="30.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="116" width="31" height="30.5"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="Order-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZVT-XH-6yy">
-                                                <rect key="frame" x="0.0" y="232.33333333333337" width="31" height="30"/>
+                                                <rect key="frame" x="0.0" y="232.5" width="31" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home-icon" translatesAutoresizingMaskIntoConstraints="NO" id="z32-9J-O18">
-                                                <rect key="frame" x="0.0" y="348.33333333333337" width="31" height="30.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="348.5" width="31" height="30.5"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -396,13 +437,15 @@
     <resources>
         <image name="Home-icon" width="31" height="30.333333969116211"/>
         <image name="Order-icon" width="30" height="30"/>
-        <image name="Person" width="1298" height="1402"/>
-        <image name="Profile-icon" width="30.333333969116211" height="30.333333969116211"/>
+        <image name="Profile-icon" width="30.5" height="30.5"/>
         <image name="Search-icon" width="30" height="30"/>
         <image name="arrow" width="24" height="24"/>
         <image name="button" width="116" height="52"/>
         <image name="default_profile_image" width="375" height="136"/>
         <image name="edit-button" width="89" height="45"/>
-        <image name="edit-pencil" width="14.666666984558105" height="14.333333015441895"/>
+        <image name="edit-pencil" width="14.5" height="14.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9Sx-zV-Ede"/>
+    </inferredMetricsTieBreakers>
 </document>
