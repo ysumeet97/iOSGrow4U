@@ -10,15 +10,33 @@ import Foundation
 import UIKit
 
 class HomeViewCoordinator : MainCoordinator {
-    let parentViewController: UIViewController
     
-    init(parentViewController: UIViewController) {
-        self.parentViewController = parentViewController
+    private let tabController: HomeViewController
+    private let window: UIWindow
+    private var file_name: String?
+
+    init(tabController: HomeViewController, window: UIWindow) {
+        self.tabController = tabController
+        self.window = window
     }
     
     func start() {
-        let homeViewController = HomeViewController()
-       
-        parentViewController.present(homeViewController, animated: true)
+        window.rootViewController = tabController
+        window.makeKeyAndVisible()
+        showMain()
     }
+    
+    private func showMain() {
+        let productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
+        let profileVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
+        tabController.setViewControllers([productVC, profileVC], animated: true)
+        file_name = "profile"
+        let profile_model = ProfileViewModel(file_name: file_name!)
+        profileVC.setProfileModel(profileViewModel: profile_model)
+        
+        // call the rest api to get the json file and set it in file_name
+        //file_name = "profile"
+      //  profile_model.loadJsonFile(file_name: file_name!)
+    }
+    
 }

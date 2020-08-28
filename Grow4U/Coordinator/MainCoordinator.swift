@@ -10,6 +10,5 @@ import Foundation
 import UIKit
 
 protocol MainCoordinator {
-    var parentViewController: UIViewController { get }
     func start()
 }
