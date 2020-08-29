@@ -27,8 +27,8 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="homeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cue-Oi-UlY"/>
-                                            <segue destination="ZWG-4R-RrR" kind="show" id="5CG-ZG-WHz"/>
+                                            <action selector="homeButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Plp-fm-MPn"/>
+                                            <segue destination="ZWG-4R-RrR" kind="show" identifier="homeSeague" id="7sC-QQ-P8G"/>
                                         </connections>
                                     </button>
                                 </subviews>
