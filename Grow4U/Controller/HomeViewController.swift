@@ -12,16 +12,15 @@ class HomeViewController: UITabBarController {
 
     let selectedColor = UIColor.blue
     let deselectedColor = UIColor.gray
-     var window: UIWindow?
+    var window: UIWindow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self as? UITabBarControllerDelegate;        //view.backgroundColor = .blue
-        
-        //self.delegate = self as! UITabBarControllerDelegate
+        self.delegate = self as? UITabBarControllerDelegate;
         tabBar.tintColor = selectedColor
         tabBar.unselectedItemTintColor = deselectedColor
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
-        
+    
     }
 }
 
