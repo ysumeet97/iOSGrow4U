@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         let profile_data = profileViewModel!.getData()
         self.setTextData(first_name: profile_data.first_name, last_name: profile_data.last_name, email: profile_data.email, phone: profile_data.phone, address: profile_data.address)
-        
     }
     
     private func setTextData(first_name: String, last_name: String, email: String, phone: String, address: String) {
@@ -45,4 +44,7 @@ class ProfileViewController: UIViewController {
     @IBAction func editProfileData(_ sender: UIButton) {
     }
     
+    @IBAction func homeButtonAction(_ sender: UIButton) {
+            self.performSegue(withIdentifier: "homeSeague", sender: sender)
+    }
 }
