@@ -21,10 +21,13 @@
 		CE50D74624FA832F00CBDD95 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50D74524FA832F00CBDD95 /* ProductsViewController.swift */; };
 		CE50D74824FA836400CBDD95 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50D74724FA836400CBDD95 /* HomeViewCoordinator.swift */; };
 		CEAF178925007451008E37C4 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF178825007451008E37C4 /* SearchResultModel.swift */; };
-		CEAF178B250074A7008E37C4 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF178A250074A7008E37C4 /* SearchResult.swift */; };
+		CEAF178B250074A7008E37C4 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF178A250074A7008E37C4 /* SearchResultController.swift */; };
 		CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3A47824F3ECA40025C58F /* SearchViewController.swift */; };
 		CEB3A47B24F3ECBC0025C58F /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3A47A24F3ECBC0025C58F /* SearchViewCoordinator.swift */; };
 		CEEB830D2501457800DBDB4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB830C2501457800DBDB4C /* Assets.xcassets */; };
+		CEEB830F2501F79F00DBDB4C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB830E2501F79F00DBDB4C /* SearchViewModel.swift */; };
+		CEEB8311250224BB00DBDB4C /* prodcuts.json in Resources */ = {isa = PBXBuildFile; fileRef = CEEB8310250224BB00DBDB4C /* prodcuts.json */; };
+		CEEB8313250227BE00DBDB4C /* JsonUtilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB8312250227BE00DBDB4C /* JsonUtilViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,10 +68,13 @@
 		CE50D74524FA832F00CBDD95 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		CE50D74724FA836400CBDD95 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		CEAF178825007451008E37C4 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResultModel.swift; path = Grow4U/View/SearchResultModel.swift; sourceTree = SOURCE_ROOT; };
-		CEAF178A250074A7008E37C4 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		CEAF178A250074A7008E37C4 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		CEB3A47824F3ECA40025C58F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEB3A47A24F3ECBC0025C58F /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		CEEB830C2501457800DBDB4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEEB830E2501F79F00DBDB4C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CEEB8310250224BB00DBDB4C /* prodcuts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prodcuts.json; sourceTree = "<group>"; };
+		CEEB8312250227BE00DBDB4C /* JsonUtilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtilViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,7 @@
 		C44B46C724EF617D00870CA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEEB8310250224BB00DBDB4C /* prodcuts.json */,
 				C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */,
 				C4FEBF5124F4381C003A4E50 /* profile.json */,
 				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
@@ -173,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */,
+				CEEB830E2501F79F00DBDB4C /* SearchViewModel.swift */,
+				CEEB8312250227BE00DBDB4C /* JsonUtilViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,7 +202,7 @@
 				C4FEBF5324F438C9003A4E50 /* ProfileViewController.swift */,
 				CE50D74324FA82FD00CBDD95 /* HomeViewController.swift */,
 				CE50D74524FA832F00CBDD95 /* ProductsViewController.swift */,
-				CEAF178A250074A7008E37C4 /* SearchResult.swift */,
+				CEAF178A250074A7008E37C4 /* SearchResultController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEB8311250224BB00DBDB4C /* prodcuts.json in Resources */,
 				C44B46A224EF304A00870CA3 /* LaunchScreen.storyboard in Resources */,
 				C4FEBF5224F4381C003A4E50 /* profile.json in Resources */,
 				CEEB830D2501457800DBDB4C /* Assets.xcassets in Resources */,
@@ -335,8 +345,10 @@
 				C4FEBF5724F4453D003A4E50 /* ProfileViewModel.swift in Sources */,
 				CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */,
 				CE50D74424FA82FD00CBDD95 /* HomeViewController.swift in Sources */,
+				CEEB830F2501F79F00DBDB4C /* SearchViewModel.swift in Sources */,
 				CEB3A47B24F3ECBC0025C58F /* SearchViewCoordinator.swift in Sources */,
-				CEAF178B250074A7008E37C4 /* SearchResult.swift in Sources */,
+				CEAF178B250074A7008E37C4 /* SearchResultController.swift in Sources */,
+				CEEB8313250227BE00DBDB4C /* JsonUtilViewModel.swift in Sources */,
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
 				CEAF178925007451008E37C4 /* SearchResultModel.swift in Sources */,
 				CE50D74624FA832F00CBDD95 /* ProductsViewController.swift in Sources */,

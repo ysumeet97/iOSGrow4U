@@ -16,15 +16,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    private final let url = URL (string: "https://api.jsonbin.io/b/5f5070794d8ce4111387a7c9/4")
+    private final let url = URL (string: "https://api.jsonbin.io/b/5f514f324d8ce41113881b9b")
     private var products =  [SearchResultModel]()
     private var downloadedProducts =  [SearchResultModel]()
     private var searchProducts = [SearchResultModel]()
     private var searching = false
+    private var jsonUtilViewModel: JsonUitlViewModel?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         downloadJson()
+        if let localData = jsonUtilViewModel?.readLocalFile(forName: "products.json") {
+            print("in")
+            print(localData)
+        }
         tableView.tableFooterView = UIView()
     }
     
@@ -65,7 +72,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         } else {
             self.products = self.downloadedProducts
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult") as? SearchResult else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult") as? SearchResultController else {return UITableViewCell()}
         cell.productName.text = products[indexPath.row].name
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
@@ -75,6 +82,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowRadius = 5
+        cell.layer.shadowOpacity = 0.40
         return cell
     }
     
