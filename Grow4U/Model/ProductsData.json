@@ -1,0 +1,40 @@
+{
+    "locations": [
+        {
+            "location": "caufield",
+            "vegetables":[{
+                "type": "tomato",
+                "price":"$2/kg",
+                "image": "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            },
+            {
+                "type": "potato",
+                "price":"$2/kg",
+                "image": "https://cdn.potatopro.com/cdn/ff/mRyngRNTIpusiHGvhgw93UOqUIl0iqp6C5KBUNBio0o/1589463879/public/styles/amp_metadata_content_image_min_696px_wide/public/field/image/cultivate-michigan-combitating-potato-varieties-1200.jpg?itok=8uvJd_5u",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            }]
+            
+        },
+        {
+            "location": "brighton",
+            "vegetables":[{
+                "type": "brinjal",
+                "price":"$1/kg",
+                "image":
+                "https://www.astrogle.com/images/2015/01/brinjal.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            },{
+                "type": "carrot",
+                "price":"$1/kg",
+                "image":
+                "https://www.growjoy.com/store/pc/catalog/little_fingers_carrot_plant_2252_detail.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            }]
+            
+            }]
+}

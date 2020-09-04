@@ -1,0 +1,22 @@
+{
+    "farms": [
+        {
+            "location": "Donkaster, Victoria ",
+            "name":"Ron's Farm",
+            "image":"https://gazzolafarms.com.au/wp-content/uploads/2016/03/iceberg-lettuce_slide.jpg",
+            "ratings": "5"
+        },
+        {
+            "location": "Donkaster, Victoria ",
+            "name":"Mark's Farm",
+            "image":"https://www.agrilabour.com.au/wp-content/uploads/2019/04/orange-farm-south-australia.jpg",
+            "ratings": "5"
+        },
+        {
+            "location": "Donkaster, Victoria ",
+            "name":"GoodView Farm",
+            "image":"https://cdn.newsapi.com.au/image/v1/269fdeb5b6b99712bf6920ee3254b7d1",
+            "ratings": "5"
+        }
+        ]
+}
