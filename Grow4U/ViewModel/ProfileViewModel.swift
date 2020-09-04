@@ -10,13 +10,18 @@ import Foundation
 
 class ProfileViewModel {
     private var profile_model: ProfileModel?
-    var file_name: String
+    private var file_name: String?
+    private var first_name: String?
+    private var last_name: String?
+    private var email: String?
+    private var phone: String?
+    private var address: String?
     
     init(file_name: String) {
         self.file_name = file_name
         loadJsonFile()
     }
-
+    
     public func loadJsonFile() {
         guard let path = Bundle.main.path(forResource: file_name, ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)

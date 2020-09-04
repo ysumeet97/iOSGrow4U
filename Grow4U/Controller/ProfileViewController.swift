@@ -21,12 +21,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
     var profileViewModel: ProfileViewModel?
-    
+    var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String)?
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let profile_data = profileViewModel!.getData()
-        self.setTextData(first_name: profile_data.first_name, last_name: profile_data.last_name, email: profile_data.email, phone: profile_data.phone, address: profile_data.address)
+        self.getData()
+        self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
         
+    }
+
+    private func getData() {
+        profile_data = profileViewModel!.getData()
     }
     
     private func setTextData(first_name: String, last_name: String, email: String, phone: String, address: String) {
@@ -41,6 +46,9 @@ class ProfileViewController: UIViewController {
         self.profileViewModel = profileViewModel
     }
     //MARK: Actions
+    
+    @IBAction func homeButtonAction(_ sender: UIButton) {  self.performSegue(withIdentifier: "homeSeague", sender: sender)
+    }
     
     @IBAction func editProfileData(_ sender: UIButton) {
     }
