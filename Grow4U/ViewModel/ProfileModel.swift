@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileModel: Decodable {
+class ProfileModel: Decodable, Encodable {
     //private var image: String
     var first_name: String
     var last_name: String

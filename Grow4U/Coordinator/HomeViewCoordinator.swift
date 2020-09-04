@@ -29,11 +29,11 @@ class HomeViewCoordinator : MainCoordinator {
     private func showMain() {
         let productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
         let profileVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
-        tabController.setViewControllers([productVC, profileVC], animated: true)
+        let pronavVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController
+        tabController.setViewControllers([productVC, pronavVC, profileVC], animated: true)
         file_name = "profile"
         let profile_model = ProfileViewModel(file_name: file_name!)
         profileVC.setProfileModel(profileViewModel: profile_model)
-        
         // call the rest api to get the json file and set it in file_name
         //file_name = "profile"
       //  profile_model.loadJsonFile(file_name: file_name!)
