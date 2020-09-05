@@ -21,14 +21,16 @@ class SearchResultModel: Codable {
     let price: String
     let unit: String
     let currency: String
+    let description: String
     
-    init(id : String, img_url: String, productName: String, productPrice: String, unit: String, currency: String) {
+    init(id : String, img_url: String, productName: String, productPrice: String, unit: String, currency: String, description: String) {
         self.id = id
         self.img_url = img_url
         self.name = productName
         self.price = productPrice
         self.unit = unit
         self.currency = currency
+        self.description = description
     }
     
 }

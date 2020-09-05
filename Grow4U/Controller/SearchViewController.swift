@@ -52,6 +52,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
             self.products = self.downloadedProducts
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult") as? SearchResultController else {return UITableViewCell()}
+        cell.data = (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].description)
+        cell.setSearchVC(searchVC: self, indexPath: indexPath)
+        //self.setProductInfo(indexPath: indexPath)
+        cell.product_info = products[indexPath.row].description
         cell.productName.text = products[indexPath.row].name
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
@@ -65,6 +69,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.layer.shadowRadius = 5
         cell.layer.shadowOpacity = 0.40
         return cell
+    }
+    public func getData(indexPath: IndexPath) -> (name: String, price: String, information: String){
+        return (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].price.description)
+    }
+    
+    func showProductInfo(productVC: ProductInfoViewController) {
+        self.navigationController?.pushViewController(productVC, animated: true)
     }
     
     func setImage(from url: String, imageViewToSet: UIImageView) {

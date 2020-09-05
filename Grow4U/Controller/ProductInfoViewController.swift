@@ -11,8 +11,7 @@ import UIKit
 
 class ProductInfoViewController: UIViewController {
     
-    private var productInfoViewModel: ProductInfoViewModel?
-    private var product_id: String?
+    private var searchVC: SearchResultController?
     
     // MARK: Properties
     @IBOutlet weak var innerScrollView: UIScrollView!
@@ -25,11 +24,12 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var l_name: UILabel!
     @IBOutlet weak var l_price: UILabel!
     @IBOutlet weak var l_information: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dropShadow(layer: innerScrollView.layer)
-        self.setupData()
+        let data = searchVC!.getData()
+        self.setupData(name: data.name, price: data.price, information: data.information)
     }
     
     public func dropShadow(layer: CALayer, scale: Bool = true) {
@@ -42,19 +42,37 @@ class ProductInfoViewController: UIViewController {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    public func setProductID(productInfoViewModel: ProductInfoViewModel, product_id: String) {
-        self.productInfoViewModel = productInfoViewModel
-        self.product_id = product_id
+    public func setSearchVC(searchVC: SearchResultController) {
+        self.searchVC = searchVC;
     }
     
-    private func setupData() {
-        print("setup data: " + product_id!)
-        let product_details = self.productInfoViewModel!.getProductInfo(product_id: product_id!)
-        name.text = product_details.product_name
-        l_name.text = product_details.product_name
-        price.text = "$ " + product_details.product_price! + " / Kg"
-        l_price.text = "$ " + product_details.product_price! + " / Kg"
-        information.text = product_details.product_info
-        l_information.text = product_details.product_info
+//    public func setProductID(productInfoViewModel: ProductInfoViewModel, product_id: String) {
+//        self.productInfoViewModel = productInfoViewModel
+//        self.product_id = product_id
+//    }
+//    public func setName(name: String) {
+//        print(name)
+//        self.name!.text = name
+//        self.l_name!.text = name
+//    }
+//
+//    public func setPrice(price: String) {
+//        print(price)
+//        self.price!.text = "$ " + price + " / Kg"
+//        self.l_price!.text = "$ " + price + " / Kg"
+//    }
+//
+//    public func setInfo(information: String) {
+//        self.information!.text = information
+//        self.l_information!.text = information
+//    }
+    
+    public func setupData(name: String, price: String, information: String) {
+        self.name!.text = name
+        self.l_name!.text = name
+        self.price!.text = "$ " + price + " / Kg"
+        self.l_price!.text = "$ " + price + " / Kg"
+        self.information!.text = information
+        self.l_information!.text = information
     }
 }
