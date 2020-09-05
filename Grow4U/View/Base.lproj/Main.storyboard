@@ -222,65 +222,19 @@
             </objects>
             <point key="canvasLocation" x="1263.768115942029" y="1150.4464285714284"/>
         </scene>
-        <!--Products Potrait View Controller-->
+        <!--Products Table View Controller-->
         <scene sceneID="yro-Q6-wPL">
             <objects>
-                <viewController storyboardIdentifier="ProductsPotraitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IxS-YW-mmU" customClass="ProductsPotraitViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IxS-YW-mmU" customClass="ProductsTableViewController" customModule="Grow4U" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vUx-zq-qwc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqt-Tj-Vdd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcq-DM-erI">
-                                        <rect key="frame" x="0.0" y="85" width="320" height="435"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-t1-dTT">
-                                        <rect key="frame" x="0.0" y="33" width="320" height="44"/>
-                                        <items>
-                                            <navigationItem largeTitleDisplayMode="always" id="3t8-xx-piw">
-                                                <barButtonItem key="backBarButtonItem" title=" " id="vSo-uA-eeA"/>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tcq-DM-erI" secondAttribute="bottom" constant="48" id="5hN-EB-uNc"/>
-                                    <constraint firstItem="tcq-DM-erI" firstAttribute="leading" secondItem="f4M-t1-dTT" secondAttribute="leading" id="5mZ-JX-3iA"/>
-                                    <constraint firstAttribute="trailing" secondItem="tcq-DM-erI" secondAttribute="trailing" id="8Rs-X4-bEz"/>
-                                    <constraint firstItem="tcq-DM-erI" firstAttribute="top" secondItem="f4M-t1-dTT" secondAttribute="bottom" constant="8" id="8oM-vM-Zgu"/>
-                                    <constraint firstItem="tcq-DM-erI" firstAttribute="trailing" secondItem="f4M-t1-dTT" secondAttribute="trailing" id="BVP-YV-HGT"/>
-                                    <constraint firstItem="tcq-DM-erI" firstAttribute="top" secondItem="Lqt-Tj-Vdd" secondAttribute="top" constant="85" id="P81-ac-mlX"/>
-                                    <constraint firstItem="tcq-DM-erI" firstAttribute="leading" secondItem="Lqt-Tj-Vdd" secondAttribute="leading" id="tON-yG-CXD"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Lqt-Tj-Vdd" secondAttribute="bottom" id="AsT-4x-OCo"/>
-                            <constraint firstAttribute="trailing" secondItem="Lqt-Tj-Vdd" secondAttribute="trailing" id="C23-8j-8s6"/>
-                            <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="top" secondItem="vUx-zq-qwc" secondAttribute="top" id="QEL-zv-eaw"/>
-                            <constraint firstItem="Lqt-Tj-Vdd" firstAttribute="leading" secondItem="vUx-zq-qwc" secondAttribute="leading" id="mcU-er-Tkz"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4jt-Xr-oCe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Home-icon" landscapeImage="Home-icon" selectedImage="Home-icon" id="IPX-Sw-km1"/>
-                    <connections>
-                        <outlet property="navigation" destination="f4M-t1-dTT" id="KM0-lG-1tb"/>
-                        <outlet property="scrollView" destination="tcq-DM-erI" id="zDv-aD-9ad"/>
-                        <outlet property="search" destination="sLv-ru-t8J" id="xei-r2-pxn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYi-5T-MX8" userLabel="First Responder" propertyAccessControl="none" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" id="sLv-ru-t8J">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="M8k-h8-y14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
             </objects>
             <point key="canvasLocation" x="1288.125" y="-1104.9295774647887"/>
         </scene>

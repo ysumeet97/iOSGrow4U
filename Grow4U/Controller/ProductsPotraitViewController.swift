@@ -26,20 +26,8 @@ class ProductsPotraitViewController: UIViewController{
     var farmsData: [FarmsModel.Data]?
     let collectionViewBIdentifier = "ProductsViewCell"
     
-   
-   
-    @IBOutlet weak var scrollView: UIView!
-    @IBOutlet var search: UISearchBar!
-    @IBOutlet weak var navigation: UINavigationBar!
     
-    fileprivate let mainCollectionView:UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let cv = UICollectionView(frame: CGRect(x: 200, y: 20, width: 200, height: 100), collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "mainCell")
-        return cv
-    }()
+    
     fileprivate let fruitsCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -66,63 +54,51 @@ class ProductsPotraitViewController: UIViewController{
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("here")
         loadJsonFile()
         getAllData()
         getAllFarmsData()
-        navigation.topItem?.titleView = search
-        navigation.backgroundColor = .green
-        //self.view.addSubview(scrollView)
-        //scrollView.delegate = self
-        //scrollView.delegate = self
-        // constrain the scroll view to 8-pts on each side
+        //navigation.topItem?.titleView = search
+        //navigation.backgroundColor = .green
        
+
         
-        // constrain the scroll view to 8-pts on each side
-        //view.addSubview(collectionView)
-        //view.addSubview(farmsCollectionView)
-        //view.addSubview(fruitsCollectionView)
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
-        mainCollectionView.frame = scrollView.bounds
-        mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        scrollView.addSubview(mainCollectionView)
+        //mainCollectionView.frame = scrollView.bounds
+        //mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+//
+//
+        //scrollView.addSubview(farmsCollectionView)
+//
+//        //scrollView.addSubview(fruitsCollectionView)
         
-//
-//        mainCollectionView.addSubview(farmsCollectionView)
-//        mainCollectionView.addSubview(collectionView)
-//        mainCollectionView.addSubview(fruitsCollectionView)
-//
-//        //collectionView.isPagingEnabled = true
-//
+        //collectionView.isPagingEnabled = true
+        
 //        farmsCollectionView.delegate = self
 //        farmsCollectionView.dataSource = self
+//         print("here2")
 //        farmsCollectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 8.0).isActive = true
 //        farmsCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8.0).isActive = true
 //        farmsCollectionView.heightAnchor.constraint(equalToConstant:  self.view.bounds.height/1.5).isActive = true
 //        farmsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:0).isActive = true
-//
-//        fruitsCollectionView.delegate = self
-//        fruitsCollectionView.dataSource = self
-//        fruitsCollectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 100.0).isActive = true
-//        fruitsCollectionView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -8.0).isActive = true
-//        fruitsCollectionView.heightAnchor.constraint(equalToConstant: scrollView.bounds.height/1.5 ).isActive = true
-//         fruitsCollectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant:0).isActive = true
-////
-////
-//////       // farmsCollectionView.isPagingEnabled = true
-//////        //farmsCollectionView.backgroundColor = .white
-//        collectionView.backgroundColor = .white
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-        mainCollectionView.leftAnchor.constraint(equalTo:  scrollView.leftAnchor, constant: 8.0).isActive = true
-        mainCollectionView.rightAnchor.constraint(equalTo:  scrollView.rightAnchor, constant: -8.0).isActive = true
-        mainCollectionView.heightAnchor.constraint(equalToConstant:   scrollView.bounds.height/1.5).isActive = true
-        mainCollectionView.trailingAnchor.constraint(equalTo:  scrollView.trailingAnchor, constant:0).isActive = true
-//        collectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 8.0).isActive = true
-//        collectionView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -8.0).isActive = true
-//        collectionView.heightAnchor.constraint(equalToConstant:  scrollView.bounds.height/1.5).isActive = true
-//        collectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant:0).isActive = true
+        
+        //        fruitsCollectionView.delegate = self
+        //        fruitsCollectionView.dataSource = self
+        //        fruitsCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8.0).isActive = true
+        //        fruitsCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8.0).isActive = true
+        //        fruitsCollectionView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/1.5 ).isActive = true
+        //         fruitsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:0).isActive = true
+        ////
+        ////
+        ////       // farmsCollectionView.isPagingEnabled = true
+        ////        //farmsCollectionView.backgroundColor = .white
+        //collectionView.backgroundColor = .white
+        //collectionView.delegate = self
+        //collectionView.dataSource = self
+        //collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 400.0).isActive = true
+        //collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8.0).isActive = true
+        //collectionView.heightAnchor.constraint(equalToConstant:  self.view.bounds.height/1.5).isActive = true
+        //collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:0).isActive = true
     }
     func getFarmsCount()->Int{
         var num = 0
@@ -145,16 +121,16 @@ class ProductsPotraitViewController: UIViewController{
         
         for data in farmsData!{
             
-                farmsImagesUrl.append(data.image!)
-                farms_name.append(data.name!)
-                farms_ratings.append(data.ratings!)
+            farmsImagesUrl.append(data.image!)
+            farms_name.append(data.name!)
+            farms_ratings.append(data.ratings!)
             
         }
         
     }
     func getAllData(){
         
-
+        
         for locations in pdata!{
             for data in locations.vegetables!{
                 imagesUrl.append(data.image!)
@@ -162,7 +138,7 @@ class ProductsPotraitViewController: UIViewController{
                 type_price.append(data.price!)
             }
         }
-       
+        
     }
     
     func loadJsonFile() {
@@ -180,7 +156,7 @@ class ProductsPotraitViewController: UIViewController{
             let farms = try
                 JSONDecoder().decode(FarmsModel.self, from: data)
             
-             //print(farms.farms )
+            //print(farms.farms )
             
             self.farmsData = farms.farms
             
@@ -202,7 +178,7 @@ class ProductsPotraitViewController: UIViewController{
             let products = try
                 JSONDecoder().decode(ProductDataModel.self, from: data)
             
-           // print(products.locations )
+            // print(products.locations )
             
             self.pdata = products.locations
             
@@ -228,15 +204,15 @@ extension ProductsPotraitViewController: UICollectionViewDelegateFlowLayout, UIC
         else{
             return CGSize(width: collectionView.frame.width/1.5, height: collectionView.frame.width/1.3)
         }
-
+        
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.farmsCollectionView{
-        
+            
             return getFarmsCount()
             
         }
-    else if collectionView == self.collectionView
+        else if collectionView == self.collectionView
         {
             return getVegetableCount()
         }
@@ -249,15 +225,15 @@ extension ProductsPotraitViewController: UICollectionViewDelegateFlowLayout, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         if collectionView == self.farmsCollectionView{
-        let cell = farmsCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.titleLabel.text =  farms_name[indexPath.item]
-        let PictureURL = URL(string: farmsImagesUrl[indexPath.item])!
-        let PictureData = NSData(contentsOf: PictureURL as URL) // nil
-        let Picture = UIImage(data: PictureData! as Data)
-        cell.bg.image = Picture
-        return cell
+            let cell = farmsCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
+            cell.titleLabel.text =  farms_name[indexPath.item]
+            let PictureURL = URL(string: farmsImagesUrl[indexPath.item])!
+            let PictureData = NSData(contentsOf: PictureURL as URL) // nil
+            let Picture = UIImage(data: PictureData! as Data)
+            cell.bg.image = Picture
+            return cell
             
         }
         else if collectionView == self.collectionView{
@@ -270,7 +246,7 @@ extension ProductsPotraitViewController: UICollectionViewDelegateFlowLayout, UIC
             return cell
             
         }
-        else if collectionView == self.fruitsCollectionView{
+        else {
             let cell = fruitsCollectionView.dequeueReusableCell(withReuseIdentifier: "fCell", for: indexPath) as! CustomProductsCell
             cell.titleLabel.text =  type[indexPath.item]
             let PictureURL = URL(string: imagesUrl[indexPath.item])!
@@ -279,14 +255,8 @@ extension ProductsPotraitViewController: UICollectionViewDelegateFlowLayout, UIC
             cell.bg.image = Picture
             return cell
         }
-        else{
-            let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! UICollectionViewCell
-            
-            cell.contentView.addSubview(collectionView)
-            return cell
-        }
-        }
     }
+}
 
 
 class CustomProductsCell: UICollectionViewCell {
@@ -298,7 +268,7 @@ class CustomProductsCell: UICollectionViewCell {
             
         }
     }
-
+    
     
     var titleLabel:UILabel = {
         let label = UILabel(frame: CGRect(x:50, y: 160, width: UIScreen.main.bounds.width , height: 40))
@@ -363,7 +333,7 @@ class CustomCell: UICollectionViewCell {
     }()
     fileprivate let bg: UIImageView = {
         let iv = UIImageView()
-      
+        
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
@@ -373,7 +343,7 @@ class CustomCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-    
+        
         contentView.addSubview(bg)
         contentView.addSubview(self.overlay)
         contentView.addSubview(self.titleLabel)
@@ -398,3 +368,5 @@ extension UIView {
         layer.mask = mask
     }
 }
+
+
