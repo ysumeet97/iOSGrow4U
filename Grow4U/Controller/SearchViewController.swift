@@ -13,49 +13,28 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     
     
     // MARK: -Properties
-    
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    private final let url = URL (string: "https://api.jsonbin.io/b/5f514f324d8ce41113881b9b")
     private var products =  [SearchResultModel]()
     private var downloadedProducts =  [SearchResultModel]()
     private var searchProducts = [SearchResultModel]()
     private var searching = false
-    private var jsonUtilViewModel: JsonUitlViewModel?
+    private var searchViewModel =  SearchViewModel(fileName: "prodcuts")
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadJson()
-        if let localData = jsonUtilViewModel?.readLocalFile(forName: "products.json") {
-            print("in")
-            print(localData)
-        }
+        loadData()
         tableView.tableFooterView = UIView()
     }
     
-    func downloadJson() {
-        guard let downloadURL = url else {
-            return
+    func loadData() {
+        self.downloadedProducts = searchViewModel.getJsonData()
+        self.products = self.downloadedProducts
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
-        URLSession.shared.dataTask(with: downloadURL){ data, urlResponse, error in
-            guard let data = data, error == nil, urlResponse != nil else  {
-                print("error in data transfer")
-                return
-            }
-            print("downloaded")
-            do {
-                let decoder = JSONDecoder()
-                self.downloadedProducts = try decoder.decode(SearchResults.self, from: data).products
-                self.products = self.downloadedProducts
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("decode error: \(error)")
-            }
-        }.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +55,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.productName.text = products[indexPath.row].name
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
-        cell.detailsButton.tag = Int(products[indexPath.row].id) ?? -1
         cell.backgroundColor = UIColor.white
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 0.5
