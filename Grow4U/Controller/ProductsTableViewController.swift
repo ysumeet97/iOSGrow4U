@@ -114,7 +114,7 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 0){
-            return 250
+            return 200
         }
         return 160
     }
@@ -127,10 +127,10 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomFarmTableViewCell") as? CustomFarmTableViewCell
             
             if cell == nil {
-                print("up")
+
                 cell = CustomFarmTableViewCell.customCell
             }
-            print("down")
+      
             
             let aCategory = self.categories[indexPath.section]
             print(aCategory.name)
@@ -171,10 +171,18 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
 }
 extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
     func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
-
+        if let cell = collectioncell, let selCategory = TableCell.aCategory {
+            if let imageName = cell.cellImageName {
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
+                detailController?.category = selCategory
+                detailController?.imageName = imageName
+                self.navigationController?.pushViewController(detailController!, animated: true)
                 
             }
         }
+    }
+}
 
 extension ProductsTableViewController:CustomCollectionCellDelegate {
     func collectionView(collectioncell: CustomCollectionViewCell?, didTappedInTableview TableCell: CustomTableViewCell) {

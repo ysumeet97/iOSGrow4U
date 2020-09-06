@@ -15,6 +15,8 @@
 		C03ECCC525031DC500074917 /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03ECCC425031DC500074917 /* ImageCategory.swift */; };
 		C04F7A0D24FD15810070CB25 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F7A0C24FD15810070CB25 /* SplitViewController.swift */; };
 		C04F7A1124FD26BF0070CB25 /* ProductsLandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F7A1024FD26BF0070CB25 /* ProductsLandscapeViewController.swift */; };
+		C08E22802503DD9D00D84D3E /* HomePageLandscapeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E227F2503DD9D00D84D3E /* HomePageLandscapeModel.swift */; };
+		C08E22822503E5F400D84D3E /* MasterSplitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08E22812503E5F400D84D3E /* MasterSplitTableViewController.swift */; };
 		C0AB27B524FA7FC000515038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B469724EF304500870CA3 /* AppDelegate.swift */; };
 		C0AB27B724FA82A100515038 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB27B624FA82A000515038 /* HomeViewController.swift */; };
 		C0AB27BB24FA82DC00515038 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB27BA24FA82DC00515038 /* ProductModel.swift */; };
@@ -74,6 +76,8 @@
 		C03ECCC425031DC500074917 /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		C04F7A0C24FD15810070CB25 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C04F7A1024FD26BF0070CB25 /* ProductsLandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsLandscapeViewController.swift; sourceTree = "<group>"; };
+		C08E227F2503DD9D00D84D3E /* HomePageLandscapeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageLandscapeModel.swift; sourceTree = "<group>"; };
+		C08E22812503E5F400D84D3E /* MasterSplitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitTableViewController.swift; sourceTree = "<group>"; };
 		C0AB27B624FA82A000515038 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../Grow4U/ViewModel/HomeViewController.swift; sourceTree = "<group>"; };
 		C0AB27BA24FA82DC00515038 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		C0AB27BE24FA84B800515038 /* ProductsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProductsData.json; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				C0E6D94F2503282F005855CC /* CollectionViewCell */,
 				C0E6D94825032803005855CC /* TableHeaderView */,
 				C0E6D943250327F4005855CC /* TableViewCell */,
+				C08E227F2503DD9D00D84D3E /* HomePageLandscapeModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				C04F7A1024FD26BF0070CB25 /* ProductsLandscapeViewController.swift */,
 				C03ECC862502826200074917 /* ProductsPotraitViewController.swift */,
 				C03ECCC225029BC100074917 /* ProductsTableViewController.swift */,
+				C08E22812503E5F400D84D3E /* MasterSplitTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				C0AB27B724FA82A100515038 /* HomeViewController.swift in Sources */,
 				C04F7A1124FD26BF0070CB25 /* ProductsLandscapeViewController.swift in Sources */,
 				C03ECCC325029BC100074917 /* ProductsTableViewController.swift in Sources */,
+				C08E22802503DD9D00D84D3E /* HomePageLandscapeModel.swift in Sources */,
 				C0AB27BB24FA82DC00515038 /* ProductModel.swift in Sources */,
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
 				C021DEB6250147470039E04F /* FarmsModel.swift in Sources */,
@@ -462,6 +469,7 @@
 				C0E6D9552503468B005855CC /* FarmsViewModel.swift in Sources */,
 				C0B1973425039D5E00D4450F /* CustomFarmTableViewCell.swift in Sources */,
 				C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */,
+				C08E22822503E5F400D84D3E /* MasterSplitTableViewController.swift in Sources */,
 				C4FEBF5424F438C9003A4E50 /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
