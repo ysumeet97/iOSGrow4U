@@ -18,12 +18,6 @@ class ProfileViewModel {
     }
     
     public func loadJsonFile() {
-        
-        
-        // For printing the file location
-        //        if let documentsPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.path {
-        //            print("Documents Directory: \(documentsPath)")
-        //        }
         var profile_data : Data?
         var decoded_data : ProfileModel?
         do {
@@ -37,11 +31,11 @@ class ProfileViewModel {
             guard let path = Bundle.main.path(forResource: file_name, ofType: "json") else { return }
             let url = URL(fileURLWithPath: path)
             do {
-            profile_data = try Data(contentsOf: url)
-            decoded_data = try
-                JSONDecoder().decode(ProfileModel.self, from: profile_data!)
+                profile_data = try Data(contentsOf: url)
+                decoded_data = try
+                    JSONDecoder().decode(ProfileModel.self, from: profile_data!)
             } catch {
-               print(error)
+                print(error)
             }
         }
         setupProfileData(first_name: decoded_data!.first_name, last_name: decoded_data!.last_name, email: decoded_data!.email, phone: decoded_data!.phone, address: decoded_data!.address, image: decoded_data!.image)

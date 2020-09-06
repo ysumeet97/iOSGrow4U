@@ -11,7 +11,6 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
-    
     // MARK: -Properties
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -28,6 +27,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         tableView.tableFooterView = UIView()
     }
     
+    // This function is used to load the data of products
     func loadData() {
         self.downloadedProducts = searchViewModel.getJsonData()
         self.products = self.downloadedProducts.products
@@ -37,14 +37,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         }
     }
     
+    // This function returns the number of rows in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searching {
-           return searchProducts.count
+            return searchProducts.count
         } else {
             return downloadedProducts.products.count
         }
     }
-
+    
+    // This functionis used to set the cell of the table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.searching {
             self.products = self.searchProducts
@@ -54,7 +56,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult") as? SearchResultController else {return UITableViewCell()}
         cell.data = getData(indexPath: indexPath)
         cell.setSearchVC(searchVC: self, indexPath: indexPath)
-        //self.setProductInfo(indexPath: indexPath)
         cell.product_info = products[indexPath.row].description
         cell.productName.text = products[indexPath.row].name
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
@@ -70,11 +71,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.layer.shadowOpacity = 0.40
         return cell
     }
+    
+    // This function is used to get the famers contact info
     public func getData(indexPath: IndexPath) -> (name: String, price: String, information: String, img_url: String, farmers: [(name: String, rating: String, contact: String, offered_price: String)]){
         let farmers = getFarmers(product_id: products[indexPath.row].id)
         return (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].description, products[indexPath.row].img_url, farmers: farmers)
     }
     
+    // This method is used to get the farmers data
     public func getFarmers(product_id: String) -> [(name: String, rating: String, contact: String, offered_price: String)] {
         var farmers_info = [(name: String, rating: String, contact: String, offered_price: String)]()
         for farmers in farms {
@@ -92,6 +96,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         self.navigationController?.pushViewController(productVC, animated: true)
     }
     
+    // This function is used to set the image in UIImageView
     func setImage(from url: String, imageViewToSet: UIImageView) {
         guard let imageURL = URL(string: url) else { return }
         DispatchQueue.global().async {
@@ -102,17 +107,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
             }
         }
     }
-
+    
+    // This function acts as search handler
     func searchBar (_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             searchProducts = products.filter({$0.name.lowercased().contains(searchText.lowercased())})
-        searching = true
+            searching = true
         } else {
             searching = false
         }
         tableView.reloadData()
     }
     
+    // This function acts as cancel button handler
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""

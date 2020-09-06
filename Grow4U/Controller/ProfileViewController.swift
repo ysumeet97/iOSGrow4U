@@ -29,7 +29,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String, image: String)?
     var imagePicker = UIImagePickerController()
     var updatedImageUrl :String?
-    private var isImageLocal = false
+    private var isImageLocal = true
+    private let imageName = "profile.jpeg"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,24 +93,18 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         } else {
-            print (updatedImageUrl!)
-            let fileURL = URL.init(fileURLWithPath: updatedImageUrl!)
-            print(fileURL)
-            print(updatedImageUrl!.split(separator: "/")[-1])
-            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-            let fileURL2 = documentDirectory?.appending("Documents06AF77A7-64ED-4812-A4CC-3B0C2F39FB29.jpeg")
-            print(fileURL2!)
-            do {
-                let imageData = try Data(contentsOf: fileURL)
-                let image =  UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    imageViewToSet.image = image
-                }
-            } catch {
-                print("Error loading image : \(error)")
+            if let image = getSavedImage(named: self.imageName) {
+                imageViewToSet.image = image
             }
         }
         
+    }
+    
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
     }
     
     public func setProfileModel(profileViewModel: ProfileViewModel) {
@@ -161,17 +156,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             profile_image.image = image
         }
         
-        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
-            let imgName = imgUrl.lastPathComponent
+        if (info[UIImagePickerController.InfoKey.imageURL] as? URL) != nil{
+            let imgName = "/" + imageName
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
             let localPath = documentDirectory?.appending(imgName)
-            print(imgName)
             let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
             let data = image.pngData()! as NSData
             data.write(toFile: localPath!, atomically: true)
-            //let imageData = NSData(contentsOfFile: localPath!)!
-            let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
-            print(photoURL)
             updatedImageUrl = localPath
             isImageLocal = true
         }
