@@ -13,11 +13,11 @@
             ],
             "products": [
                 {
-                    "id": "211",
+                    "id": "P001",
                     "offered_price": "20"
                 },
                 {
-                    "id": "212",
+                    "id": "P003",
                     "offered_price": "15"
                 }
             ]
@@ -36,11 +36,11 @@
             ],
             "products": [
                 {
-                    "id": "211",
+                    "id": "P001",
                     "offered_price": "22"
                 },
                 {
-                    "id": "212",
+                    "id": "P003",
                     "offered_price": "16"
                 }
             ]

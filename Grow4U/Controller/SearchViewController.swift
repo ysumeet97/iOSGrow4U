@@ -16,12 +16,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     private var products =  [SearchResultModel]()
-    private var downloadedProducts =  [SearchResultModel]()
+    private var farms =  [FarmsModel.Data]()
+    private var downloadedProducts =  (products: [SearchResultModel](), farms: [FarmsModel.Data]())
     private var searchProducts = [SearchResultModel]()
     private var searching = false
-    private var searchViewModel =  SearchViewModel(fileName: "prodcuts")
-    
-    
+    private var searchViewModel =  SearchViewModel(fileName: (products: "prodcuts", farmers: "farms"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     
     func loadData() {
         self.downloadedProducts = searchViewModel.getJsonData()
-        self.products = self.downloadedProducts
+        self.products = self.downloadedProducts.products
+        self.farms = self.downloadedProducts.farms
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -41,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         if self.searching {
            return searchProducts.count
         } else {
-            return downloadedProducts.count
+            return downloadedProducts.products.count
         }
     }
 
@@ -49,10 +49,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         if self.searching {
             self.products = self.searchProducts
         } else {
-            self.products = self.downloadedProducts
+            self.products = self.downloadedProducts.products
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult") as? SearchResultController else {return UITableViewCell()}
-        cell.data = (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].description)
+        cell.data = getData(indexPath: indexPath)
         cell.setSearchVC(searchVC: self, indexPath: indexPath)
         //self.setProductInfo(indexPath: indexPath)
         cell.product_info = products[indexPath.row].description
@@ -70,8 +70,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.layer.shadowOpacity = 0.40
         return cell
     }
-    public func getData(indexPath: IndexPath) -> (name: String, price: String, information: String){
-        return (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].price.description)
+    public func getData(indexPath: IndexPath) -> (name: String, price: String, information: String, img_url: String, farmers: [(name: String, rating: String, contact: String, offered_price: String)]){
+        let farmers = getFarmers(product_id: products[indexPath.row].id)
+        return (name: products[indexPath.row].name, price: products[indexPath.row].price, information: products[indexPath.row].description, products[indexPath.row].img_url, farmers: farmers)
+    }
+    
+    public func getFarmers(product_id: String) -> [(name: String, rating: String, contact: String, offered_price: String)] {
+        var farmers_info = [(name: String, rating: String, contact: String, offered_price: String)]()
+        for farmers in farms {
+            for prods in farmers.products! {
+                if(product_id == prods.id!){
+                    farmers_info.append((name: farmers.name!, rating: farmers.rating!, contact: farmers.contact!, offered_price: prods.offered_price!))
+                    break;
+                }
+            }
+        }
+        return farmers_info
     }
     
     func showProductInfo(productVC: ProductInfoViewController) {
