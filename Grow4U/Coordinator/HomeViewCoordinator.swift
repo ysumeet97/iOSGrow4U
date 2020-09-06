@@ -12,8 +12,6 @@ class HomeViewCoordinator : MainCoordinator {
     
     private let tabController: HomeViewController
     private let window: UIWindow
-    private var file_name: String?
-    private var profile_model: ProfileViewModel?
     
     init(tabController: HomeViewController, window: UIWindow) {
         self.tabController = tabController
@@ -23,26 +21,19 @@ class HomeViewCoordinator : MainCoordinator {
     func start() {
         window.rootViewController = tabController
         window.makeKeyAndVisible()
-        showMain()
+        //showMain()
     }
     
-    private func showMain() {
-        let productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
-        let profileVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
-        let pronavVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController
-        tabController.setViewControllers([productVC, pronavVC, profileVC], animated: true)
-        file_name = "profile"
-        profile_model = ProfileViewModel(file_name: file_name!)
-        profileVC.setProfileModel(profileViewModel: profile_model!)
-        
-        // call the rest api to get the json file and set it in file_name
-        //file_name = "profile"
-        //  profile_model.loadJsonFile(file_name: file_name!)
-    }
-    
-    func getProfileViewModel() -> ProfileViewModel {
-        return profile_model!
-    }
+//    private func showMain() {
+//
+//        // call the rest api to get the json file and set it in file_name
+//        //file_name = "profile"
+//        //  profile_model.loadJsonFile(file_name: file_name!)
+//    }
+//
+//    func getProfileViewModel() -> ProfileViewModel {
+//        return profile_model!
+//    }
     
    
 }
