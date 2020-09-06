@@ -20,6 +20,7 @@ class SearchViewModel {
         loadJsonData()
     }
     
+    // This method is used to load the json data from the file
     private func loadJsonData() {
         guard let productspath = Bundle.main.path(forResource: fileName.products, ofType: "json") else { return }
         guard let farmerspath = Bundle.main.path(forResource: fileName.farmers, ofType: "json") else { return }
@@ -35,7 +36,8 @@ class SearchViewModel {
         }
     }
     
+    // This method is returns the product and farm data
     public func getJsonData() -> (products: [SearchResultModel], farms: [FarmsModel.Data]){
         return (products: self.jsonProducts, farms: self.jsonFarmers)
-    }    
+    }
 }
