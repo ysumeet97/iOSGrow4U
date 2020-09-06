@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomFarmTableViewCell" customModule="Grow4U" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lfq-jL-SN7" customClass="CustomFarmCollectionViewCell" customModule="Grow4U" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="279" height="298"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="279" height="298"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ada-i8-TCM">
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="298"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Ada-i8-TCM" secondAttribute="height" multiplier="279:298" id="TOO-fM-tJO"/>
+                        </constraints>
+                    </imageView>
+                    <view clipsSubviews="YES" alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNu-Ps-a6p">
+                        <rect key="frame" x="0.0" y="246" width="276" height="52"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAX-bv-jhl">
+                                <rect key="frame" x="117" y="8" width="42" height="2"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="bottom" secondItem="gNu-Ps-a6p" secondAttribute="bottomMargin" id="TtA-EH-Wr0"/>
+                            <constraint firstAttribute="width" secondItem="gNu-Ps-a6p" secondAttribute="height" multiplier="69:13" id="Wz2-Is-CoU"/>
+                            <constraint firstAttribute="height" constant="52" id="hMi-VE-KtI"/>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="top" secondItem="gNu-Ps-a6p" secondAttribute="topMargin" id="ree-xm-uem"/>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="centerX" secondItem="gNu-Ps-a6p" secondAttribute="centerX" id="tnF-I5-zMX"/>
+                            <constraint firstAttribute="width" constant="276" id="zCt-NS-kVa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gNu-Ps-a6p" secondAttribute="bottom" id="2gS-i2-830"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="leading" secondItem="Ada-i8-TCM" secondAttribute="leading" id="R2E-AH-ci2"/>
+                <constraint firstAttribute="bottom" secondItem="Ada-i8-TCM" secondAttribute="bottom" id="TLn-19-zqn"/>
+                <constraint firstItem="Ada-i8-TCM" firstAttribute="top" secondItem="lfq-jL-SN7" secondAttribute="top" id="eAB-6T-Lx6"/>
+                <constraint firstItem="Ada-i8-TCM" firstAttribute="leading" secondItem="lfq-jL-SN7" secondAttribute="leading" id="rAC-Oe-Twu"/>
+                <constraint firstAttribute="trailing" secondItem="Ada-i8-TCM" secondAttribute="trailing" id="vRx-BA-Ce8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="JDL-Lr-4b9"/>
+            <size key="customSize" width="276" height="298"/>
+            <connections>
+                <outlet property="farmImage" destination="Ada-i8-TCM" id="N2e-8y-aVc"/>
+                <outlet property="farmName" destination="SAX-bv-jhl" id="giS-i8-Ca7"/>
+            </connections>
+            <point key="canvasLocation" x="277.60000000000002" y="57.571214392803604"/>
+        </collectionViewCell>
+    </objects>
+</document>
