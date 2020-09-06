@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCY-5H-2lA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850" y="-1535"/>
+            <point key="canvasLocation" x="2850" y="-1423"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="y4a-IR-iSX">
@@ -279,7 +279,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Ye1-E6-Cbi" kind="show" id="Ola-Q4-vf2"/>
+                                    <segue destination="Ye1-E6-Cbi" kind="show" identifier="show" id="Ola-Q4-vf2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

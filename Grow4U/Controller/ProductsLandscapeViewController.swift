@@ -9,14 +9,17 @@ class ProductsLandscapeViewController: UIViewController{
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-    private var file_name: String?
+    
     private var farms_file_name: String?
     private var num : Int?
+    
     var farmsData: [FarmsModel.Data]?
     var productsData: [ProductDataModel.Data]?
-
+    var file_name = "ProductsData"
+    
     fileprivate let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -26,15 +29,21 @@ class ProductsLandscapeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        file_name = "ProductsData"
-        farms_file_name = "FarmsData"
-        let products_model = ProductsViewModel(file_name: file_name!)
-        let products_data = products_model.getAllData()
-        let farms_model = FarmsViewModel(file_name: farms_file_name!)
-        num = farms_model.getFarmsCount()
-        let farms_data = farms_model.getAllFarmsData()
-        self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price)
+        //file_name = "ProductsData"
+        //farms_file_name = "FarmsData"
+        print(file_name)
+        if file_name == "FarmsData" {
+            let farms_model = FarmsViewModel(file_name: file_name)
+            let farms_data = farms_model.getAllFarmsData()
+            num = farms_model.getFarmsCount()
+            self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
+        }
+        else
+        {   let products_model = ProductsViewModel(file_name: file_name)
+            let products_data = products_model.getAllData()
+            num = products_model.getVegetableCount()
+            self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price)
+        }
         view.backgroundColor = .white
         
         //old
@@ -69,6 +78,8 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
         return num!    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if(file_name == "FarmsData")
+        {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomSplitCell
         cell.titleLabel.text =  farms_name[indexPath.item]
         let PictureURL = URL(string: farmsImagesUrl[indexPath.item])!
@@ -76,6 +87,16 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
         let Picture = UIImage(data: PictureData! as Data)
         cell.bg.image = Picture
         return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomSplitCell
+            cell.titleLabel.text =  type[indexPath.item]
+            let PictureURL = URL(string: imagesUrl[indexPath.item])!
+            let PictureData = NSData(contentsOf: PictureURL as URL) // nil
+            let Picture = UIImage(data: PictureData! as Data)
+            cell.bg.image = Picture
+            return cell
+        }
     }
 }
 class CustomSplitCell: UICollectionViewCell {
