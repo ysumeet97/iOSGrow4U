@@ -92,12 +92,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         } else {
+            print (updatedImageUrl!)
             let fileURL = URL.init(fileURLWithPath: updatedImageUrl!)
             print(fileURL)
             print(updatedImageUrl!.split(separator: "/")[-1])
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
             let fileURL2 = documentDirectory?.appending("Documents06AF77A7-64ED-4812-A4CC-3B0C2F39FB29.jpeg")
-            print(fileURL2)
+            print(fileURL2!)
             do {
                 let imageData = try Data(contentsOf: fileURL)
                 let image =  UIImage(data: imageData)
