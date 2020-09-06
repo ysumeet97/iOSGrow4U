@@ -11,6 +11,9 @@ class ProductsViewModel {
     private var imagesUrl = [String]()
     private var type = [String]()
     private var type_price = [String]()
+    private var fruitsImagesUrl = [String]()
+    private var fruitType = [String]()
+    private var fruit_type_price = [String]()
     private var products_model: [ProductDataModel.Data]?
     var file_name: String
     
@@ -30,7 +33,6 @@ class ProductsViewModel {
             let decoded_data = try
                 JSONDecoder().decode(ProductDataModel.self, from: products_data)
             setupProductData(data: decoded_data.locations!)
-            print("productsdone")
         } catch  {
             print(error)
         }
@@ -58,6 +60,16 @@ class ProductsViewModel {
         }
         return num
     }
+    func getFruitsCount() -> Int{
+        var num = 0
+        for locations in products_model!{
+            
+            let fruits = locations.fruits
+            num = num + fruits!.count
+            
+        }
+        return num
+    }
 //    func getAllFarmsData(){
 //
 //
@@ -79,7 +91,22 @@ class ProductsViewModel {
                 type.append(data.type!)
                 type_price.append(data.price!)
             }
+      
         }
         return(imagesUrl,type,type_price)
+    }
+    func getAllFruitsData() -> (fruitsImages_Url: [String], fruitType: [String], fruits_type_price: [String]){
+        
+        
+        for locations in products_model!{
+            for data in locations.fruits!{
+                fruitsImagesUrl.append(data.image!)
+                fruitType.append(data.type!)
+                fruit_type_price.append(data.price!)
+                
+            }
+            
+        }
+        return(fruitsImagesUrl,fruitType,fruit_type_price)
     }
 }

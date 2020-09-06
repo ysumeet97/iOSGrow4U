@@ -4,6 +4,9 @@ import UIKit
 
 class ProductsLandscapeViewController: UIViewController{
     private var imagesUrl = [String]()
+    private var fruitsImagesUrl = [String]()
+    private var fruitsType = [String]()
+    private var fruits_tye_price = [String]()
     private var type = [String]()
     private var type_price = [String]()
     private var farmsImagesUrl = [String]()
@@ -29,32 +32,35 @@ class ProductsLandscapeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //file_name = "ProductsData"
-        //farms_file_name = "FarmsData"
-        print(file_name)
         if file_name == "FarmsData" {
             let farms_model = FarmsViewModel(file_name: file_name)
             let farms_data = farms_model.getAllFarmsData()
             num = farms_model.getFarmsCount()
             self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
         }
-        else
+        else if file_name == "ProductsData"
         {   let products_model = ProductsViewModel(file_name: file_name)
             let products_data = products_model.getAllData()
             num = products_model.getVegetableCount()
             self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price)
         }
+        else{
+                file_name = "ProductsData"
+                let products_model = ProductsViewModel(file_name: file_name)
+                let products_data = products_model.getAllFruitsData()
+                num = products_model.getFruitsCount()
+            self.setProductsData(images_Url: products_data.fruitsImages_Url, type: products_data.fruitType, type_price: products_data.fruits_type_price)
+        }
         view.backgroundColor = .white
         
-        //old
-        view.addSubview(collectionView)
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: view.frame.width/1.3).isActive = true
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     private func setFarmsData(images_Url: [String], name: [String], farm_ratings: [String]) {
@@ -72,13 +78,13 @@ class ProductsLandscapeViewController: UIViewController{
 }
 extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.width/2)
+        return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.width/3)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num!    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(file_name == "FarmsData")
+        if file_name == "FarmsData"
         {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomSplitCell
         cell.titleLabel.text =  farms_name[indexPath.item]
@@ -88,8 +94,10 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
         cell.bg.image = Picture
         return cell
         }
-        else{
+        else {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomSplitCell
+            //print(type[indexPath.item])
             cell.titleLabel.text =  type[indexPath.item]
             let PictureURL = URL(string: imagesUrl[indexPath.item])!
             let PictureData = NSData(contentsOf: PictureURL as URL) // nil
@@ -97,6 +105,7 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
             cell.bg.image = Picture
             return cell
         }
+
     }
 }
 class CustomSplitCell: UICollectionViewCell {

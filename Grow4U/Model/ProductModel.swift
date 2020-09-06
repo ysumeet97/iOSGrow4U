@@ -10,6 +10,7 @@ struct ProductDataModel: Decodable {
     struct Data: Decodable {
         let location: String?
         let vegetables: [Product]?
+        let fruits: [Product]?
     }
     struct Product: Decodable {
         let type: String?

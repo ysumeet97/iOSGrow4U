@@ -5,8 +5,11 @@ import UIKit
 
 class ProductsTableViewController: UIViewController {
     private var imagesUrl = [String]()
+    private var fruitsImagesUrl = [String]()
     private var type = [String]()
+    private var fruitsType = [String]()
     private var type_price = [String]()
+    private var fruits_type_price = [String]()
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
@@ -24,10 +27,11 @@ class ProductsTableViewController: UIViewController {
         farms_file_name = "FarmsData"
         let products_model = ProductsViewModel(file_name: file_name!)
         let products_data = products_model.getAllData()
+        let fruits_data = products_model.getAllFruitsData()
         let farms_model = FarmsViewModel(file_name: farms_file_name!)
         let farms_data = farms_model.getAllFarmsData()
         self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price)
+        self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price, fruits_images_Url: fruits_data.fruitsImages_Url, fruits_type: fruits_data.fruitType, fruits_type_price : fruits_data.fruits_type_price)
         view.backgroundColor = .white
         setupTableView()
         
@@ -41,7 +45,10 @@ class ProductsTableViewController: UIViewController {
 //                   print(price)
 //              }
     }
-    private func setProductsData(images_Url: [String], type: [String], type_price: [String]) {
+    private func setProductsData(images_Url: [String], type: [String], type_price: [String],fruits_images_Url: [String], fruits_type: [String], fruits_type_price : [String]) {
+        self.fruitsImagesUrl = fruits_images_Url
+        self.fruitsType = fruits_type
+        self.fruits_type_price = fruits_type_price
         self.imagesUrl = images_Url
         self.type = type
         self.type_price = type_price
@@ -92,8 +99,8 @@ class ProductsTableViewController: UIViewController {
         case 2:
             data["prod_name"] = "Fruits"
             data["prod_id"]   = "\(index)"
-            data["prod_description"] = type
-            data["prod_items"] = imagesUrl
+            data["prod_description"] = fruitsType
+            data["prod_items"] = fruitsImagesUrl
         default:
             print("not possible")
         }
@@ -120,9 +127,6 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-//            let footerView = UITableViewCell(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-//            footerView.backgroundColor = UIColor.white
-//            return footerView
            
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomFarmTableViewCell") as? CustomFarmTableViewCell
             
@@ -133,7 +137,7 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
       
             
             let aCategory = self.categories[indexPath.section]
-            print(aCategory.name)
+            //print(aCategory.name)
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
             return cell!

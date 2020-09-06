@@ -46,8 +46,11 @@ class MasterSplitTableViewController: UITableViewController {
                 ctrl.file_name = "FarmsData"
                 
             }
-            else{
+            else if indexName == "Vegetables"{
                 ctrl .file_name = "ProductsData"
+            }
+            else{
+                ctrl.file_name = "ProductsFruit"
             }
             
             

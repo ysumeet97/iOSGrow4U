@@ -15,6 +15,20 @@
                 "image": "https://cdn.potatopro.com/cdn/ff/mRyngRNTIpusiHGvhgw93UOqUIl0iqp6C5KBUNBio0o/1589463879/public/styles/amp_metadata_content_image_min_696px_wide/public/field/image/cultivate-michigan-combitating-potato-varieties-1200.jpg?itok=8uvJd_5u",
                 "maxQuantity": "10 kg",
                 "availability":"2 days"
+            }],
+            "fruits":[{
+                "type": "Apple",
+                "price":"$2/kg",
+                "image": "https://www.dw.com/image/47425871_401.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            },
+            {
+                "type": "Banana",
+                "price":"$2/kg",
+                "image": "https://cosmosmagazine.com/wp-content/uploads/2020/02/190902_banannas_full-1440x813.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
             }]
             
         },
@@ -32,6 +46,20 @@
                 "price":"$1/kg",
                 "image":
                 "https://www.growjoy.com/store/pc/catalog/little_fingers_carrot_plant_2252_detail.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            }],
+            "fruits":[{
+                "type": "Orange",
+                "price":"$2/kg",
+                "image": "https://cdn.britannica.com/24/174524-050-A851D3F2/Oranges.jpg",
+                "maxQuantity": "10 kg",
+                "availability":"2 days"
+            },
+            {
+                "type": "Strawberries",
+                "price":"$2/kg",
+                "image": "https://cdn.theatlantic.com/thumbor/DRVz-EzT3OSNjOHzf_8AaUarqOQ=/5x378:3499x2199/960x500/media/img/mt/2019/08/RTR4FJJS/original.jpg",
                 "maxQuantity": "10 kg",
                 "availability":"2 days"
             }]
