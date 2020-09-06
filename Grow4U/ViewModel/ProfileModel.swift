@@ -15,14 +15,14 @@ class ProfileModel: Decodable, Encodable {
     var email: String
     var phone: String
     var address: String
+    var image: String
     
-    init(first_name: String, last_name: String, email: String, phone: String, address: String) {
+    init(first_name: String, last_name: String, email: String, phone: String, address: String, image: String) {
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.phone = phone
         self.address = address
+        self.image = image
     }
-    
-    
 }

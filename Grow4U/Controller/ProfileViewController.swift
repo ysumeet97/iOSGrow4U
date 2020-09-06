@@ -23,16 +23,23 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var editImageButton: UIButton!
     
     var profileViewModel: ProfileViewModel?
-    var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String)?
+    var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String, image: String)?
+    var imagePicker = UIImagePickerController()
+    var updatedImageUrl :String?
+    private var isImageLocal = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         outerScrollView.delegate = self
         self.setImage()
         profile_data = profileViewModel!.getData()
         self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
+        updatedImageUrl = profile_data!.image
+        updateImage(from: updatedImageUrl!, imageViewToSet: self.profile_image)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
     }
@@ -65,6 +72,43 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     private func setImage() {
         self.profile_image.layer.cornerRadius = self.profile_image.frame.size.width / 2;
         self.profile_image.clipsToBounds = true
+        
+        
+        let myView = self.editImageButton
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: myView!.frame.size.width / 2, y: -49 ), radius: myView!.frame.size.width/2.25, startAngle: 0.0, endAngle: .pi, clockwise: true)
+        let circleShape = CAShapeLayer()
+        circleShape.path = circlePath.cgPath
+        myView!.layer.mask = circleShape
+    }
+    
+    private func updateImage(from url: String, imageViewToSet: UIImageView) {
+        if !isImageLocal {
+            guard let imageURL = URL(string: url) else { return }
+            DispatchQueue.global().async {
+                guard let imageData = try? Data(contentsOf: imageURL) else { return }
+                let image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    imageViewToSet.image = image
+                }
+            }
+        } else {
+            let fileURL = URL.init(fileURLWithPath: updatedImageUrl!)
+            print(fileURL)
+            print(updatedImageUrl!.split(separator: "/")[-1])
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            let fileURL2 = documentDirectory?.appending("Documents06AF77A7-64ED-4812-A4CC-3B0C2F39FB29.jpeg")
+            print(fileURL2)
+            do {
+                let imageData = try Data(contentsOf: fileURL)
+                let image =  UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    imageViewToSet.image = image
+                }
+            } catch {
+                print("Error loading image : \(error)")
+            }
+        }
+        
     }
     
     public func setProfileModel(profileViewModel: ProfileViewModel) {
@@ -77,12 +121,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.setButtonProperties(value: false)
     }
     
-    @IBAction func saveAction(_ sender: UIButton) {
+    @IBAction func saveAction(_ sender: UIButton?) {
         let profile_data = ["first_name": self.firstNameTextField.text!,
                             "last_name": self.lastNameTextField.text!,
                             "email": self.emailTextField.text!,
-                            "phone": self.emailTextField.text!,
-                            "address": self.addressTextField.text!]
+                            "phone": self.phoneTextField.text!,
+                            "address": self.addressTextField.text!,
+                            "image": self.updatedImageUrl!]
         profileViewModel?.writeJsonFile(profile: profile_data)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
@@ -100,5 +145,36 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         alert.setValue(NSAttributedString(string: "Profile\nUpdated!", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : UIColor.black]), forKey: "attributedMessage")
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func editImage(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profile_image.image = image
+        }
+        
+        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
+            let imgName = imgUrl.lastPathComponent
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            let localPath = documentDirectory?.appending(imgName)
+            print(imgName)
+            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            let data = image.pngData()! as NSData
+            data.write(toFile: localPath!, atomically: true)
+            //let imageData = NSData(contentsOfFile: localPath!)!
+            let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
+            print(photoURL)
+            updatedImageUrl = localPath
+            isImageLocal = true
+        }
+        dismiss(animated: true, completion: nil)
+        saveAction(nil)
     }
 }
