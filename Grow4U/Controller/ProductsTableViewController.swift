@@ -134,9 +134,9 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 0){
-            return 200
+            return UIScreen.main.bounds.width/2
         }
-        return 160
+        return UIScreen.main.bounds.width/3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -150,7 +150,6 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
             
             
             let aCategory = self.categories[indexPath.section]
-            //print(aCategory.name)
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
             return cell!
