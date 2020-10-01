@@ -12,6 +12,11 @@ class HomeViewController: UITabBarController {
     let selectedColor = UIColor.blue
     let deselectedColor = UIColor.gray
     var window: UIWindow?
+    var productVC: Any?
+    var profileVC: ProfileViewController?
+    var pronavVC: ProductNavController?
+    private var file_name: String?
+    private var profile_model: ProfileViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,39 @@ class HomeViewController: UITabBarController {
         tabBar.tintColor = selectedColor
         tabBar.unselectedItemTintColor = deselectedColor
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
+        file_name = "profile"
+        profile_model = ProfileViewModel(file_name: file_name!)
+        
+        productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController") as! NavController
+        profileVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController)
+        pronavVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController)
+        self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
+        
+        
+        if(UIDevice.current.orientation.isLandscape) {
+            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsLandscapeViewController") as! ProductsLandscapeViewController
+            self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
+        }
+        else {
+            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController") as! NavController
+            self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
+        }
+        profileVC!.setProfileModel(profileViewModel: profile_model!)
+        
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if(UIDevice.current.orientation.isLandscape) {
+            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController") as! SplitViewController
+            self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
+            
+        }
+        else {
+            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController") as! NavController
+            self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
+            
+        }
+        
     }
     
 }
