@@ -62,10 +62,10 @@ class ProductsLandscapeViewController: UIViewController{
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: view.frame.width/1.3).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
     }
     
     private func setFarmsData(images_Url: [String], name: [String], farm_ratings: [String]) {
@@ -83,7 +83,7 @@ class ProductsLandscapeViewController: UIViewController{
 }
 extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.width/2)
+        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.height/2)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num!    }
