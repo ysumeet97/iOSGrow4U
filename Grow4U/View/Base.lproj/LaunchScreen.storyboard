@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<<<<<<< Updated upstream
     <device id="retina6_1" orientation="portrait">
+=======
+    <device id="retina6_5" orientation="portrait">
+>>>>>>> Stashed changes
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,6 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< Updated upstream
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Person" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-Tf-hWJ">
                                 <rect key="frame" x="-319" y="-780" width="1492" height="3229"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -29,6 +34,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="2Qv-Nh-HTI">
                                 <rect key="frame" x="10" y="245" width="349" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+=======
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroPicture" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-Tf-hWJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+>>>>>>> Stashed changes
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,8 +50,12 @@
         </scene>
     </scenes>
     <resources>
+<<<<<<< Updated upstream
         <image name="Design" width="1189" height="1488"/>
         <image name="Logo" width="300" height="165"/>
         <image name="Person" width="1298" height="1402"/>
+=======
+        <image name="IntroPicture" width="765" height="1348.6666259765625"/>
+>>>>>>> Stashed changes
     </resources>
 </document>

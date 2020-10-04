@@ -17,11 +17,27 @@
 		C44B46AD24EF304A00870CA3 /* Grow4UTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46AC24EF304A00870CA3 /* Grow4UTests.swift */; };
 		C44B46B824EF304A00870CA3 /* Grow4UUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46B724EF304A00870CA3 /* Grow4UUITests.swift */; };
 		C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46CB24EF721300870CA3 /* MainCoordinator.swift */; };
+<<<<<<< Updated upstream
 		C44B46CE24EF73F000870CA3 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46CD24EF73F000870CA3 /* HomeViewCoordinator.swift */; };
 		C4A54BF224FE9DA700B7C8BF /* SpareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A54BF124FE9DA700B7C8BF /* SpareViewController.swift */; };
 		C4A54BF424FEA4A500B7C8BF /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A54BF324FEA4A500B7C8BF /* ProductInfoViewModel.swift */; };
 		C4A54BF624FEA4D900B7C8BF /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A54BF524FEA4D900B7C8BF /* ProductInfoViewController.swift */; };
 		C4A54BF824FEB8AC00B7C8BF /* ProductNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A54BF724FEB8AB00B7C8BF /* ProductNavController.swift */; };
+=======
+		C47EDC5D2504AC9D00E11480 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */; };
+		C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC5E2504AD0200E11480 /* DetailViewController.swift */; };
+		C47EDC612504AD3D00E11480 /* ProductsLandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */; };
+		C47EDC632504ADE200E11480 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */; };
+		C47EDC652504AE0E00E11480 /* MasterSplitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */; };
+		C47EDC672504AE5B00E11480 /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC662504AE5B00E11480 /* ImageCategory.swift */; };
+		C47EDC692504AE8100E11480 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC682504AE8100E11480 /* ProductsViewModel.swift */; };
+		C4920FC32514AE3100A1A91B /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4920FC22514AE3100A1A91B /* CoreDataStorage.swift */; };
+		C4920FC62514B07B00A1A91B /* CodingUserInfoKey+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4920FC52514B07B00A1A91B /* CodingUserInfoKey+Util.swift */; };
+		C4920FD525173E7500A1A91B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4920FD425173E7500A1A91B /* CoreData.framework */; };
+		C4920FD8251745D400A1A91B /* Grow4U.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4920FD6251745D400A1A91B /* Grow4U.xcdatamodeld */; };
+		C4920FDF251751F100A1A91B /* ProfileData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4920FDD251751F100A1A91B /* ProfileData+CoreDataClass.swift */; };
+		C4920FE0251751F100A1A91B /* ProfileData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4920FDE251751F100A1A91B /* ProfileData+CoreDataProperties.swift */; };
+>>>>>>> Stashed changes
 		C4FEBF5024F437E9003A4E50 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */; };
 		C4FEBF5424F438C9003A4E50 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEBF5324F438C9003A4E50 /* ProfileViewController.swift */; };
 		C4FEBF5724F4453D003A4E50 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */; };
@@ -61,11 +77,27 @@
 		C44B46B724EF304A00870CA3 /* Grow4UUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grow4UUITests.swift; sourceTree = "<group>"; };
 		C44B46B924EF304A00870CA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44B46CB24EF721300870CA3 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		C44B46CD24EF73F000870CA3 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		C4A54BF124FE9DA700B7C8BF /* SpareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpareViewController.swift; sourceTree = "<group>"; };
 		C4A54BF324FEA4A500B7C8BF /* ProductInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel.swift; sourceTree = "<group>"; };
 		C4A54BF524FEA4D900B7C8BF /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		C4A54BF724FEB8AB00B7C8BF /* ProductNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNavController.swift; sourceTree = "<group>"; };
+=======
+		C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		C47EDC5E2504AD0200E11480 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsLandscapeViewController.swift; sourceTree = "<group>"; };
+		C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
+		C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitTableViewController.swift; sourceTree = "<group>"; };
+		C47EDC662504AE5B00E11480 /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
+		C47EDC682504AE8100E11480 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		C4920FC22514AE3100A1A91B /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		C4920FC52514B07B00A1A91B /* CodingUserInfoKey+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Util.swift"; sourceTree = "<group>"; };
+		C4920FD425173E7500A1A91B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C4920FD7251745D400A1A91B /* Grow4U.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grow4U.xcdatamodel; sourceTree = "<group>"; };
+		C4920FDD251751F100A1A91B /* ProfileData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4920FDE251751F100A1A91B /* ProfileData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileModel.swift; path = Grow4U/ViewModel/ProfileModel.swift; sourceTree = SOURCE_ROOT; };
 		C4FEBF5324F438C9003A4E50 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -76,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4920FD525173E7500A1A91B /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +136,7 @@
 				C44B46AB24EF304A00870CA3 /* Grow4UTests */,
 				C44B46B624EF304A00870CA3 /* Grow4UUITests */,
 				C44B469524EF304500870CA3 /* Products */,
+				C4920FD325173E7500A1A91B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +153,8 @@
 		C44B469624EF304500870CA3 /* Grow4U */ = {
 			isa = PBXGroup;
 			children = (
+				C4920FCA25159AB800A1A91B /* CoreData */,
+				C4920FBE2514ADC300A1A91B /* Utility */,
 				C4FEBF5524F444F4003A4E50 /* Controller */,
 				C44B46CA24EF710400870CA3 /* View */,
 				C44B46C924EF70F200870CA3 /* ViewModel */,
@@ -152,6 +188,11 @@
 		C44B46C724EF617D00870CA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
+=======
+				CEEB8310250224BB00DBDB4C /* prodcuts.json */,
+				C4920FDD251751F100A1A91B /* ProfileData+CoreDataClass.swift */,
+>>>>>>> Stashed changes
 				C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */,
 				C4347A3024FFEB2400A67A4C /* ProductInfoModel.swift */,
 			);
@@ -183,6 +224,48 @@
 				C44B46A024EF304A00870CA3 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C4920FBE2514ADC300A1A91B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C4920FC42514B05400A1A91B /* Extensions */,
+				C4920FBF2514ADD100A1A91B /* Persistence */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		C4920FBF2514ADD100A1A91B /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				C4920FC22514AE3100A1A91B /* CoreDataStorage.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		C4920FC42514B05400A1A91B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4920FDE251751F100A1A91B /* ProfileData+CoreDataProperties.swift */,
+				C4920FC52514B07B00A1A91B /* CodingUserInfoKey+Util.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C4920FCA25159AB800A1A91B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C4920FD6251745D400A1A91B /* Grow4U.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C4920FD325173E7500A1A91B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4920FD425173E7500A1A91B /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C4FEBF5524F444F4003A4E50 /* Controller */ = {
@@ -334,8 +417,30 @@
 				C4A54BF424FEA4A500B7C8BF /* ProductInfoViewModel.swift in Sources */,
 				C4A54BF224FE9DA700B7C8BF /* SpareViewController.swift in Sources */,
 				C4FEBF5724F4453D003A4E50 /* ProfileViewModel.swift in Sources */,
+<<<<<<< Updated upstream
 				C4347A3124FFEB2400A67A4C /* ProductInfoModel.swift in Sources */,
 				C44B469A24EF304500870CA3 /* HomeViewController.swift in Sources */,
+=======
+				C41972822504C76800AE2A18 /* CustomTableViewCell.swift in Sources */,
+				CEF39F6325030B8A005D9EE5 /* ProductInfoViewController.swift in Sources */,
+				C4920FC32514AE3100A1A91B /* CoreDataStorage.swift in Sources */,
+				C47EDC612504AD3D00E11480 /* ProductsLandscapeViewController.swift in Sources */,
+				C47EDC652504AE0E00E11480 /* MasterSplitTableViewController.swift in Sources */,
+				C47EDC692504AE8100E11480 /* ProductsViewModel.swift in Sources */,
+				C4920FE0251751F100A1A91B /* ProfileData+CoreDataProperties.swift in Sources */,
+				CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */,
+				CEF7C0322503B928007C05E9 /* FarmsModel.swift in Sources */,
+				CE50D74424FA82FD00CBDD95 /* HomeViewController.swift in Sources */,
+				CEAF178B250074A7008E37C4 /* SearchResultController.swift in Sources */,
+				C4920FD8251745D400A1A91B /* Grow4U.xcdatamodeld in Sources */,
+				C47EDC632504ADE200E11480 /* ProductsTableViewController.swift in Sources */,
+				C4920FC62514B07B00A1A91B /* CodingUserInfoKey+Util.swift in Sources */,
+				C4920FDF251751F100A1A91B /* ProfileData+CoreDataClass.swift in Sources */,
+				CEF39F5B25027511005D9EE5 /* ProfileViewController.swift in Sources */,
+				C4197289250500BE00AE2A18 /* NavController.swift in Sources */,
+				C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */,
+				CE6853DF2502580B00000A7D /* SearchViewModel.swift in Sources */,
+>>>>>>> Stashed changes
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
 				C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */,
 				C4A54BF624FEA4D900B7C8BF /* ProductInfoViewController.swift in Sources */,
@@ -517,7 +622,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Grow4U/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,7 +641,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Grow4U/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -664,6 +773,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C4920FD6251745D400A1A91B /* Grow4U.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4920FD7251745D400A1A91B /* Grow4U.xcdatamodel */,
+			);
+			currentVersion = C4920FD7251745D400A1A91B /* Grow4U.xcdatamodel */;
+			path = Grow4U.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C44B468C24EF304500870CA3 /* Project object */;
 }
