@@ -11,6 +11,5 @@ import Foundation
 import UIKit
 
 class NavController: UINavigationController {
-    
 }
 
