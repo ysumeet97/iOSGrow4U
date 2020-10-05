@@ -12,9 +12,8 @@ class SplitViewController: UISplitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        splitViewController?.preferredDisplayMode = .primaryOverlay
     }
-    
-    
-    
+
     
 }

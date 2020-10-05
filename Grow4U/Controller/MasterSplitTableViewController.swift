@@ -12,12 +12,6 @@ class MasterSplitTableViewController: UITableViewController {
     let allList = values
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // MARK: - Table view data source
@@ -36,26 +30,39 @@ class MasterSplitTableViewController: UITableViewController {
     }
     
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "show"{
-            let ctrl = segue.destination as! ProductsLandscapeViewController
+        if (segue.identifier == "ShowDetailIdentifier") {
+            
+            var detail: ProductsLandscapeViewController
+            
+            if let navigationController = segue.destination as? UINavigationController {
+                
+                detail = navigationController.topViewController as! ProductsLandscapeViewController
+                
+            } else {
+                
+                detail = segue.destination as! ProductsLandscapeViewController
+                
+            }
+            
+            
+            
             let indexPath = tableView.indexPathForSelectedRow
             let indexName = allList[indexPath!.row].name
             if indexName == "Farms"{
-                ctrl.file_name = "farms"
+                detail.file_name = "farms"
                 
             }
             else if indexName == "Vegetables"{
-                ctrl .file_name = "ProductsData"
+                detail .file_name = "ProductsData"
             }
             else{
-                ctrl.file_name = "ProductsFruit"
+                detail.file_name = "ProductsFruit"
             }
-            
             
         }
     }
+
     
     
 }
