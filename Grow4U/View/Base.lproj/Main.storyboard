@@ -744,10 +744,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FlS-5j-gQY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6Qf-S1-NAy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTk-V9-CNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4669.5652173913049" y="-1423.6607142857142"/>
+            <point key="canvasLocation" x="5579.7101449275369" y="-1423.6607142857142"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="v6M-C4-EKE">
@@ -775,7 +776,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="pAP-5f-69u" kind="show" id="SnR-uP-CEO"/>
+                                    <segue destination="PWE-hg-79B" kind="showDetail" identifier="ShowDetailIdentifier" id="UEy-gt-d4S"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -813,7 +814,7 @@
                     <tabBarItem key="tabBarItem" title="" image="Home-icon" landscapeImage="Home-icon" selectedImage="Home-icon" id="szT-x2-pEe"/>
                     <connections>
                         <segue destination="04D-Uw-trw" kind="relationship" relationship="masterViewController" id="EWe-aT-d3b"/>
-                        <segue destination="pAP-5f-69u" kind="relationship" relationship="detailViewController" id="GNa-ef-q3l"/>
+                        <segue destination="PWE-hg-79B" kind="relationship" relationship="detailViewController" id="GNa-ef-q3l"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls7-uV-CTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1092,6 +1093,24 @@
             </objects>
             <point key="canvasLocation" x="1291" y="-1104"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o72-G7-iwZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PWE-hg-79B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YKi-Vm-Hjx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pAP-5f-69u" kind="relationship" relationship="rootViewController" id="mL3-Dj-YB0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K20-aV-jFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4669.5652173913049" y="-1423.6607142857142"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Home-icon" width="31" height="30.5"/>
@@ -1103,6 +1122,6 @@
         <image name="list item button" width="668" height="1679"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GNa-ef-q3l"/>
+        <segue reference="UEy-gt-d4S"/>
     </inferredMetricsTieBreakers>
 </document>
