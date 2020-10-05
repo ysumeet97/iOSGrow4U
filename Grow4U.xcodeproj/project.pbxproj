@@ -35,6 +35,12 @@
 		C47EDC652504AE0E00E11480 /* MasterSplitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */; };
 		C47EDC672504AE5B00E11480 /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC662504AE5B00E11480 /* ImageCategory.swift */; };
 		C47EDC692504AE8100E11480 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC682504AE8100E11480 /* ProductsViewModel.swift */; };
+		C4CA224F252A286500B99703 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA224E252A286500B99703 /* CoreDataStorage.swift */; };
+		C4CA2255252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4CA2253252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld */; };
+		C4CA2258252A883B00B99703 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CA2257252A883B00B99703 /* CoreData.framework */; };
+		C4CA225B252A896E00B99703 /* ProfileData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA2259252A896E00B99703 /* ProfileData+CoreDataClass.swift */; };
+		C4CA225C252A896E00B99703 /* ProfileData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA225A252A896E00B99703 /* ProfileData+CoreDataProperties.swift */; };
+		C4CA225E252A8A4000B99703 /* CodingUserInfoKey+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA225D252A8A4000B99703 /* CodingUserInfoKey+Util.swift */; };
 		C4FEBF5024F437E9003A4E50 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */; };
 		C4FEBF5224F4381C003A4E50 /* profile.json in Resources */ = {isa = PBXBuildFile; fileRef = C4FEBF5124F4381C003A4E50 /* profile.json */; };
 		C4FEBF5724F4453D003A4E50 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */; };
@@ -106,6 +112,12 @@
 		C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitTableViewController.swift; sourceTree = "<group>"; };
 		C47EDC662504AE5B00E11480 /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		C47EDC682504AE8100E11480 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		C4CA224E252A286500B99703 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		C4CA2254252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProfileCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		C4CA2257252A883B00B99703 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C4CA2259252A896E00B99703 /* ProfileData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4CA225A252A896E00B99703 /* ProfileData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C4CA225D252A8A4000B99703 /* CodingUserInfoKey+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Util.swift"; sourceTree = "<group>"; };
 		C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileModel.swift; path = Grow4U/ViewModel/ProfileModel.swift; sourceTree = SOURCE_ROOT; };
 		C4FEBF5124F4381C003A4E50 /* profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = profile.json; path = Grow4U/ViewModel/profile.json; sourceTree = SOURCE_ROOT; };
 		C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -130,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4CA2258252A883B00B99703 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +215,7 @@
 				C44B46AB24EF304A00870CA3 /* Grow4UTests */,
 				C44B46B624EF304A00870CA3 /* Grow4UUITests */,
 				C44B469524EF304500870CA3 /* Products */,
+				C4CA2256252A883A00B99703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,6 +232,8 @@
 		C44B469624EF304500870CA3 /* Grow4U */ = {
 			isa = PBXGroup;
 			children = (
+				C4CA2247252A27CB00B99703 /* Utilities */,
+				C4CA2243252A26EF00B99703 /* CoreData */,
 				C4FEBF5524F444F4003A4E50 /* Controller */,
 				C44B46CA24EF710400870CA3 /* View */,
 				C44B46C924EF70F200870CA3 /* ViewModel */,
@@ -298,6 +314,49 @@
 				C44B46A024EF304A00870CA3 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C4CA2243252A26EF00B99703 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA2253252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C4CA2247252A27CB00B99703 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA2249252A27EA00B99703 /* Extensions */,
+				C4CA2248252A27D600B99703 /* Persistence */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C4CA2248252A27D600B99703 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA224E252A286500B99703 /* CoreDataStorage.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		C4CA2249252A27EA00B99703 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA2259252A896E00B99703 /* ProfileData+CoreDataClass.swift */,
+				C4CA225A252A896E00B99703 /* ProfileData+CoreDataProperties.swift */,
+				C4CA225D252A8A4000B99703 /* CodingUserInfoKey+Util.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C4CA2256252A883A00B99703 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA2257252A883B00B99703 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C4FEBF5524F444F4003A4E50 /* Controller */ = {
@@ -464,6 +523,7 @@
 				C4FEBF5024F437E9003A4E50 /* ProfileModel.swift in Sources */,
 				C41972662504C0CA00AE2A18 /* HomePageLandscapeModel.swift in Sources */,
 				C419726E2504C56100AE2A18 /* CustomCollectionViewCell.swift in Sources */,
+				C4CA224F252A286500B99703 /* CoreDataStorage.swift in Sources */,
 				C41972782504C6E200AE2A18 /* CustomFarmTableViewCell.swift in Sources */,
 				C4FEBF5724F4453D003A4E50 /* ProfileViewModel.swift in Sources */,
 				C41972822504C76800AE2A18 /* CustomTableViewCell.swift in Sources */,
@@ -471,12 +531,15 @@
 				C47EDC612504AD3D00E11480 /* ProductsLandscapeViewController.swift in Sources */,
 				C47EDC652504AE0E00E11480 /* MasterSplitTableViewController.swift in Sources */,
 				C47EDC692504AE8100E11480 /* ProductsViewModel.swift in Sources */,
+				C4CA225C252A896E00B99703 /* ProfileData+CoreDataProperties.swift in Sources */,
 				CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */,
 				CEF7C0322503B928007C05E9 /* FarmsModel.swift in Sources */,
 				CE50D74424FA82FD00CBDD95 /* HomeViewController.swift in Sources */,
 				CEAF178B250074A7008E37C4 /* SearchResultController.swift in Sources */,
+				C4CA2255252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld in Sources */,
 				C47EDC632504ADE200E11480 /* ProductsTableViewController.swift in Sources */,
 				CEF39F5B25027511005D9EE5 /* ProfileViewController.swift in Sources */,
+				C4CA225B252A896E00B99703 /* ProfileData+CoreDataClass.swift in Sources */,
 				C4197289250500BE00AE2A18 /* NavController.swift in Sources */,
 				C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */,
 				CE6853DF2502580B00000A7D /* SearchViewModel.swift in Sources */,
@@ -490,6 +553,7 @@
 				C47EDC5D2504AC9D00E11480 /* SplitViewController.swift in Sources */,
 				C41972732504C62600AE2A18 /* CustomFarmCollectionViewCell.swift in Sources */,
 				CEF39F6125030B56005D9EE5 /* ProductNavController.swift in Sources */,
+				C4CA225E252A8A4000B99703 /* CodingUserInfoKey+Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +876,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C4CA2253252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4CA2254252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = C4CA2254252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodel */;
+			path = ProfileCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C44B468C24EF304500870CA3 /* Project object */;
 }
