@@ -14,11 +14,11 @@ enum FileName {
     var file: String? {
         switch self {
         case .Farm:
-            return "FarmsData.json"
+            return "farms.json"
         case .Vegetable:
-            return "ProductsData.json"
+            return "products.json"
         case .Fruit:
-            return "ProductsData.json"
+            return "products.json"
         }
     }
 }

@@ -25,28 +25,26 @@ class ProductsTableViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        file_name = "ProductsData"
+        file_name = "products"
         farms_file_name = "farms"
         let products_model = ProductsViewModel(file_name: file_name!)
-        let products_data = products_model.getAllData()
+        let products_data = products_model.getAllVegetableData()
         let fruits_data = products_model.getAllFruitsData()
         let farms_model = FarmsViewModel(file_name: farms_file_name!)
         let farms_data = farms_model.getAllFarmsData()
         self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price, fruits_images_Url: fruits_data.fruitsImages_Url, fruits_type: fruits_data.fruitType, fruits_type_price : fruits_data.fruits_type_price)
+        self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_type: fruits_data.type, fruits_type_price : fruits_data.price)
         view.backgroundColor = .white
         setupTableView()
-        
+
     }
     
     private func setFarmsData(images_Url: [String], name: [String], farm_ratings: [String]) {
         self.farmsImagesUrl = images_Url
         self.farms_name = name
         self.farms_ratings = farm_ratings
-        //               for price in self.farms_ratings{
-        //                   print(price)
-        //              }
     }
+    
     private func setProductsData(images_Url: [String], type: [String], type_price: [String],fruits_images_Url: [String], fruits_type: [String], fruits_type_price : [String]) {
         self.fruitsImagesUrl = fruits_images_Url
         self.fruitsType = fruits_type
@@ -54,7 +52,7 @@ class ProductsTableViewController: UIViewController {
         self.imagesUrl = images_Url
         self.type = type
         self.type_price = type_price
-        let navItem = UINavigationItem(title: "Caufield")
+        let navItem = UINavigationItem(title: "Home")
         navBar.backgroundColor =  #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1)
         navBar.setItems([navItem], animated: false)
     }
