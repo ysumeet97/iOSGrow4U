@@ -25,6 +25,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         super.viewDidLoad()
         loadData()
         tableView.tableFooterView = UIView()
+        searchBar.backgroundImage = UIImage()
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     // This function is used to load the data of products
@@ -46,7 +48,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         }
     }
     
-    // This functionis used to set the cell of the table view
+    
+    // This function is used to set the cell of the table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.searching {
             self.products = self.searchProducts
@@ -61,14 +64,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
         cell.backgroundColor = UIColor.white
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderWidth = 0.5
-        cell.layer.cornerRadius = 8
-        cell.clipsToBounds = true
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowRadius = 5
-        cell.layer.shadowOpacity = 0.40
         return cell
     }
     
@@ -94,6 +89,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     
     func showProductInfo(productVC: ProductInfoViewController) {
         self.navigationController?.pushViewController(productVC, animated: true)
+        if (productVC.name != nil) {
+            productVC.updateData()
+        }
     }
     
     // This function is used to set the image in UIImageView

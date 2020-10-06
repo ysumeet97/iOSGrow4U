@@ -1,2 +1,5 @@
 .DS_Store
 UserInterfaceState.xcuserstate
+*.xcuserstate
+.DS_Store
+*.xcuserstate

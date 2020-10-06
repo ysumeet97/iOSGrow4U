@@ -22,7 +22,7 @@ class CustomTableViewCell:UITableViewCell, UICollectionViewDataSource, UICollect
         //TODO: need to setup collection view flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: 100, height: 140)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/3)
         flowLayout.minimumLineSpacing = 2.0
         flowLayout.minimumInteritemSpacing = 5.0
         self.myCollectionView.collectionViewLayout = flowLayout
