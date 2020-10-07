@@ -114,6 +114,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: Actions
     @IBAction func editProfileData(_ sender: UIButton) {
+        let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
+        outerScrollView.setContentOffset(bottomOffset, animated: true)
         self.setTextFieldProperties(value: true)
         self.setButtonProperties(value: false)
     }
@@ -132,6 +134,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {
+        let topOffset = CGPoint(x: 0, y: 0)
+        outerScrollView.setContentOffset(topOffset, animated: true)
         self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
