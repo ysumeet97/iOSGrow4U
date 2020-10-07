@@ -102,8 +102,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         DispatchQueue.global(qos: .userInitiated).async {
             if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-//                    self.transition(toImage: image)
-                    imageViewToSet.image = image
+                    UIView.transition(with: imageViewToSet, duration: 0.2,
+                                      options: [.transitionCrossDissolve],
+                                      animations: { imageViewToSet.image = image
+                    },
+                                      completion: nil)
                 }
             }  else {
                     URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -111,28 +114,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
                             let cachedData = CachedURLResponse(response: response, data: data)
                             cache.storeCachedResponse(cachedData, for: request)
                             DispatchQueue.main.async {
-//                                self.transition(toImage: image)
-                                imageViewToSet.image = image
+                                UIView.transition(with: imageViewToSet, duration: 0.2,
+                                options: [.transitionCrossDissolve],
+                                animations: { imageViewToSet.image = image
+                                },
+                                completion: nil)
                             }
                         }
                     }).resume()
             }
         }
-
-        
-        
-        
-        
-//        let memoryCapacity = 500*1024*1024
-//        let diskCapacity = memoryCapacity
-//        URLCache.shared = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "g4uCache")
-//        DispatchQueue.global().async {
-//            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-//            let image = UIImage(data: imageData)
-//            DispatchQueue.main.async {
-//                imageViewToSet.image = image
-//            }
-//        }
     }
     
     
@@ -154,14 +145,4 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         tableView.reloadData()
     }
     
-}
-
-extension UIImageView {
-    public func transition(toImage image: UIImage?) {
-        UIView.transition(with: self, duration: 0.3,
-                          options: [.transitionCrossDissolve],
-                          animations: { self.image = image
-        },
-            completion: nil)
-    }
 }

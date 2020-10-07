@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         updateImage(from: updatedImageUrl!, imageViewToSet: self.profile_image)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
+        UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -168,5 +169,17 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         dismiss(animated: true, completion: nil)
         saveAction(nil)
+    }
+}
+
+
+// custom status bar color
+extension UIApplication {
+    class var statusBarBackgroundColor: UIColor? {
+        get {
+            return (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor
+        } set {
+            (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = newValue
+        }
     }
 }
