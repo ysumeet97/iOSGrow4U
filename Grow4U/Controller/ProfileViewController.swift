@@ -121,6 +121,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func saveAction(_ sender: UIButton?) {
+        let topOffset = CGPoint(x: 0, y: 0)
+        outerScrollView.setContentOffset(topOffset, animated: true)
         let profile_data = ["first_name": self.firstNameTextField.text!,
                             "last_name": self.lastNameTextField.text!,
                             "email": self.emailTextField.text!,
