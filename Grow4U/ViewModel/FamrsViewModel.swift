@@ -24,10 +24,8 @@ class FarmsViewModel {
         let url = URL(fileURLWithPath: path)
         do {
             let farms_data = try Data(contentsOf: url)
-            print(file_name)
             let decoded_data = try
                 JSONDecoder().decode(FarmsModel.self, from: farms_data)
-            print(decoded_data)
             setupFarmsData(data: decoded_data.farm)
         } catch  {
             print(error)

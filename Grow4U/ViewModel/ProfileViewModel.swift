@@ -31,11 +31,8 @@ class ProfileViewModel {
         do {
             let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let url = documentsDirectory.appendingPathComponent("\(file_name).json")
-            print(url)
             profile_data = try Data(contentsOf: url)
-            print(profile_data!)
             decoded_data = try decoder.decode(ProfileData.self, from: profile_data!)
-            print(decoded_data!.address!)
             CoreDataStorage.shared.clearStorage(forEntity: "ProfileData")
             CoreDataStorage.shared.saveContext()
         } catch  {
@@ -43,9 +40,7 @@ class ProfileViewModel {
             let url = URL(fileURLWithPath: path)
             do {
                 profile_data = try Data(contentsOf: url)
-                print(profile_data!)
                 decoded_data = try decoder.decode(ProfileData.self, from: profile_data!)
-                print(decoded_data!.address!)
                 CoreDataStorage.shared.clearStorage(forEntity: "ProfileData")
                 CoreDataStorage.shared.saveContext()
             } catch {
@@ -61,7 +56,6 @@ class ProfileViewModel {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: profile, options: .init(rawValue: 0))
                 do {
-                    print(jsonData)
                     try jsonData.write(to: url)
                 }
             } catch {

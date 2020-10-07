@@ -28,7 +28,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let PictureData = NSData(contentsOf: PictureURL as URL) // nil
         let Picture = UIImage(data: PictureData! as Data)
         self.cellImageView.image = Picture
-        print(image_label)
         label.sizeToFit()
         label.text = image_label
     }

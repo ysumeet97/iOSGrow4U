@@ -97,14 +97,44 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     // This function is used to set the image in UIImageView
     func setImage(from url: String, imageViewToSet: UIImageView) {
         guard let imageURL = URL(string: url) else { return }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                imageViewToSet.image = image
+        let cache = URLCache.shared
+        let request = URLRequest(url: imageURL)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+//                    self.transition(toImage: image)
+                    imageViewToSet.image = image
+                }
+            }  else {
+                    URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                        if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
+                            let cachedData = CachedURLResponse(response: response, data: data)
+                            cache.storeCachedResponse(cachedData, for: request)
+                            DispatchQueue.main.async {
+//                                self.transition(toImage: image)
+                                imageViewToSet.image = image
+                            }
+                        }
+                    }).resume()
             }
         }
+
+        
+        
+        
+        
+//        let memoryCapacity = 500*1024*1024
+//        let diskCapacity = memoryCapacity
+//        URLCache.shared = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "g4uCache")
+//        DispatchQueue.global().async {
+//            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+//            let image = UIImage(data: imageData)
+//            DispatchQueue.main.async {
+//                imageViewToSet.image = image
+//            }
+//        }
     }
+    
     
     // This function acts as search handler
     func searchBar (_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -124,4 +154,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         tableView.reloadData()
     }
     
+}
+
+extension UIImageView {
+    public func transition(toImage image: UIImage?) {
+        UIView.transition(with: self, duration: 0.3,
+                          options: [.transitionCrossDissolve],
+                          animations: { self.image = image
+        },
+            completion: nil)
+    }
 }
