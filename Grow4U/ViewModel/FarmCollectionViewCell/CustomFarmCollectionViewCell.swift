@@ -14,7 +14,7 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var farmName: UILabel!
     @IBOutlet weak var farmImage: UIImageView!
-    
+    var farmID:String?
     var cellImageName:String?
     
     class var CustomCell : CustomFarmCollectionViewCell {
@@ -30,7 +30,8 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func updateCellWithImage(image_name:String, image_label:String) {
+    func updateCellWithImage(image_name:String, image_label:String, id: String) {
+        farmID = id
         self.cellImageName = image_name
         let PictureURL = URL(string: image_name)!
         let PictureData = NSData(contentsOf: PictureURL as URL) // nil
@@ -38,6 +39,7 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
         self.farmImage.image = Picture
         farmName.text = image_label
         farmName.sizeToFit()
+        
     }
     
 }

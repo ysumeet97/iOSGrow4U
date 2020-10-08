@@ -4,6 +4,9 @@ import UIKit
 
 
 class ProductsTableViewController: UIViewController {
+    private var vegetablesID = [String]()
+    private var fruitsID = [String]()
+    private var FarmsID = [String]()
     private var imagesUrl = [String]()
     private var fruitsImagesUrl = [String]()
     private var type = [String]()
@@ -20,7 +23,7 @@ class ProductsTableViewController: UIViewController {
     var farmsData: [FarmsModel.Data]?
     let tableView = UITableView()
     let headerReuseId = "TableHeaderViewReuseId"
-    let navBar = UINavigationBar(frame: CGRect(x:UIScreen.main.bounds.width - UIScreen.main.bounds.width , y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let navBar = UINavigationBar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     
     override func loadView() {
         super.loadView()
@@ -32,25 +35,28 @@ class ProductsTableViewController: UIViewController {
         let fruits_data = products_model.getAllFruitsData()
         let farms_model = FarmsViewModel(file_name: farms_file_name!)
         let farms_data = farms_model.getAllFarmsData()
-        self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_type: fruits_data.type, fruits_type_price : fruits_data.price)
+        self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
+        self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
         view.backgroundColor = .white
         setupTableView()
 
     }
     
-    private func setFarmsData(images_Url: [String], name: [String], farm_ratings: [String]) {
+    private func setFarmsData(id:[String],images_Url: [String], name: [String], farm_ratings: [String]) {
+        self.FarmsID = id
         self.farmsImagesUrl = images_Url
         self.farms_name = name
         self.farms_ratings = farm_ratings
     }
     
-    private func setProductsData(images_Url: [String], type: [String], type_price: [String],fruits_images_Url: [String], fruits_type: [String], fruits_type_price : [String]) {
+    private func setProductsData(vegetable_ID:[String],fruits_ID:[String],images_Url: [String], name: [String], type_price: [String],fruits_images_Url: [String], fruits_name: [String], fruits_type_price : [String]) {
+        self.vegetablesID = vegetable_ID
+        self.fruitsID = fruits_ID
         self.fruitsImagesUrl = fruits_images_Url
-        self.fruitsType = fruits_type
+        self.fruitsType = fruits_name // here type means the fruit name
         self.fruits_type_price = fruits_type_price
         self.imagesUrl = images_Url
-        self.type = type
+        self.type = name // here type means the vegetable name
         self.type_price = type_price
         let navItem = UINavigationItem(title: "Home")
         navBar.backgroundColor =  #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1)
@@ -68,7 +74,6 @@ class ProductsTableViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tcell")
         let headerNib = UINib(nibName: "CustomHeaderView", bundle: nil)
         self.tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: headerReuseId)
         setupData()
@@ -89,19 +94,26 @@ class ProductsTableViewController: UIViewController {
         var data = [String:Any]()
         switch index {
         case 0:
-            data["prod_name"] = "Farms"
-            data["prod_id"]   = "\(index)"
-            data["prod_description"] = farms_name
+            
+            data["prod_ID"] = FarmsID
+            data["prod_type"] = "Farms"
+            data["prod_name"] = farms_name
+            data["prod_index"]   = "\(index)"
+            data["prod_description"] = farms_ratings //here description is same as farms ratings
             data["prod_items"] = farmsImagesUrl
         case 1:
-            data["prod_name"] = "Vegetables"
-            data["prod_id"]   = "\(index)"
-            data["prod_description"] = type
+            data["prod_ID"] = vegetablesID
+            data["prod_type"] = "Vegetables"
+            data["prod_name"] = type //here type is the name of vegetable
+            data["prod_index"]   = "\(index)"
+            data["prod_description"] = type_price // here description is vegetable price
             data["prod_items"] = imagesUrl
         case 2:
-            data["prod_name"] = "Fruits"
-            data["prod_id"]   = "\(index)"
-            data["prod_description"] = fruitsType
+            data["prod_ID"] = fruitsID
+            data["prod_type"] = "Fruits"
+            data["prod_name"] = fruitsType //here type is the name of fruits
+            data["prod_index"]   = "\(index)"
+            data["prod_description"] = fruits_type_price // here description is fruits price
             data["prod_items"] = fruitsImagesUrl
         default:
             print("not possible")
@@ -179,17 +191,18 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
             view = CustomHeaderView.customView
         }
         let aCategory = self.categories[section]
-        view?.headerLabel.text = aCategory.name
+        view?.headerLabel.text = aCategory.type
         return view
     }
     
 }
 extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
     func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
+                let id = collectioncell?.farmID
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
-               // detailController?.category = selCategory
-                //detailController?.imageName = imageName
+                print(id!)
+                detailController!.id = id
                 self.navigationController?.pushViewController(detailController!, animated: true)
         
         }
@@ -197,9 +210,11 @@ extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
 
 extension ProductsTableViewController:CustomCollectionCellDelegate {
     func collectionView(collectioncell: CustomCollectionViewCell?, didTappedInTableview TableCell: CustomTableViewCell) {
+            let id = collectioncell?.ID
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
-            //self.setImage(from: collectioncell!.cellImageName!, imageViewToSet: detailController!.image)
+            print(id!)
+            detailController!.id = id
         self.navigationController?.pushViewController(detailController!, animated: true)
         }
     }
