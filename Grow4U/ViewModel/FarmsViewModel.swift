@@ -8,6 +8,7 @@
 
 import Foundation
 class FarmsViewModel {
+    private var id = [String]()
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
@@ -24,10 +25,8 @@ class FarmsViewModel {
         let url = URL(fileURLWithPath: path)
         do {
             let farms_data = try Data(contentsOf: url)
-            print(file_name)
             let decoded_data = try
                 JSONDecoder().decode(FarmsModel.self, from: farms_data)
-            print(decoded_data)
             setupFarmsData(data: decoded_data.farm)
         } catch  {
             print(error)
@@ -45,13 +44,14 @@ class FarmsViewModel {
     }
     
     
-    func getAllFarmsData()->(images_Url: [String], farms_name: [String], farms_ratings: [String]){
+    func getAllFarmsData()->(id:[String],images_Url: [String], farms_name: [String], farms_ratings: [String]){
         for data in farms_model!{
+            self.id.append(data.id!)
             self.farmsImagesUrl.append(data.img_url!)
             self.farms_name.append(data.name!)
             self.farms_ratings.append(data.rating!)
             
         }
-        return(farmsImagesUrl,farms_name,farms_ratings)
+        return(id,farmsImagesUrl,farms_name,farms_ratings)
     }
 }

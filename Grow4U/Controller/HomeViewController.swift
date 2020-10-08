@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UITabBarController {
     
-    let selectedColor = UIColor.blue
+    let selectedColor = UIColor(red: 0, green: 128/255.0, blue: 255/255.0, alpha: 1.00)
     let deselectedColor = UIColor.gray
     var window: UIWindow?
     var productVC: Any?
@@ -31,7 +31,7 @@ class HomeViewController: UITabBarController {
         profileVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController)
         pronavVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController)
         self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
-        
+//        UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
         
         if(UIDevice.current.orientation.isLandscape) {
             productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsLandscapeViewController") as! ProductsLandscapeViewController
@@ -60,3 +60,4 @@ class HomeViewController: UITabBarController {
     }
     
 }
+

@@ -42,18 +42,18 @@ class ProductsLandscapeViewController: UIViewController{
             num = farms_model.getFarmsCount()
             self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
         }
-        else if file_name == "ProductsData"
+        else if file_name == "products"
         {   let products_model = ProductsViewModel(file_name: file_name)
-            let products_data = products_model.getAllData()
+            let products_data = products_model.getAllVegetableData()
             num = products_model.getVegetableCount()
-            self.setProductsData(images_Url: products_data.images_Url, type: products_data.type, type_price: products_data.type_price)
+            self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price)
         }
         else{
-            file_name = "ProductsData"
+            file_name = "products"
             let products_model = ProductsViewModel(file_name: file_name)
             let products_data = products_model.getAllFruitsData()
             num = products_model.getFruitsCount()
-            self.setProductsData(images_Url: products_data.fruitsImages_Url, type: products_data.fruitType, type_price: products_data.fruits_type_price)
+            self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price)
         }
         view.backgroundColor = .white
         
@@ -83,7 +83,7 @@ class ProductsLandscapeViewController: UIViewController{
 }
 extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.height/2)
+        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.height/3)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return num!    }
@@ -101,7 +101,6 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomSplitCell
-            //print(type[indexPath.item])
             cell.titleLabel.text =  type[indexPath.item]
             let PictureURL = URL(string: imagesUrl[indexPath.item])!
             let PictureData = NSData(contentsOf: PictureURL as URL) // nil

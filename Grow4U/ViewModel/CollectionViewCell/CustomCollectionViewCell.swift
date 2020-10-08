@@ -5,7 +5,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     
     var cellImageName:String?
-    
+    var ID: String?
     
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
@@ -22,13 +22,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func updateCellWithImage(image_name:String, image_label:String) {
+    func updateCellWithImage(image_name:String, image_label:String, id:String) {
         self.cellImageName = image_name
+        self.ID = id
         let PictureURL = URL(string: image_name)!
         let PictureData = NSData(contentsOf: PictureURL as URL) // nil
         let Picture = UIImage(data: PictureData! as Data)
         self.cellImageView.image = Picture
-        print(image_label)
         label.sizeToFit()
         label.text = image_label
     }
