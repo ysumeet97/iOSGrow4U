@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C41972642504BC0B00AE2A18 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41972632504BC0B00AE2A18 /* ProductModel.swift */; };
+		C41972642504BC0B00AE2A18 /* ProductDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41972632504BC0B00AE2A18 /* ProductDataModel.swift */; };
 		C41972662504C0CA00AE2A18 /* HomePageLandscapeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41972652504C0CA00AE2A18 /* HomePageLandscapeModel.swift */; };
 		C419726E2504C56100AE2A18 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419726C2504C56100AE2A18 /* CustomCollectionViewCell.swift */; };
 		C419726F2504C56100AE2A18 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C419726D2504C56100AE2A18 /* CustomCollectionViewCell.xib */; };
@@ -51,12 +51,12 @@
 		CEAF178B250074A7008E37C4 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF178A250074A7008E37C4 /* SearchResultController.swift */; };
 		CEB3A47924F3ECA40025C58F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3A47824F3ECA40025C58F /* SearchViewController.swift */; };
 		CEEB830D2501457800DBDB4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB830C2501457800DBDB4C /* Assets.xcassets */; };
-		CEEB8311250224BB00DBDB4C /* prodcuts.json in Resources */ = {isa = PBXBuildFile; fileRef = CEEB8310250224BB00DBDB4C /* prodcuts.json */; };
+		CEEB8311250224BB00DBDB4C /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = CEEB8310250224BB00DBDB4C /* products.json */; };
 		CEF39F5B25027511005D9EE5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF39F5A25027511005D9EE5 /* ProfileViewController.swift */; };
 		CEF39F5D25028188005D9EE5 /* farms.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF39F5C25028188005D9EE5 /* farms.json */; };
 		CEF39F6125030B56005D9EE5 /* ProductNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF39F6025030B56005D9EE5 /* ProductNavController.swift */; };
 		CEF39F6325030B8A005D9EE5 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF39F6225030B8A005D9EE5 /* ProductInfoViewController.swift */; };
-		CEF7C0302503B7FE007C05E9 /* FamrsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7C02F2503B7FE007C05E9 /* FamrsViewModel.swift */; };
+		CEF7C0302503B7FE007C05E9 /* FarmsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7C02F2503B7FE007C05E9 /* FarmsViewModel.swift */; };
 		CEF7C0322503B928007C05E9 /* FarmsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7C0312503B928007C05E9 /* FarmsModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C41972632504BC0B00AE2A18 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		C41972632504BC0B00AE2A18 /* ProductDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataModel.swift; sourceTree = "<group>"; };
 		C41972652504C0CA00AE2A18 /* HomePageLandscapeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageLandscapeModel.swift; sourceTree = "<group>"; };
 		C419726C2504C56100AE2A18 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		C419726D2504C56100AE2A18 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -128,12 +128,12 @@
 		CEAF178A250074A7008E37C4 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		CEB3A47824F3ECA40025C58F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEEB830C2501457800DBDB4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEEB8310250224BB00DBDB4C /* prodcuts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prodcuts.json; sourceTree = "<group>"; };
+		CEEB8310250224BB00DBDB4C /* products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
 		CEF39F5A25027511005D9EE5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CEF39F5C25028188005D9EE5 /* farms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = farms.json; sourceTree = "<group>"; };
 		CEF39F6025030B56005D9EE5 /* ProductNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNavController.swift; sourceTree = "<group>"; };
 		CEF39F6225030B8A005D9EE5 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
-		CEF7C02F2503B7FE007C05E9 /* FamrsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamrsViewModel.swift; sourceTree = "<group>"; };
+		CEF7C02F2503B7FE007C05E9 /* FarmsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmsViewModel.swift; sourceTree = "<group>"; };
 		CEF7C0312503B928007C05E9 /* FarmsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,12 +267,13 @@
 		C44B46C724EF617D00870CA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEEB8310250224BB00DBDB4C /* prodcuts.json */,
+				CEEB8310250224BB00DBDB4C /* products.json */,
 				C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */,
 				C4FEBF5124F4381C003A4E50 /* profile.json */,
 				CEF39F5C25028188005D9EE5 /* farms.json */,
 				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
 				CEF7C0312503B928007C05E9 /* FarmsModel.swift */,
+				C41972632504BC0B00AE2A18 /* ProductDataModel.swift */,
 				C41972842504C9C000AE2A18 /* ProductsData.json */,
 				C41972632504BC0B00AE2A18 /* ProductModel.swift */,
 				C41972862504CA3C00AE2A18 /* FarmsData.json */,
@@ -299,7 +300,7 @@
 				C41972692504C45700AE2A18 /* CollectionViewCell */,
 				C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */,
 				CE6853DE2502580B00000A7D /* SearchViewModel.swift */,
-				CEF7C02F2503B7FE007C05E9 /* FamrsViewModel.swift */,
+				CEF7C02F2503B7FE007C05E9 /* FarmsViewModel.swift */,
 				C47EDC662504AE5B00E11480 /* ImageCategory.swift */,
 				C47EDC682504AE8100E11480 /* ProductsViewModel.swift */,
 				C41972652504C0CA00AE2A18 /* HomePageLandscapeModel.swift */,
@@ -484,7 +485,7 @@
 			files = (
 				C419727E2504C72600AE2A18 /* CustomHeaderView.xib in Resources */,
 				C41972742504C62600AE2A18 /* CustomFarmCollectionViewCell.xib in Resources */,
-				CEEB8311250224BB00DBDB4C /* prodcuts.json in Resources */,
+				CEEB8311250224BB00DBDB4C /* products.json in Resources */,
 				C41972852504C9C000AE2A18 /* ProductsData.json in Resources */,
 				C44B46A224EF304A00870CA3 /* LaunchScreen.storyboard in Resources */,
 				C41972872504CA3C00AE2A18 /* FarmsData.json in Resources */,
@@ -545,10 +546,10 @@
 				CE6853DF2502580B00000A7D /* SearchViewModel.swift in Sources */,
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
 				CEAF178925007451008E37C4 /* SearchResultModel.swift in Sources */,
-				C41972642504BC0B00AE2A18 /* ProductModel.swift in Sources */,
+				C41972642504BC0B00AE2A18 /* ProductDataModel.swift in Sources */,
 				C47EDC672504AE5B00E11480 /* ImageCategory.swift in Sources */,
 				C419727D2504C72600AE2A18 /* CustomHeaderView.swift in Sources */,
-				CEF7C0302503B7FE007C05E9 /* FamrsViewModel.swift in Sources */,
+				CEF7C0302503B7FE007C05E9 /* FarmsViewModel.swift in Sources */,
 				C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */,
 				C47EDC5D2504AC9D00E11480 /* SplitViewController.swift in Sources */,
 				C41972732504C62600AE2A18 /* CustomFarmCollectionViewCell.swift in Sources */,

@@ -14,7 +14,8 @@ class DetailViewController:UIViewController {
     @IBOutlet var price: UILabel!
     @IBOutlet var information: UITextView!
     @IBOutlet var famers: UITextView!
-    
+    var id:String?
+    var categories = [ImageCategory]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setImage(from: "https://www.dw.com/image/47425871_401.jpg", imageViewToSet: self.image)
