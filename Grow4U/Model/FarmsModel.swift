@@ -7,6 +7,7 @@
 //
 struct FarmsModel: Decodable {
     struct Data: Decodable {
+        let id: String?
         let locations: [String]?
         let type: String?
         let name: String?
