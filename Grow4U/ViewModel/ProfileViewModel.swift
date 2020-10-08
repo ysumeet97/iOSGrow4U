@@ -56,7 +56,6 @@ class ProfileViewModel {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: profile, options: .init(rawValue: 0))
                 do {
-                    print(jsonData)
                     try jsonData.write(to: url)
                 }
             } catch {

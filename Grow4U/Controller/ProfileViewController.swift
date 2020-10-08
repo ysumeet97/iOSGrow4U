@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         updateImage(from: updatedImageUrl!, imageViewToSet: self.profile_image)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
+        UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -113,11 +114,15 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: Actions
     @IBAction func editProfileData(_ sender: UIButton) {
+        let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
+        outerScrollView.setContentOffset(bottomOffset, animated: true)
         self.setTextFieldProperties(value: true)
         self.setButtonProperties(value: false)
     }
     
     @IBAction func saveAction(_ sender: UIButton?) {
+        let topOffset = CGPoint(x: 0, y: 0)
+        outerScrollView.setContentOffset(topOffset, animated: true)
         let profile_data = ["first_name": self.firstNameTextField.text!,
                             "last_name": self.lastNameTextField.text!,
                             "email": self.emailTextField.text!,
@@ -131,6 +136,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {
+        let topOffset = CGPoint(x: 0, y: 0)
+        outerScrollView.setContentOffset(topOffset, animated: true)
         self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
@@ -168,5 +175,17 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         dismiss(animated: true, completion: nil)
         saveAction(nil)
+    }
+}
+
+
+// custom status bar color
+extension UIApplication {
+    class var statusBarBackgroundColor: UIColor? {
+        get {
+            return (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor
+        } set {
+            (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = newValue
+        }
     }
 }
