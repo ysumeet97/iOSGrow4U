@@ -54,7 +54,6 @@ class HomeViewController: UITabBarController {
         else {
             productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController") as! NavController
             self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
-            
         }
         
     }

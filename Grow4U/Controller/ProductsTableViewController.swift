@@ -18,6 +18,9 @@ class ProductsTableViewController: UIViewController {
     private var farms_ratings = [String]()
     private var file_name: String?
     private var farms_file_name: String?
+    static let products_model = ProductsViewModel() // public because to be accesed by diff classes
+    static let farms_model = FarmsViewModel()
+    // public because to be accesed by diff classes
     var categories = [ImageCategory]()
     var pdata: [ProductDataModel.Data]?
     var farmsData: [FarmsModel.Data]?
@@ -25,21 +28,38 @@ class ProductsTableViewController: UIViewController {
     let headerReuseId = "TableHeaderViewReuseId"
     let navBar = UINavigationBar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
         
-        file_name = "products"
-        farms_file_name = "farms"
-        let products_model = ProductsViewModel(file_name: file_name!)
-        let products_data = products_model.getAllVegetableData()
-        let fruits_data = products_model.getAllFruitsData()
-        let farms_model = FarmsViewModel(file_name: farms_file_name!)
-        let farms_data = farms_model.getAllFarmsData()
+        if (ProductsTableViewController.products_model.getVegetableData().count < 1){
+            print("here")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+        
+        let products_data = ProductsTableViewController.products_model.getAllVegetableData()
+        let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
+        let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
+            print("fruit count", ProductsTableViewController.products_model.getFruitsCount())
         self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
         self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
-        view.backgroundColor = .white
-        setupTableView()
+        self.view.backgroundColor = .white
 
+    
+        self.setupTableView()
+            }
+            
+        }
+        else{
+            let products_data = ProductsTableViewController.products_model.getAllVegetableData()
+            let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
+            let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
+            
+            self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
+            self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
+            self.view.backgroundColor = .white
+            
+            
+            self.setupTableView()
+        }
+    
     }
     
     private func setFarmsData(id:[String],images_Url: [String], name: [String], farm_ratings: [String]) {
@@ -58,13 +78,10 @@ class ProductsTableViewController: UIViewController {
         self.imagesUrl = images_Url
         self.type = name // here type means the vegetable name
         self.type_price = type_price
-        let navItem = UINavigationItem(title: "Home")
-        navBar.backgroundColor =  #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1)
-        navBar.setItems([navItem], animated: false)
+
     }
     
     func setupTableView() {
-        self.view.addSubview(navBar)
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self

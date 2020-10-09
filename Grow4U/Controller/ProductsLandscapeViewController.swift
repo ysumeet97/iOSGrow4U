@@ -36,23 +36,23 @@ class ProductsLandscapeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if file_name == "farms" {
-            let farms_model = FarmsViewModel(file_name: file_name)
-            let farms_data = farms_model.getAllFarmsData()
-            num = farms_model.getFarmsCount()
+            
+            let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
+            num = ProductsTableViewController.farms_model.getFarmsCount()
             self.setFarmsData(images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
         }
         else if file_name == "products"
-        {   let products_model = ProductsViewModel(file_name: file_name)
-            let products_data = products_model.getAllVegetableData()
-            num = products_model.getVegetableCount()
+        {
+            let products_data = ProductsTableViewController.products_model.getAllVegetableData()
+            num = ProductsTableViewController.products_model.getVegetableCount()
             self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price)
         }
         else{
             file_name = "products"
-            let products_model = ProductsViewModel(file_name: file_name)
-            let products_data = products_model.getAllFruitsData()
-            num = products_model.getFruitsCount()
+            let products_data = ProductsTableViewController.products_model.getAllFruitsData()
+            num = ProductsTableViewController.products_model.getFruitsCount()
             self.setProductsData(images_Url: products_data.image_url, type: products_data.type, type_price: products_data.price)
         }
         view.backgroundColor = .white
