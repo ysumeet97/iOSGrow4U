@@ -24,7 +24,7 @@ class ProductsViewModel {
     private var Currency = [String]()
     private var location = [String]()
     private var farmers = [String]()
-    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/3")
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
 
     
     init(){

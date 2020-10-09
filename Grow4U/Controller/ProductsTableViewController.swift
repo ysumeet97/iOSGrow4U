@@ -30,7 +30,7 @@ class ProductsTableViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        if (ProductsTableViewController.products_model.getVegetableData().count < 1){
+        if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
             print("here")
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
         
@@ -232,6 +232,7 @@ extension ProductsTableViewController:CustomCollectionCellDelegate {
             let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
             print(id!)
             detailController!.id = id
+            detailController!.categories = self.categories
         self.navigationController?.pushViewController(detailController!, animated: true)
         }
     }

@@ -13,7 +13,7 @@ class FarmsViewModel {
     private var farms_name = [String]()
     private var farms_ratings = [String]()
     private var farms_model = [FarmsModel.Data]()
-    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/2")
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/3")
     
     init(){
     
