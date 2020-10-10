@@ -165,9 +165,9 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 0){
-            return UIScreen.main.bounds.width/2
+            return UIScreen.main.bounds.height/3
         }
-        return UIScreen.main.bounds.width/3
+        return UIScreen.main.bounds.height/4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -222,7 +222,6 @@ extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
                 let id = collectioncell?.farmID
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
-                print(id!)
                 detailController!.id = id
                 self.navigationController?.pushViewController(detailController!, animated: true)
         
