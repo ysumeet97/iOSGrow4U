@@ -776,7 +776,7 @@
             </objects>
             <point key="canvasLocation" x="5579.7101449275369" y="-1423.6607142857142"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Menu-->
         <scene sceneID="v6M-C4-EKE">
             <objects>
                 <tableViewController storyboardIdentifier="MasterSplitTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="yL0-wr-SNC" customClass="MasterSplitTableViewController" customModule="Grow4U" sceneMemberID="viewController">
@@ -811,7 +811,7 @@
                             <outlet property="delegate" destination="yL0-wr-SNC" id="MT4-Cf-cPI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="S7V-jz-Mac"/>
+                    <navigationItem key="navigationItem" title="Menu" id="S7V-jz-Mac"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBh-t7-hx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
