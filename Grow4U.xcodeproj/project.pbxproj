@@ -33,6 +33,7 @@
 		C47EDC652504AE0E00E11480 /* MasterSplitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */; };
 		C47EDC672504AE5B00E11480 /* ImageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC662504AE5B00E11480 /* ImageCategory.swift */; };
 		C47EDC692504AE8100E11480 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC682504AE8100E11480 /* ProductsViewModel.swift */; };
+		C4B0646A25315D45006F391F /* FarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0646925315D45006F391F /* FarmDetailViewController.swift */; };
 		C4CA224F252A286500B99703 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA224E252A286500B99703 /* CoreDataStorage.swift */; };
 		C4CA2255252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4CA2253252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld */; };
 		C4CA2258252A883B00B99703 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CA2257252A883B00B99703 /* CoreData.framework */; };
@@ -107,6 +108,7 @@
 		C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitTableViewController.swift; sourceTree = "<group>"; };
 		C47EDC662504AE5B00E11480 /* ImageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCategory.swift; sourceTree = "<group>"; };
 		C47EDC682504AE8100E11480 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		C4B0646925315D45006F391F /* FarmDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmDetailViewController.swift; sourceTree = "<group>"; };
 		C4CA224E252A286500B99703 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		C4CA2254252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProfileCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		C4CA2257252A883B00B99703 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -118,7 +120,7 @@
 		CE50D74324FA82FD00CBDD95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE50D74724FA836400CBDD95 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		CE6853DE2502580B00000A7D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		CEAF178825007451008E37C4 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResultModel.swift; path = Grow4U/View/SearchResultModel.swift; sourceTree = SOURCE_ROOT; };
+		CEAF178825007451008E37C4 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		CEAF178A250074A7008E37C4 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		CEB3A47824F3ECA40025C58F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEEB830C2501457800DBDB4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,11 +208,11 @@
 		C44B468B24EF304500870CA3 = {
 			isa = PBXGroup;
 			children = (
+				C4CA2256252A883A00B99703 /* Frameworks */,
 				C44B469624EF304500870CA3 /* Grow4U */,
 				C44B46AB24EF304A00870CA3 /* Grow4UTests */,
 				C44B46B624EF304A00870CA3 /* Grow4UUITests */,
 				C44B469524EF304500870CA3 /* Products */,
-				C4CA2256252A883A00B99703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,15 +229,15 @@
 		C44B469624EF304500870CA3 /* Grow4U */ = {
 			isa = PBXGroup;
 			children = (
-				C4CA2247252A27CB00B99703 /* Utilities */,
-				C4CA2243252A26EF00B99703 /* CoreData */,
 				C4FEBF5524F444F4003A4E50 /* Controller */,
+				C44B46C824EF61B100870CA3 /* Coordinator */,
+				C4CA2243252A26EF00B99703 /* CoreData */,
+				C44B46C724EF617D00870CA3 /* Model */,
+				C4CA2247252A27CB00B99703 /* Utilities */,
 				C44B46CA24EF710400870CA3 /* View */,
 				C44B46C924EF70F200870CA3 /* ViewModel */,
-				C44B46C824EF61B100870CA3 /* Coordinator */,
-				C44B46C724EF617D00870CA3 /* Model */,
-				CEEB830C2501457800DBDB4C /* Assets.xcassets */,
 				C44B469724EF304500870CA3 /* AppDelegate.swift */,
+				CEEB830C2501457800DBDB4C /* Assets.xcassets */,
 				C44B46A324EF304A00870CA3 /* Info.plist */,
 			);
 			path = Grow4U;
@@ -262,11 +264,11 @@
 		C44B46C724EF617D00870CA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEEB8310250224BB00DBDB4C /* products.json */,
-				CEF39F5C25028188005D9EE5 /* farms.json */,
-				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
 				CEF7C0312503B928007C05E9 /* FarmsModel.swift */,
 				C41972632504BC0B00AE2A18 /* ProductDataModel.swift */,
+				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
+				CEF39F5C25028188005D9EE5 /* farms.json */,
+				CEEB8310250224BB00DBDB4C /* products.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,8 +276,8 @@
 		C44B46C824EF61B100870CA3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				C44B46CB24EF721300870CA3 /* MainCoordinator.swift */,
 				CE50D74724FA836400CBDD95 /* HomeViewCoordinator.swift */,
+				C44B46CB24EF721300870CA3 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -283,17 +285,17 @@
 		C44B46C924EF70F200870CA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C419727F2504C74600AE2A18 /* TableViewCell */,
-				C419727A2504C70800AE2A18 /* TableHeaderView */,
-				C41972752504C6C000AE2A18 /* FarmTableViewCell */,
-				C41972702504C5E100AE2A18 /* FarmCollectionViewCell */,
 				C41972692504C45700AE2A18 /* CollectionViewCell */,
-				C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */,
-				CE6853DE2502580B00000A7D /* SearchViewModel.swift */,
+				C41972702504C5E100AE2A18 /* FarmCollectionViewCell */,
+				C41972752504C6C000AE2A18 /* FarmTableViewCell */,
+				C419727A2504C70800AE2A18 /* TableHeaderView */,
+				C419727F2504C74600AE2A18 /* TableViewCell */,
 				CEF7C02F2503B7FE007C05E9 /* FarmsViewModel.swift */,
+				C41972652504C0CA00AE2A18 /* HomePageLandscapeModel.swift */,
 				C47EDC662504AE5B00E11480 /* ImageCategory.swift */,
 				C47EDC682504AE8100E11480 /* ProductsViewModel.swift */,
-				C41972652504C0CA00AE2A18 /* HomePageLandscapeModel.swift */,
+				C4FEBF5624F4453D003A4E50 /* ProfileViewModel.swift */,
+				CE6853DE2502580B00000A7D /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -301,8 +303,8 @@
 		C44B46CA24EF710400870CA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C44B469B24EF304500870CA3 /* Main.storyboard */,
 				C44B46A024EF304A00870CA3 /* LaunchScreen.storyboard */,
+				C44B469B24EF304500870CA3 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,9 +337,9 @@
 		C4CA2249252A27EA00B99703 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C4CA225D252A8A4000B99703 /* CodingUserInfoKey+Util.swift */,
 				C4CA2259252A896E00B99703 /* ProfileData+CoreDataClass.swift */,
 				C4CA225A252A896E00B99703 /* ProfileData+CoreDataProperties.swift */,
-				C4CA225D252A8A4000B99703 /* CodingUserInfoKey+Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,18 +356,19 @@
 		C4FEBF5524F444F4003A4E50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CEB3A47824F3ECA40025C58F /* SearchViewController.swift */,
-				CE50D74324FA82FD00CBDD95 /* HomeViewController.swift */,
-				CEAF178A250074A7008E37C4 /* SearchResultController.swift */,
-				CEF39F5A25027511005D9EE5 /* ProfileViewController.swift */,
-				CEF39F6025030B56005D9EE5 /* ProductNavController.swift */,
-				CEF39F6225030B8A005D9EE5 /* ProductInfoViewController.swift */,
-				C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */,
+				C4B0646925315D45006F391F /* FarmDetailViewController.swift */,
 				C47EDC5E2504AD0200E11480 /* DetailViewController.swift */,
-				C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */,
-				C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */,
+				CE50D74324FA82FD00CBDD95 /* HomeViewController.swift */,
 				C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */,
 				C4197288250500BE00AE2A18 /* NavController.swift */,
+				CEF39F6225030B8A005D9EE5 /* ProductInfoViewController.swift */,
+				CEF39F6025030B56005D9EE5 /* ProductNavController.swift */,
+				C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */,
+				C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */,
+				CEF39F5A25027511005D9EE5 /* ProfileViewController.swift */,
+				CEAF178A250074A7008E37C4 /* SearchResultController.swift */,
+				CEB3A47824F3ECA40025C58F /* SearchViewController.swift */,
+				C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				C4CA2255252A2EFF00B99703 /* ProfileCoreDataModel.xcdatamodeld in Sources */,
 				C47EDC632504ADE200E11480 /* ProductsTableViewController.swift in Sources */,
 				CEF39F5B25027511005D9EE5 /* ProfileViewController.swift in Sources */,
+				C4B0646A25315D45006F391F /* FarmDetailViewController.swift in Sources */,
 				C4CA225B252A896E00B99703 /* ProfileData+CoreDataClass.swift in Sources */,
 				C4197289250500BE00AE2A18 /* NavController.swift in Sources */,
 				C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */,
@@ -583,6 +587,7 @@
 				C44B469C24EF304500870CA3 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		C44B46A024EF304A00870CA3 /* LaunchScreen.storyboard */ = {
@@ -591,6 +596,7 @@
 				C44B46A124EF304A00870CA3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -717,6 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G652T8473L;
 				INFOPLIST_FILE = Grow4U/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,6 +741,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G652T8473L;
 				INFOPLIST_FILE = Grow4U/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

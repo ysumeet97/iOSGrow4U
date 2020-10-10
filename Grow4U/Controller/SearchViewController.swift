@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
     
     // MARK: -Properties
     @IBOutlet var tableView: UITableView!
@@ -20,12 +20,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     private var searchProducts = [SearchResultModel]()
     private var searching = false
     private var searchViewModel =  SearchViewModel(fileName: (products: "prodcuts", farmers: "farms"))
+    private var displayNoResults = false
+    private let noImageName = "noResult.jpeg"
+    private var noImageView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         tableView.tableFooterView = UIView()
         searchBar.backgroundImage = UIImage()
+        let noImage = UIImage(named: noImageName)
+        noImageView = UIImageView(image: noImage!)
+        noImageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300
+            )
+        noImageView.isHidden = true
+        self.tableView.addSubview(noImageView)
+        noImageView.translatesAutoresizingMaskIntoConstraints = false
+        noImageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        noImageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        noImageView.centerXAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerXAnchor).isActive = true
+        noImageView.centerYAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerYAnchor).isActive = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.searchBar.endEditing(true)
     }
@@ -38,6 +52,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        self.searchBar.endEditing(true)
     }
     
     // This function returns the number of rows in table
@@ -65,6 +84,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
         cell.backgroundColor = UIColor.white
+        
+        
         return cell
     }
     
@@ -132,9 +153,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     func searchBar (_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             searchProducts = products.filter({$0.name.lowercased().contains(searchText.lowercased())})
+            if (!displayNoResults &&  searchProducts.count<1) {
+                displayNoResults = true
+                self.noImageView.isHidden = false
+            } else if (displayNoResults && searchProducts.count>0){
+                displayNoResults = false
+                self.noImageView.isHidden = true
+            }
             searching = true
         } else {
             searching = false
+            if (displayNoResults){
+                displayNoResults = false
+                self.noImageView.isHidden = true
+            }
         }
         tableView.reloadData()
     }
@@ -143,6 +175,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
+        if (displayNoResults){
+            displayNoResults = false
+            self.noImageView.isHidden = true
+        }
         tableView.reloadData()
     }
     
