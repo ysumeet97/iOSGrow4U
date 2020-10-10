@@ -22,6 +22,6 @@ extension ProfileData {
     @NSManaged public var email: String?
     @NSManaged public var phone: String?
     @NSManaged public var address: String?
-    @NSManaged public var image: String?
+    @NSManaged public var preferences: [String]?
 
 }
