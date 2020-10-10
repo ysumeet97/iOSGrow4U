@@ -13,8 +13,8 @@ class SearchViewModel {
     private var fileName : (products: String, farmers: String)
     private var jsonProducts =  [SearchResultModel]()
     private var jsonFarmers =  [FarmsModel.Data]()
-    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4")
-    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/2")
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
 
     
     init(fileName: (products: String, farmers: String)) {

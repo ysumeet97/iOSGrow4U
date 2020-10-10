@@ -184,7 +184,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
             }))
             
             alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-                self.openGallary()
+                self.openGallery()
             }))
             
             alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
@@ -218,7 +218,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func openGallary()
+    private func openGallery()
     {
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
