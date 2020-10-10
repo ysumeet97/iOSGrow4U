@@ -37,7 +37,6 @@ class ProductsLandscapeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if file_name == "farms" {
             
             let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
