@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AVKit
 
-class ProfileViewController: UIViewController, UIScrollViewDelegate {
+class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Properties
     @IBOutlet weak var outerScrollView: UIScrollView!
@@ -25,13 +25,17 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var editImageButton: UIButton!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var preferencesAdd: UIButton!
     
     var profileViewModel: ProfileViewModel?
-    var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String, image: String)?
+    var profile_data: (first_name: String, last_name: String, email: String, phone: String, address: String, preferences: [String])?
     var imagePicker = UIImagePickerController()
     var updatedImageUrl :String?
     private var isImageLocal = true
     private let imageName = "profile.jpeg"
+    var productPreferences: [String] = []
+    let cellReuseIdentifier = "cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +43,37 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         outerScrollView.delegate = self
         self.setImage()
         profile_data = profileViewModel!.getData()
-        self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
-        updatedImageUrl = profile_data!.image
-        updateImage(from: updatedImageUrl!, imageViewToSet: self.profile_image)
+        self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address, preferences: profile_data!.preferences)
+        // initially load all values
+        self.productPreferences = profile_data!.preferences
+        profile_image.image = getSavedImage(named: self.imageName)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
         UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return profile_data!.preferences.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+        cell.textLabel?.text = profile_data!.preferences[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            profile_data!.preferences.remove(at: indexPath.row)
+            productPreferences.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            //for inserting into rows
+           
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -62,9 +91,10 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     private func setButtonProperties(value: Bool) {
         saveButton.isHidden = value
         cancelButton.isHidden = value
+        preferencesAdd.isHidden = value
     }
     
-    private func setTextData(first_name: String, last_name: String, email: String, phone: String, address: String) {
+    private func setTextData(first_name: String, last_name: String, email: String, phone: String, address: String, preferences: [String]) {
         firstNameTextField.text = first_name
         lastNameTextField.text = last_name
         emailTextField.text = email
@@ -130,9 +160,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                             "last_name": self.lastNameTextField.text!,
                             "email": self.emailTextField.text!,
                             "phone": self.phoneTextField.text!,
-                            "address": self.addressTextField.text!,
-                            "image": self.updatedImageUrl!]
-        profileViewModel?.writeJsonFile(profile: profile_data)
+                            "address": self.addressTextField.text!]
+        profileViewModel?.writeJsonFile(profile: profile_data, preferences: productPreferences)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
         showAlertButtonTapped(saveButton)
@@ -141,9 +170,28 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func cancelAction(_ sender: UIButton) {
         let topOffset = CGPoint(x: 0, y: 0)
         outerScrollView.setContentOffset(topOffset, animated: true)
-        self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address)
+        self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address, preferences: profile_data!.preferences)
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
+    }
+    @IBAction func addPreferences(_ sender: UIButton) {
+        let alert = UIAlertController(title: "New Preference", message: "Add your preference", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) {
+            [unowned self] action in
+            guard let textField = alert.textFields?.first,
+            let pref = textField.text else {
+                return
+            }
+            self.profile_data!.preferences.append(pref)
+            //adding new pref to local var
+            self.productPreferences.append(pref)
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
     
     @IBAction func showAlertButtonTapped(_ sender: UIButton) {
@@ -243,7 +291,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             isImageLocal = true
         }
         dismiss(animated: true, completion: nil)
-        saveAction(nil)
+//        saveAction(nil)
+        showAlertButtonTapped(saveButton)
     }
 }
 

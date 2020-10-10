@@ -12,40 +12,51 @@ class FarmsViewModel {
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-    private var farms_model: [FarmsModel.Data]?
-    var file_name: String
+    private var farms_model = [FarmsModel.Data]()
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/3")
     
-    init(file_name: String) {
-        self.file_name = file_name
-        loadJsonFile()
+    init(){
+    
+        self.loadJsonData()
+
+    }
+    private func loadJsonData() {
+        self.downloadJson(url: self.farmUrl!)
+        
     }
     
-    public func loadJsonFile() {
-        guard let path = Bundle.main.path(forResource: file_name, ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        do {
-            let farms_data = try Data(contentsOf: url)
-            let decoded_data = try
-                JSONDecoder().decode(FarmsModel.self, from: farms_data)
-            setupFarmsData(data: decoded_data.farm)
-        } catch  {
-            print(error)
+    private func downloadJson(url: URL?){
+        guard let downloadURL = url else {
+            return
         }
-    }
-    
-    public func setupFarmsData(data: [FarmsModel.Data]) {
-        self.farms_model = data
+        URLSession.shared.dataTask(with: downloadURL){ data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else  {
+                print("error in data transfer")
+                return
+            }
+            do {
+                
+                self.farms_model = try JSONDecoder().decode(FarmsModel.self, from: data).farm!
+            }
+            catch {
+                print("decode error: \(error)")
+            }
+            
+            }.resume()
     }
     
     func getFarmsCount()->Int{
         var num = 0
-        num = num + farms_model!.count
+        num = num + farms_model.count
         return num
     }
     
-    
+    public func getFarmsData()-> ([FarmsModel.Data]){
+        return (self.farms_model)
+        
+    }
     func getAllFarmsData()->(id:[String],images_Url: [String], farms_name: [String], farms_ratings: [String]){
-        for data in farms_model!{
+        for data in farms_model{
             self.id.append(data.id!)
             self.farmsImagesUrl.append(data.img_url!)
             self.farms_name.append(data.name!)
