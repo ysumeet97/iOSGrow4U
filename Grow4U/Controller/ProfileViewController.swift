@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVKit
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
@@ -114,8 +115,10 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: Actions
     @IBAction func editProfileData(_ sender: UIButton) {
-        let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
-        outerScrollView.setContentOffset(bottomOffset, animated: true)
+        if (outerScrollView.contentSize.height > outerScrollView.bounds.size.height) {
+            let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
+                outerScrollView.setContentOffset(bottomOffset, animated: true)
+        }
         self.setTextFieldProperties(value: true)
         self.setButtonProperties(value: false)
     }
@@ -150,10 +153,76 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func editImage(_ sender: Any) {
-        imagePicker.sourceType = .photoLibrary
+    @IBAction func editImage(_ sender: UIButton) {
+        super.viewDidLoad()
+        var permitted = false
+        var alert = UIAlertController(title:"Permission not granted to access media!", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            // The user has previously granted access to the camera.
+            case .authorized:
+                permitted = true
+            // The user has not yet been asked for camera access.
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                       permitted = granted
+                    }
+                }
+            // The user has previously denied access or the user can't grant access due to restrictions.
+            default:
+                permitted = false
+                self.present(alert, animated: true, completion: nil)
+        }
+        if (permitted) {
+            self.editImageButton.setTitleColor(UIColor.white, for: .normal)
+            self.editImageButton.isUserInteractionEnabled = true
+            
+            alert = UIAlertController(title: "Choose Profile Image", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                self.openCamera()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                self.openGallary()
+            }))
+            
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+            
+           //action sheet for ipad
+            switch UIDevice.current.userInterfaceIdiom {
+            case .pad:
+                alert.popoverPresentationController?.sourceView = sender
+                alert.popoverPresentationController?.sourceRect = sender.bounds
+                alert.popoverPresentationController?.permittedArrowDirections = .up
+            default:
+                break
+            }
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func openCamera()
+    {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func openGallary()
+    {
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
     }
 }
 
