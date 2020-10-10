@@ -13,7 +13,7 @@ class SearchViewModel {
     private var fileName : (products: String, farmers: String)
     private var jsonProducts =  [SearchResultModel]()
     private var jsonFarmers =  [FarmsModel.Data]()
-    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/2")
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4")
     private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/2")
 
     
@@ -42,7 +42,7 @@ class SearchViewModel {
                 if (isProduct) {
                     self.jsonProducts = try JSONDecoder().decode(SearchResults.self, from: data).products
                 } else {
-                    self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: data).farm
+                    self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: data).farm!
                 }
             } catch {
                 print("decode error: \(error)")

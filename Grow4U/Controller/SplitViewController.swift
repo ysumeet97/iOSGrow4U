@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SplitViewController: UISplitViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        splitViewController?.preferredDisplayMode = .primaryOverlay
+class SplitViewController: UISplitViewController ,  UISplitViewControllerDelegate{
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        delegate = self
+        preferredDisplayMode = .allVisible
     }
 
     
