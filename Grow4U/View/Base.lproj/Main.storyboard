@@ -458,7 +458,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMl-YN-dKf">
-                                        <rect key="frame" x="148.66666666666663" y="17.666666666666664" width="78" height="28"/>
+                                        <rect key="frame" x="148.66666666666666" y="17.666666666666664" width="78" height="28"/>
                                         <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="25"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
@@ -481,7 +481,7 @@
                                             <constraint firstAttribute="width" secondItem="CQm-et-8nR" secondAttribute="height" multiplier="1:1" id="ddo-9I-4WE"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-Ww-mSV">
+                                    <button opaque="NO" alpha="0.90000000000000002" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-Ww-mSV">
                                         <rect key="frame" x="67.666666666666686" y="210.66666666666669" width="240" height="50"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
@@ -578,7 +578,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lB-OS-LqF">
-                                                <rect key="frame" x="192.66666666666663" y="605" width="88.999999999999972" height="45"/>
+                                                <rect key="frame" x="192.66666666666666" y="605" width="88.999999999999972" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="xrI-ED-xeb"/>
                                                 </constraints>
