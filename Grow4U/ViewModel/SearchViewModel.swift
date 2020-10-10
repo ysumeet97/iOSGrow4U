@@ -42,7 +42,7 @@ class SearchViewModel {
                 if (isProduct) {
                     self.jsonProducts = try JSONDecoder().decode(SearchResults.self, from: data).products
                 } else {
-                    self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: data).farm
+                    self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: data).farm!
                 }
             } catch {
                 print("decode error: \(error)")

@@ -19,14 +19,14 @@ public class ProfileData: NSManagedObject, Codable
         case email
         case phone
         case address
-        case image
+        case preferences
     }
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(first_name: String, last_name: String, email: String, phone: String, address: String, image: String) {
+    init(first_name: String, last_name: String, email: String, phone: String, address: String, preferences: [String]) {
         let managedObjectContext = CoreDataStorage.shared.managedObjectContext()
         let entity = NSEntityDescription.entity(forEntityName: "ProfileData", in: managedObjectContext)
         super.init(entity: entity!, insertInto: managedObjectContext)
@@ -35,24 +35,21 @@ public class ProfileData: NSManagedObject, Codable
         self.email = email
         self.phone = phone
         self.address = address
-        self.image = image
+        self.preferences = preferences
     }
     
     required convenience public init(from decoder: Decoder) throws {
-        //let managedObjectContext = CoreDataStorage.shared.managedObjectContext()
-        
         guard let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext!] as? NSManagedObjectContext else { fatalError("Failed to decode User") }
         guard let entity = NSEntityDescription.entity(forEntityName: "ProfileData", in: managedObjectContext) else { fatalError("Failed to decode User") }
         
         self.init(entity: entity, insertInto: managedObjectContext)
-        
         let container = try decoder.container(keyedBy: CodingKeys.self)
         first_name = try container.decode(String.self, forKey: .first_name)
         last_name = try container.decode(String.self, forKey: .last_name)
         email = try container.decode(String.self, forKey: .email)
         phone = try container.decode(String.self, forKey: .phone)
         address = try container.decode(String.self, forKey: .address)
-        image = try container.decode(String.self, forKey: .image)
+        preferences = try container.decode([String].self, forKey: .preferences)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -62,9 +59,6 @@ public class ProfileData: NSManagedObject, Codable
         try container.encode(email, forKey: .email)
         try container.encode(phone, forKey: .phone)
         try container.encode(address, forKey: .address)
-        try container.encode(image, forKey: .image)
+        try container.encode(preferences, forKey: .preferences)
     }
-    
-    
-    
 }
