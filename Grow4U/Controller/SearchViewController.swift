@@ -41,6 +41,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         noImageView.centerXAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerXAnchor).isActive = true
         noImageView.centerYAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerYAnchor).isActive = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.searchBar.endEditing(true)
     }
     
     // This function is used to load the data of products

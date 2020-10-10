@@ -1,19 +1,17 @@
 //
-//  Grow4UTests.swift
+//  ProfileTests.swift
 //  Grow4UTests
 //
-//  Created by Sumeet Yedula on 21/8/20.
+//  Created by Sainath Reddy K on 10/10/20.
 //  Copyright © 2020 Grow4U. All rights reserved.
 //
 
 import XCTest
-@testable import Grow4U
 
-class Grow4UTests: XCTestCase {
+class ProfileTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
     }
 
     override func tearDown() {
