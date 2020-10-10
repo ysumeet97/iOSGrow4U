@@ -17,7 +17,7 @@ class CustomFarmTableViewCell:UITableViewCell, UICollectionViewDataSource, UICol
         let cell = Bundle.main.loadNibNamed("CustomFarmTableViewCell", owner: self, options: nil)?.last
         return cell as! CustomFarmTableViewCell
     }
-    
+    //update the cell
     override func awakeFromNib() {
         super.awakeFromNib()
         

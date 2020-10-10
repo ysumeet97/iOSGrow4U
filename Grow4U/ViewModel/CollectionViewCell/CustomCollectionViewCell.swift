@@ -23,6 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.red
         
     }
+    // update the cell
     
     func updateCellWithImage(image_name:String, image_price:String, id:String, imageOf: String) {
         self.cellImageName = image_name

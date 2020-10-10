@@ -68,7 +68,7 @@ class CustomTableViewCell:UITableViewCell, UICollectionViewDataSource, UICollect
         let label = self.aCategory?.prodDescription[indexPath.item]
         let name = self.aCategory?.name[indexPath.item]
         if let categoryImageName = self.aCategory?.prodItems[indexPath.item] {
-            cell?.updateCellWithImage(image_name: categoryImageName, image_price:label!, id: id! , imageOf: name! )
+            cell?.updateCellWithImage(image_name: categoryImageName, image_price:label!, id: id!,imageOf: name!)
         }
         return cell!
     }

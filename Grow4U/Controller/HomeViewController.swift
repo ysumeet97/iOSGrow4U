@@ -13,7 +13,7 @@ class HomeViewController: UITabBarController {
     let deselectedColor = UIColor.gray
     var window: UIWindow?
     var productVC: Any?
-    var productLandVC: Any?
+    static var productLandVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController")
     var profileVC: ProfileViewController?
     var pronavVC: ProductNavController?
     private var file_name: String?
@@ -27,7 +27,7 @@ class HomeViewController: UITabBarController {
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
         file_name = "profile"
         profile_model = ProfileViewModel(file_name: file_name!)
-        productLandVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController")
+    
         productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController")
         profileVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController)
         pronavVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController)
@@ -56,7 +56,7 @@ class HomeViewController: UITabBarController {
 
                 DispatchQueue.main.async{
                    
-                    self.setViewControllers([self.productLandVC! as! UIViewController, self.pronavVC!, self.profileVC!], animated: true)
+                    self.setViewControllers([HomeViewController.productLandVC , self.pronavVC!, self.profileVC!], animated: true)
                 }
             }
         else {
