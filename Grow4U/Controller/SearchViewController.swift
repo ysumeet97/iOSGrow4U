@@ -27,6 +27,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         tableView.tableFooterView = UIView()
         searchBar.backgroundImage = UIImage()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.searchBar.endEditing(true)
     }
     
     // This function is used to load the data of products
