@@ -34,7 +34,7 @@ class HomeViewController: UITabBarController {
 //        UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
         
         if(UIDevice.current.orientation.isLandscape) {
-            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductsLandscapeViewController") as! ProductsLandscapeViewController
+            productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController") as! SplitViewController
             self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
         }
         else {
@@ -54,6 +54,7 @@ class HomeViewController: UITabBarController {
         else {
             productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController") as! NavController
             self.setViewControllers([productVC! as! NavController, pronavVC!, profileVC!], animated: true)
+            
         }
         
     }

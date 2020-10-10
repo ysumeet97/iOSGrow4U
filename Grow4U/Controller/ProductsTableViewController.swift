@@ -1,7 +1,11 @@
+//
+//  MasterSplitTableViewController.swift
+//  Grow4U
+//
+//  Created by vaishali wahi on 6/9/20.
+//  Copyright © 2020 Grow4U. All rights reserved.
+//
 import UIKit
-
-
-
 
 class ProductsTableViewController: UIViewController {
     private var vegetablesID = [String]()
@@ -217,7 +221,7 @@ extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
     func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
                 let id = collectioncell?.farmID
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
+                let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
                 print(id!)
                 detailController!.id = id
                 self.navigationController?.pushViewController(detailController!, animated: true)
