@@ -14,6 +14,13 @@ class DetailViewController:UIViewController {
     @IBOutlet var price: UILabel!
     @IBOutlet var information: UITextView!
     @IBOutlet var famers: UITextView!
+    @IBOutlet var l_image: UIImageView!
+    @IBOutlet var l_price: UILabel!
+    @IBOutlet var l_name: UILabel!
+    @IBOutlet var l_famers: UITextView!
+    @IBOutlet var l_information: UITextView!
+    
+    
     var id:String?
     var type: String?
     var image_url:String?
@@ -98,21 +105,33 @@ class DetailViewController:UIViewController {
         }
         
         setImage(from: self.image_url!, imageViewToSet: self.image)
+        setImage(from: self.image_url!, imageViewToSet: self.l_image)
         self.name.text = self.click_name
+        self.l_name.text = self.click_name
         self.price.text = "$ " + self.prod_price! + " / Kg"
+        self.l_price.text = "$ " + self.prod_price! + " / Kg"
         self.information.text = self.prod_description
+        self.l_information.text = self.prod_description
         var text = ""
         for farmer in farmData{
             for id in farmers{
                 if((farmer.id!.elementsEqual(id))){
-                    text.append("\nName: " + farmer.name! + "\nContact: " + farmer.contact! + "\nRating: " + farmer.rating!)
+                    text = text + "Name: " + farmer.name! + "\nRating: " + farmer.rating! +  " / 5" + "\nContact: " + farmer.contact!
+                    for prod in farmer.products!{
+                        if (prod.id == self.id ) {
+                            text =  text + "\nOffered Price: " + prod.offered_price! + "\n" + "\n"
+                        }
+                    }
                 }
-                
             }
-            text.append("\n")
-          
+            
         }
+        if text == ""{
+            text = "No farmers are growing this product currently"
+        }
+        
         self.famers.text = text
+        self.l_famers.text = text
     }
     
     func setImage(from url: String, imageViewToSet: UIImageView) {

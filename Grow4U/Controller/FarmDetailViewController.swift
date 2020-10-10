@@ -12,9 +12,16 @@ class FarmDetailViewController: UIViewController {
 
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
-    @IBOutlet var price: UILabel!
+    @IBOutlet var rating: UILabel!
     @IBOutlet var information: UITextView!
-    @IBOutlet var famers: UITextView!
+    @IBOutlet var products: UITextView!
+    @IBOutlet var l_image: UIImageView!
+    @IBOutlet var l_rating: UILabel!
+    @IBOutlet var l_name: UILabel!
+    @IBOutlet var l_information: UITextView!
+    @IBOutlet var l_products: UITextView!
+    
+    
     var id:String?
     var type: String?
     var image_url:String?
@@ -100,35 +107,35 @@ class FarmDetailViewController: UIViewController {
         }
         
         setImage(from: self.image_url!, imageViewToSet: self.image)
+        setImage(from: self.image_url!, imageViewToSet: self.l_image)
        self.name.text = self.click_name
-        self.price.text = "Ratings: " + self.farmer_rating!
-        var text = "\nContact Details: " + self.farmer_contact! + "\nType: " + self.farmer_type!
+        self.l_name.text = self.click_name
+        self.rating.text = self.farmer_rating!+" /5"
+        self.l_rating.text = self.farmer_rating!+" /5"
+        var text = "\nContact Details: " + self.farmer_contact! + "\nType: " + self.farmer_type! + "\nLocated at: "
         for location in self.farmer_location{
-            text.append("\nLocated at: " + location)
+            text = text + "\n"  + location
         }
        self.information.text = text
+        self.l_information.text = text
         var prodText = ""
         for product in vegetableData{
             for id in farmer_products{
                 if((product.id!.elementsEqual(id))){
-                    prodText.append("Vegetable Name: " + product.name! + "\nVegetable Price: " + product.price!)
+                    prodText = prodText + "Vegetable Name: " + product.name! + "\nVegetable Price: " + product.price! + "\n\n"
                 }
-                
             }
-            prodText.append("\n")
             
         }
         for product in fruitData{
             for id in farmer_products{
                 if((product.id!.elementsEqual(id))){
-                    prodText.append("\nFruit Name: " + product.name! + "\nFruit Price: " + product.price!)
+                    prodText = prodText+"\nFruit Name: " + product.name! + "\nFruit Price: " + product.price!+"\n\n"
                 }
-                
             }
-            prodText.append("\n")
-            
         }
-       self.famers.text = prodText
+        self.products.text = prodText
+        self.l_products.text = prodText
     }
     
     func setImage(from url: String, imageViewToSet: UIImageView) {
