@@ -29,7 +29,7 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.red
         
     }
-    
+    //update the cell
     func updateCellWithImage(image_name:String, image_label:String, id: String) {
         farmID = id
         self.cellImageName = image_name
