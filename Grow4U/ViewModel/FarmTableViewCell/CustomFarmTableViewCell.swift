@@ -20,11 +20,11 @@ class CustomFarmTableViewCell:UITableViewCell, UICollectionViewDataSource, UICol
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //print("here")
+        
         //TODO: need to setup collection view flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/2)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3)
         flowLayout.minimumLineSpacing = 2.0
         flowLayout.minimumInteritemSpacing = 5.0
         self.myCollectionView.collectionViewLayout = flowLayout
@@ -66,8 +66,9 @@ class CustomFarmTableViewCell:UITableViewCell, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as? CustomFarmCollectionViewCell
         let label = self.aCategory?.prodDescription[indexPath.item]
+        let id = self.aCategory?.prod_ID[indexPath.item]
         if let categoryImageName = self.aCategory?.prodItems[indexPath.item] {
-            cell?.updateCellWithImage(image_name: categoryImageName, image_label:label! )
+            cell?.updateCellWithImage(image_name: categoryImageName, image_label:label!, id: id! )
         }
         return cell!
     }

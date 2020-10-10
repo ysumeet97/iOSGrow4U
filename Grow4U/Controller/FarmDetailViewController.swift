@@ -1,14 +1,15 @@
 //
-//  DetailViewController.swift
+//  FarmDetailViewController.swift
 //  Grow4U
 //
-//  Created by Sumeet Yedula on 6/9/20.
+//  Created by vaishali wahi on 9/10/20.
 //  Copyright © 2020 Grow4U. All rights reserved.
 //
 
 import UIKit
-class DetailViewController:UIViewController {
-    
+
+class FarmDetailViewController: UIViewController {
+
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var price: UILabel!
@@ -37,6 +38,7 @@ class DetailViewController:UIViewController {
         let farmData = farms_model.getFarmsData()
         if( id!.contains("FA")){
             type = "farms"
+            print("farms")
         }
         else if((id!.contains("FR"))){
             type = "fruit"
@@ -60,7 +62,7 @@ class DetailViewController:UIViewController {
                     }
                 }
             }
-
+            
         }
         else if(self.type == "fruit"){
             for fruit in fruitData{
@@ -98,21 +100,35 @@ class DetailViewController:UIViewController {
         }
         
         setImage(from: self.image_url!, imageViewToSet: self.image)
-        self.name.text = self.click_name
-        self.price.text = "$ " + self.prod_price! + " / Kg"
-        self.information.text = self.prod_description
-        var text = ""
-        for farmer in farmData{
-            for id in farmers{
-                if((farmer.id!.elementsEqual(id))){
-                    text.append("\nName: " + farmer.name! + "\nContact: " + farmer.contact! + "\nRating: " + farmer.rating!)
+       self.name.text = self.click_name
+        self.price.text = "Ratings: " + self.farmer_rating!
+        var text = "\nContact Details: " + self.farmer_contact! + "\nType: " + self.farmer_type!
+        for location in self.farmer_location{
+            text.append("\nLocated at: " + location)
+        }
+       self.information.text = text
+        var prodText = ""
+        for product in vegetableData{
+            for id in farmer_products{
+                if((product.id!.elementsEqual(id))){
+                    prodText.append("Vegetable Name: " + product.name! + "\nVegetable Price: " + product.price!)
                 }
                 
             }
-            text.append("\n")
-          
+            prodText.append("\n")
+            
         }
-        self.famers.text = text
+        for product in fruitData{
+            for id in farmer_products{
+                if((product.id!.elementsEqual(id))){
+                    prodText.append("\nFruit Name: " + product.name! + "\nFruit Price: " + product.price!)
+                }
+                
+            }
+            prodText.append("\n")
+            
+        }
+       self.famers.text = prodText
     }
     
     func setImage(from url: String, imageViewToSet: UIImageView) {
@@ -124,6 +140,9 @@ class DetailViewController:UIViewController {
                 imageViewToSet.image = image
             }
         }
-    }
-}
+    
 
+    }
+    
+
+}

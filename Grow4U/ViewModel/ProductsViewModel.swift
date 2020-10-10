@@ -8,106 +8,162 @@
 
 import Foundation
 class ProductsViewModel {
-    private var imagesUrl = [String]()
+    
+    private var jsonProducts = [ProductDataModel.Data]()
+    private var jsonVegetables =  [ProductDataModel.Data]()
+    private var jsonFruits =  [ProductDataModel.Data]()
+    private var id = [String]()
+    private var image_url = [String]()
     private var type = [String]()
-    private var type_price = [String]()
-    private var fruitsImagesUrl = [String]()
-    private var fruitType = [String]()
-    private var fruit_type_price = [String]()
-    private var products_model: [ProductDataModel.Data]?
-    var file_name: String
+    private var name = [String]()
+    private var availability = [String]()
+    private var max_quantity = [String]()
+    private var description = [String]()
+    private var price = [String]()
+    private var unit = [String]()
+    private var Currency = [String]()
+    private var location = [String]()
+    private var farmers = [String]()
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
+
     
-    init(file_name: String) {
-        self.file_name = file_name
-        loadJsonFile()
+    init(){
+      
+        self.loadJsonData()
+        
     }
     
-    public func loadJsonFile() {
-        guard let path = Bundle.main.path(forResource: file_name, ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        do {
-            // print(products.locations )
-            // self.pdata = products.locations
-            //self.location = locations.locations
-            let products_data = try Data(contentsOf: url)
-            let decoded_data = try
-                JSONDecoder().decode(ProductDataModel.self, from: products_data)
-            setupProductData(data: decoded_data.locations!)
-        } catch  {
-            print(error)
+    private func loadJsonData() {
+     
+            self.downloadJson(url: self.prodUrl!)
+        
+    }
+    
+    private func downloadJson(url: URL?){
+        guard let downloadURL = url else {
+            return
         }
+        URLSession.shared.dataTask(with: downloadURL){ data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else  {
+                print("error in data transfer")
+                return
+            }
+            do {
+                
+                 self.jsonProducts = try JSONDecoder().decode(ProductDataModel.self, from: data).products!
+                
+            } catch {
+                print("decode error: \(error)")
+            }
+            
+            }.resume()
     }
     
-    public func setupProductData(data: [ProductDataModel.Data]) {
-        self.products_model = data
-        
-        
-    }
-    
-    //    func getFarmsCount()->Int{
-    //        var num = 0
-    //        num = num + farmsData!.count
-    //        return num
-    //    }
     
     func getVegetableCount() -> Int{
         var num = 0
-        for locations in products_model!{
-            
-            let vegetables = locations.vegetables
-            num = num + vegetables!.count
-            
+        for products in jsonProducts{
+            if products.type == "vegetable"{
+                num = num + 1
+            }
         }
         return num
     }
     func getFruitsCount() -> Int{
         var num = 0
-        for locations in products_model!{
+        for products in jsonProducts{
             
-            let fruits = locations.fruits
-            num = num + fruits!.count
-            
-        }
-        return num
-    }
-    //    func getAllFarmsData(){
-    //
-    //
-    //        for data in farmsData!{
-    //
-    //            farmsImagesUrl.append(data.image!)
-    //            farms_name.append(data.name!)
-    //            farms_ratings.append(data.ratings!)
-    //
-    //        }
-    //
-    //    }
-    func getAllData() -> (images_Url: [String], type: [String], type_price: [String]){
-        
-        
-        for locations in products_model!{
-            for data in locations.vegetables!{
-                imagesUrl.append(data.image!)
-                type.append(data.type!)
-                type_price.append(data.price!)
-            
+            if products.type == "fruit"{
+                num = num + 1
             }
             
         }
-        return(imagesUrl,type,type_price)
+        print("fruit count", num)
+        return num
     }
-    func getAllFruitsData() -> (fruitsImages_Url: [String], fruitType: [String], fruits_type_price: [String]){
-        
-        
-        for locations in products_model!{
-            for data in locations.fruits!{
-                fruitsImagesUrl.append(data.image!)
-                fruitType.append(data.type!)
-                fruit_type_price.append(data.price!)
+    
+    func getAllVegetableData() -> (id : [String],image_url : [String], type : [String],name : [String]
+        ,availability : [String], max_quantity : [String], description : [String], price : [String],unit : [String]
+        ,Currency : [String] , location : [String], farmers : [String]){
+            removeAllData()
+            for products in jsonProducts{
+                
+                if products.type == "vegetable"{
+                    jsonVegetables.append(products)
+                    id.append(products.id!)
+                    image_url.append(products.img_url!)
+                    type.append(products.type!)
+                    name.append(products.name!)
+                    availability.append(products.availability!)
+                    max_quantity.append(products.max_quantity!)
+                    description.append(products.description!)
+                    unit.append(products.unit!)
+                    price.append(products.price!)
+                    Currency.append(products.currency!)
+                    for locations in products.locations{
+                        location.append(locations!)
+                    }
+                    for farmer in products.farmers{
+                        farmers.append(farmer!)
+                    }
+                    
+                    
+                }
                 
             }
             
-        }
-        return(fruitsImagesUrl,fruitType,fruit_type_price)
+            return(id , image_url , type , name , availability , max_quantity, description , price , unit , Currency , location , farmers )
+    }
+    private func removeAllData(){
+        id.removeAll()
+        image_url.removeAll()
+        type.removeAll()
+        name.removeAll()
+        availability.removeAll()
+        max_quantity.removeAll()
+        description.removeAll()
+        unit.removeAll()
+        price.removeAll()
+        Currency.removeAll()
+        location.removeAll()
+        farmers.removeAll()
+    }
+    func getAllFruitsData() -> (id : [String],image_url : [String], type : [String],name : [String]
+        ,availability : [String], max_quantity : [String], description : [String], price : [String],unit : [String]
+        ,Currency : [String] , location : [String], farmers : [String]){
+            removeAllData()
+            for products in jsonProducts{
+                if products.type == "fruit"{
+                    jsonFruits.append(products)
+                    id.append(products.id!)
+                    image_url.append(products.img_url!)
+                    type.append(products.type!)
+                    name.append(products.name!)
+                    availability.append(products.availability!)
+                    max_quantity.append(products.max_quantity!)
+                    description.append(products.description!)
+                    unit.append(products.unit!)
+                    price.append(products.price!)
+                    Currency.append(products.currency!)
+                    for locations in products.locations{
+                        location.append(locations!)
+                    }
+                    for farmer in products.farmers{
+                        farmers.append(farmer!)
+                    }
+                }
+                
+            }
+            return(id , image_url , type , name , availability , max_quantity, description , price , unit , Currency , location , farmers )
+    }
+    
+    // This method is returns the vegetables data
+    public func getVegetableData() -> ([ProductDataModel.Data]){
+        return (self.jsonVegetables)
+    }
+    // This method is returns the fruits data
+    public func getFruitData()-> ([ProductDataModel.Data]){
+        return (self.jsonFruits)
+        
     }
 }

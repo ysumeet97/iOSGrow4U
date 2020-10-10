@@ -8,21 +8,27 @@
 
 import UIKit
 
-class MasterSplitTableViewController: UITableViewController {
+class MasterSplitTableViewController: UITableViewController,UISplitViewControllerDelegate  {
     let allList = values
     override func viewDidLoad() {
-        super.viewDidLoad()
+   
+             super.viewDidLoad()
+        
+       
+ 
+        
     }
     
-    // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("i am in number of sections")
         return 3
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("dont jugde me")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let list = values[indexPath.row]
         cell.textLabel?.text = list.name

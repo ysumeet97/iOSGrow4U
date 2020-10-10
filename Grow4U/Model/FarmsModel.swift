@@ -7,6 +7,7 @@
 //
 struct FarmsModel: Decodable {
     struct Data: Decodable {
+        let id: String?
         let locations: [String]?
         let type: String?
         let name: String?
@@ -16,7 +17,7 @@ struct FarmsModel: Decodable {
         let currency: String?
         let products: [products_info]?
     }
-    let farm: [Data]
+    let farm: [Data]?
     struct products_info: Decodable {
         let id: String?
         let offered_price: String?

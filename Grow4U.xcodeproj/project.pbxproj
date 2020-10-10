@@ -270,11 +270,12 @@
 				CEEB8310250224BB00DBDB4C /* products.json */,
 				C4FEBF4F24F437E9003A4E50 /* ProfileModel.swift */,
 				C4FEBF5124F4381C003A4E50 /* profile.json */,
-				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
 				CEF39F5C25028188005D9EE5 /* farms.json */,
+				CEAF178825007451008E37C4 /* SearchResultModel.swift */,
 				CEF7C0312503B928007C05E9 /* FarmsModel.swift */,
 				C41972632504BC0B00AE2A18 /* ProductDataModel.swift */,
 				C41972842504C9C000AE2A18 /* ProductsData.json */,
+				C41972632504BC0B00AE2A18 /* ProductModel.swift */,
 				C41972862504CA3C00AE2A18 /* FarmsData.json */,
 			);
 			path = Model;

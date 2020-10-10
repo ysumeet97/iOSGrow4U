@@ -13,6 +13,9 @@ class SearchViewModel {
     private var fileName : (products: String, farmers: String)
     private var jsonProducts =  [SearchResultModel]()
     private var jsonFarmers =  [FarmsModel.Data]()
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4")
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/2")
+
     
     init(fileName: (products: String, farmers: String)) {
         self.fileName.products = fileName.products
@@ -22,19 +25,32 @@ class SearchViewModel {
     
     // This method is used to load the json data from the file
     private func loadJsonData() {
-        guard let productspath = Bundle.main.path(forResource: fileName.products, ofType: "json") else { return }
-        guard let farmerspath = Bundle.main.path(forResource: fileName.farmers, ofType: "json") else { return }
-        let url1 = URL(fileURLWithPath: productspath)
-        let url2 = URL(fileURLWithPath: farmerspath)
-        do {
-            let productData = try Data(contentsOf: url1)
-            let farmersData = try Data(contentsOf: url2)
-            self.jsonProducts = try JSONDecoder().decode(SearchResults.self, from: productData).products
-            self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: farmersData).farm
-        } catch  {
-            print(error)
-        }
+        self.downloadJson(url: prodUrl!, isProduct: true)
+        self.downloadJson(url: farmUrl!, isProduct: false)
     }
+    
+    func downloadJson(url: URL?, isProduct:Bool){
+        guard let downloadURL = url else {
+            return
+        }
+        URLSession.shared.dataTask(with: downloadURL){ data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else  {
+                print("error in data transfer")
+                return
+            }
+            do {
+                if (isProduct) {
+                    self.jsonProducts = try JSONDecoder().decode(SearchResults.self, from: data).products
+                } else {
+                    self.jsonFarmers = try  JSONDecoder().decode(FarmsModel.self, from: data).farm!
+                }
+            } catch {
+                print("decode error: \(error)")
+            }
+        }.resume()
+    }
+    
+    
     
     // This method is returns the product and farm data
     public func getJsonData() -> (products: [SearchResultModel], farms: [FarmsModel.Data]){
