@@ -4,9 +4,9 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preferences" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
         <element name="ProfileData" positionX="-45" positionY="0" width="128" height="135"/>

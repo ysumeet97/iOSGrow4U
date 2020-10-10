@@ -29,23 +29,12 @@ class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropShadow(layer: innerScrollView.layer)
-            self.updateData()
+        self.updateData()
     }
     
     public func updateData() {
         let data = searchRC!.getData()
         self.setupData(name: data.name, price: data.price, information: data.information, img_url: data.img_url, farmers: data.farmers)
-    }
-    
-    public func dropShadow(layer: CALayer, scale: Bool = true) {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 1
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
     public func setSearchVC(searchVC: SearchResultController) {
