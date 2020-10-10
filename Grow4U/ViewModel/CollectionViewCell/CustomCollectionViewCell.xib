@@ -35,9 +35,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zQz-GO-4gS" firstAttribute="top" secondItem="C4Z-V6-TkY" secondAttribute="topMargin" id="Atn-IR-nCI"/>
-                            <constraint firstAttribute="height" constant="39" id="FTT-NW-9do"/>
                             <constraint firstItem="zQz-GO-4gS" firstAttribute="centerX" secondItem="C4Z-V6-TkY" secondAttribute="centerX" id="VJA-gv-cLV"/>
-                            <constraint firstAttribute="width" constant="100" id="wvm-Fq-8hi"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -48,7 +46,9 @@
                 <constraint firstItem="uxl-nY-qKz" firstAttribute="leading" secondItem="gZQ-ET-6lk" secondAttribute="leading" id="CYc-zD-dMH"/>
                 <constraint firstAttribute="bottom" secondItem="C4Z-V6-TkY" secondAttribute="bottom" id="Cjx-f8-KCv"/>
                 <constraint firstItem="C4Z-V6-TkY" firstAttribute="leading" secondItem="uxl-nY-qKz" secondAttribute="leading" id="FyR-HP-BIe"/>
+                <constraint firstItem="C4Z-V6-TkY" firstAttribute="top" secondItem="gZQ-ET-6lk" secondAttribute="top" constant="101" id="MS3-1Q-vgF"/>
                 <constraint firstItem="uxl-nY-qKz" firstAttribute="top" secondItem="gZQ-ET-6lk" secondAttribute="top" id="Pr2-gd-RD1"/>
+                <constraint firstItem="C4Z-V6-TkY" firstAttribute="trailing" secondItem="uxl-nY-qKz" secondAttribute="trailing" id="jbh-cG-uqj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="4C8-ug-KmH"/>
             <connections>

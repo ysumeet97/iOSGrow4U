@@ -37,9 +37,9 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
         let PictureData = NSData(contentsOf: PictureURL as URL) // nil
         let Picture = UIImage(data: PictureData! as Data)
         self.farmImage.image = Picture
+        self.farmImage.contentMode = .scaleToFill
         farmName.text = image_label
         farmName.sizeToFit()
-        
     }
     
 }
