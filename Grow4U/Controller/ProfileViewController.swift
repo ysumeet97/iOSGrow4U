@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AVKit
 
-class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     //MARK: Properties
     @IBOutlet weak var outerScrollView: UIScrollView!
@@ -46,13 +46,55 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address, preferences: profile_data!.preferences)
         // initially load all values
         self.productPreferences = profile_data!.preferences
-        profile_image.image = getSavedImage(named: self.imageName)
+        let saved = getSavedImage(named: self.imageName)
+        if (saved != nil) {
+            profile_image.image = getSavedImage(named: self.imageName)
+        }
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
+        self.setDefaultBorderTextField()
+        //This will work in devices less than ios 13
         UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
+        // dismiss keyboard
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailTextField.delegate = self
+        phoneTextField.delegate = self
+        addressTextField.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    private func setTextFieldBorder(textFieldToSet: UITextField, color: UIColor) {
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: textFieldToSet.frame.height+2, width: textFieldToSet.frame.width, height: 1.0)
+        bottomLine.backgroundColor = color.cgColor
+        textFieldToSet.borderStyle = .none
+        textFieldToSet.layer.addSublayer(bottomLine)
+    }
+    
+    private func setDefaultBorderTextField() {
+        self.setTextFieldBorder(textFieldToSet: firstNameTextField, color: UIColor.white )
+        self.setTextFieldBorder(textFieldToSet: lastNameTextField, color: UIColor.white )
+        self.setTextFieldBorder(textFieldToSet: addressTextField, color: UIColor.white )
+        self.setTextFieldBorder(textFieldToSet: phoneTextField, color: UIColor.white )
+        self.setTextFieldBorder(textFieldToSet: emailTextField, color: UIColor.white )
+    }
+    
+    private func setEditBorderTextField() {
+        self.setTextFieldBorder(textFieldToSet: firstNameTextField, color: UIColor.lightGray )
+        self.setTextFieldBorder(textFieldToSet: lastNameTextField, color: UIColor.lightGray )
+        self.setTextFieldBorder(textFieldToSet: addressTextField, color: UIColor.lightGray )
+        self.setTextFieldBorder(textFieldToSet: phoneTextField, color: UIColor.lightGray )
+        self.setTextFieldBorder(textFieldToSet: emailTextField, color: UIColor.lightGray )
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -149,6 +191,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
             let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
                 outerScrollView.setContentOffset(bottomOffset, animated: true)
         }
+        self.setEditBorderTextField()
         self.setTextFieldProperties(value: true)
         self.setButtonProperties(value: false)
     }
@@ -162,6 +205,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
                             "phone": self.phoneTextField.text!,
                             "address": self.addressTextField.text!]
         profileViewModel?.writeJsonFile(profile: profile_data, preferences: productPreferences)
+        self.setDefaultBorderTextField()
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
         showAlertButtonTapped(saveButton)
@@ -171,6 +215,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         let topOffset = CGPoint(x: 0, y: 0)
         outerScrollView.setContentOffset(topOffset, animated: true)
         self.setTextData(first_name: profile_data!.first_name, last_name: profile_data!.last_name, email: profile_data!.email, phone: profile_data!.phone, address: profile_data!.address, preferences: profile_data!.preferences)
+        self.setDefaultBorderTextField()
         self.setTextFieldProperties(value: false)
         self.setButtonProperties(value: true)
     }
@@ -280,7 +325,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             profile_image.image = image
         }
         
-        if (info[UIImagePickerController.InfoKey.imageURL] as? URL) != nil{
+        //if (info[UIImagePickerController.InfoKey.imageURL] as? URL) != nil{
             let imgName = "/" + imageName
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
             let localPath = documentDirectory?.appending(imgName)
@@ -289,7 +334,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             data.write(toFile: localPath!, atomically: true)
             updatedImageUrl = localPath
             isImageLocal = true
-        }
+       // }
         dismiss(animated: true, completion: nil)
 //        saveAction(nil)
         showAlertButtonTapped(saveButton)
@@ -307,3 +352,5 @@ extension UIApplication {
         }
     }
 }
+
+

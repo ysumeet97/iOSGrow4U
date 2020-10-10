@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
     
     // MARK: -Properties
     @IBOutlet var tableView: UITableView!
@@ -39,6 +39,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         }
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        self.searchBar.endEditing(true)
+    }
+    
     // This function returns the number of rows in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searching {
@@ -64,6 +69,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
         cell.backgroundColor = UIColor.white
+        
+        
         return cell
     }
     
