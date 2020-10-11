@@ -9,4 +9,7 @@ Important: Everyone please make sure that you save your changes on the branch ma
 Important: 
 The test cases are made to be run for the first time the app is being loaded for few instances in ProfileTests to check the validation and initialization of the details and all the other test cases will run as per the given in the Unit Tests.
 
-
+Sumeet Yedula s3797892
+Vaishali Wahi s3808528
+Sainath Reddy Kodiganti s38048787
+Sooraj Aiyanar Vallam Santhosh s3799376
