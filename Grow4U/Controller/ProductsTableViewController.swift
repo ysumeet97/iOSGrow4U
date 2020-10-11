@@ -33,7 +33,8 @@ class ProductsTableViewController: UIViewController {
     let headerReuseId = "TableHeaderViewReuseId"
     
     override func viewDidLoad() {
-          super.viewDidLoad()
+        super.viewDidLoad()
+        tableView.accessibilityIdentifier = "myUniqueTableViewIdentifier"
         if CheckInternet.Connection(){
             if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
         self.activityIndicator.startAnimating()
@@ -231,6 +232,7 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         return UIScreen.main.bounds.height/4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomFarmTableViewCell") as? CustomFarmTableViewCell
             if cell == nil {
@@ -239,6 +241,7 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
             let aCategory = self.categories[indexPath.section]
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
+            cell!.accessibilityIdentifier = "myCell_\(indexPath.row)"
             return cell!
         }
         else{

@@ -8,10 +8,10 @@
 
 import Foundation
 class ProductsViewModel {
-    private var jsonProducts = [ProductDataModel.Data]()
-    private var jsonVegetables =  [ProductDataModel.Data]()
-    private var jsonFruits =  [ProductDataModel.Data]()
-    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
+    var jsonProducts = [ProductDataModel.Data]()
+    var jsonVegetables =  [ProductDataModel.Data]()
+    var jsonFruits =  [ProductDataModel.Data]()
+    final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f82ee18302a837e9578059e")
     
     
     init(){
