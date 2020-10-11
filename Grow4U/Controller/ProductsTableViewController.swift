@@ -70,7 +70,6 @@ class ProductsTableViewController: UIViewController {
             }
         }
         else {
-            self.navBar.isHidden = true
             let bgView = UIView(frame: UIScreen.main.bounds)
             bgView.backgroundColor = UIColor(white: 255, alpha: 1)
             bgView.addToWindow()
