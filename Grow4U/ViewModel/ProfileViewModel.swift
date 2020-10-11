@@ -51,8 +51,8 @@ class ProfileViewModel {
             }
         } else{
             do {
-                let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                let url = documentsDirectory.appendingPathComponent("\(file_name).json")
+                //let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                //let url = documentsDirectory.appendingPathComponent("\(file_name).json")
                 var p: [ProfileData]?
                 fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
                 p = try managedObjectContext.fetch(fetchRequest)
@@ -63,6 +63,7 @@ class ProfileViewModel {
         }
         let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = documentsDirectory.appendingPathComponent("\(file_name).json")
+        print(url)
         setupProfileData(first_name: decoded_data!.first_name!, last_name: decoded_data!.last_name!, email: decoded_data!.email!, phone: decoded_data!.phone!, address: decoded_data!.address!, preferences: decoded_data!.preferences!)
     }
     

@@ -12,7 +12,7 @@ class FarmsViewModel {
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-    private var farms_model = [FarmsModel.Data]()
+    var farms_model = [FarmsModel.Data]()
     private var products = [FarmsModel.products_info]()
     private var offered_products = [[FarmsModel.products_info]]()
     private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
@@ -25,7 +25,7 @@ class FarmsViewModel {
         
     }
     
-    private func downloadJson(url: URL?){
+    func downloadJson(url: URL?){
         guard let downloadURL = url else {
             return
         }

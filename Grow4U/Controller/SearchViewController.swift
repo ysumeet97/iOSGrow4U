@@ -19,7 +19,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     private var downloadedProducts =  (products: [SearchResultModel](), farms: [FarmsModel.Data]())
     private var searchProducts = [SearchResultModel]()
     private var searching = false
-    private var searchViewModel =  SearchViewModel(fileName: (products: "prodcuts", farmers: "farms"))
+    private var searchViewModel =  SearchViewModel()
     private var displayNoResults = false
     private let noImageName = "noResult.jpeg"
     private var noImageView: UIView!

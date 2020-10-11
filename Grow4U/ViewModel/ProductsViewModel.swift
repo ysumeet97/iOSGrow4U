@@ -9,21 +9,21 @@
 import Foundation
 class ProductsViewModel {
     
-    private var jsonProducts = [ProductDataModel.Data]()
-    private var jsonVegetables =  [ProductDataModel.Data]()
-    private var jsonFruits =  [ProductDataModel.Data]()
-    private var id = [String]()
-    private var image_url = [String]()
-    private var type = [String]()
-    private var name = [String]()
-    private var availability = [String]()
-    private var max_quantity = [String]()
-    private var description = [String]()
-    private var price = [String]()
-    private var unit = [String]()
-    private var Currency = [String]()
-    private var location = [String]()
-    private var farmers = [String]()
+    var jsonProducts = [ProductDataModel.Data]()
+    var jsonVegetables =  [ProductDataModel.Data]()
+    var jsonFruits =  [ProductDataModel.Data]()
+    var id = [String]()
+    var image_url = [String]()
+    var type = [String]()
+    var name = [String]()
+    var availability = [String]()
+    var max_quantity = [String]()
+    var description = [String]()
+    var price = [String]()
+    var unit = [String]()
+    var Currency = [String]()
+    var location = [String]()
+    var farmers = [String]()
     private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
     
     
@@ -39,7 +39,7 @@ class ProductsViewModel {
         
     }
     
-    private func downloadJson(url: URL?){
+    func downloadJson(url: URL?){
         guard let downloadURL = url else {
             return
         }
@@ -113,7 +113,7 @@ class ProductsViewModel {
             
             return(id , image_url , type , name , availability , max_quantity, description , price , unit , Currency , location , farmers )
     }
-    private func removeAllData(){
+    func removeAllData(){
         id.removeAll()
         image_url.removeAll()
         type.removeAll()
