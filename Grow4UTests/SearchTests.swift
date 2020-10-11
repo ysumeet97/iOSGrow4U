@@ -25,7 +25,7 @@ class SearchTests: XCTestCase {
     }
     
     func testDownloadJsonData() {
-        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4"), isProduct: true)
+        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f82ee18302a837e9578059e"), isProduct: true)
         do{
             sleep(3)
         }
@@ -33,7 +33,7 @@ class SearchTests: XCTestCase {
     }
     
     func testGetJsonData() {
-        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4"), isProduct: true)
+        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f82ee18302a837e9578059e"), isProduct: true)
         do{
             sleep(3)
         }
@@ -41,7 +41,7 @@ class SearchTests: XCTestCase {
     }
     
     func testDownloadJsonDataException() {
-        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4"), isProduct: true)
+        searchViewModel?.downloadJson(url: URL (string: "https://api.jsonbin.io/b/5f82ee18302a837e9578059e"), isProduct: true)
         XCTAssertFalse((self.searchViewModel?.jsonProducts.indices.contains(0))!)
     }
     

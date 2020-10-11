@@ -34,7 +34,7 @@ class HomeViewController: UITabBarController {
         profileVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController)
         pronavVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController)
         self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
- 
+        self.profileVC!.setProfileModel(profileViewModel: profile_model!)
     
     
     
@@ -59,7 +59,8 @@ class HomeViewController: UITabBarController {
             productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController")
             self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
             
-        }   
+        }
+        
     }
     
     fileprivate var activityIndicator: UIActivityIndicatorView {

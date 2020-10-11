@@ -15,7 +15,7 @@ class FarmsViewModel {
     var farms_model = [FarmsModel.Data]()
     private var products = [FarmsModel.products_info]()
     private var offered_products = [[FarmsModel.products_info]]()
-    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f82f1b0302a837e957807eb")
     
     init(){
         self.loadJsonData()

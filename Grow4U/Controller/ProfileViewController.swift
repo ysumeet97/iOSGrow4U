@@ -112,7 +112,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             //for inserting into rows
-           
+            
         }
     }
     
@@ -143,6 +143,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     
     private func setImage() {
+        self.profile_image.contentMode = .scaleAspectFill
         self.profile_image.layer.cornerRadius = self.profile_image.frame.size.width / 2;
         self.profile_image.clipsToBounds = true
         
@@ -152,6 +153,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         let circleShape = CAShapeLayer()
         circleShape.path = circlePath.cgPath
         myView!.layer.mask = circleShape
+        myView!.contentMode = .scaleAspectFit
     }
     
     private func updateImage(from url: String, imageViewToSet: UIImageView) {
@@ -187,7 +189,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBAction func editProfileData(_ sender: UIButton) {
         if (outerScrollView.contentSize.height > outerScrollView.bounds.size.height) {
             let bottomOffset = CGPoint(x: 0, y: outerScrollView.contentSize.height - outerScrollView.bounds.size.height)
-                outerScrollView.setContentOffset(bottomOffset, animated: true)
+            outerScrollView.setContentOffset(bottomOffset, animated: true)
         }
         self.setEditBorderTextField()
         self.setTextFieldProperties(value: true)
@@ -222,8 +224,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         let saveAction = UIAlertAction(title: "Save", style: .default) {
             [unowned self] action in
             guard let textField = alert.textFields?.first,
-            let pref = textField.text else {
-                return
+                let pref = textField.text else {
+                    return
             }
             self.profile_data!.preferences.append(pref)
             //adding new pref to local var
@@ -250,20 +252,20 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         var alert = UIAlertController(title:"Permission not granted to access media!", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-            // The user has previously granted access to the camera.
-            case .authorized:
-                permitted = true
-            // The user has not yet been asked for camera access.
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { granted in
-                    if granted {
-                       permitted = granted
-                    }
+        // The user has previously granted access to the camera.
+        case .authorized:
+            permitted = true
+        // The user has not yet been asked for camera access.
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    permitted = granted
                 }
-            // The user has previously denied access or the user can't grant access due to restrictions.
-            default:
-                permitted = false
-                self.present(alert, animated: true, completion: nil)
+            }
+        // The user has previously denied access or the user can't grant access due to restrictions.
+        default:
+            permitted = false
+            self.present(alert, animated: true, completion: nil)
         }
         if (permitted) {
             self.editImageButton.setTitleColor(UIColor.white, for: .normal)
@@ -280,7 +282,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
             
             alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
             
-           //action sheet for ipad
+            //action sheet for ipad
             switch UIDevice.current.userInterfaceIdiom {
             case .pad:
                 alert.popoverPresentationController?.sourceView = sender
@@ -324,17 +326,17 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         
         //if (info[UIImagePickerController.InfoKey.imageURL] as? URL) != nil{
-            let imgName = "/" + imageName
-            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-            let localPath = documentDirectory?.appending(imgName)
-            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-            let data = image.pngData()! as NSData
-            data.write(toFile: localPath!, atomically: true)
-            updatedImageUrl = localPath
-            isImageLocal = true
-       // }
+        let imgName = "/" + imageName
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        let localPath = documentDirectory?.appending(imgName)
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let data = image.pngData()! as NSData
+        data.write(toFile: localPath!, atomically: true)
+        updatedImageUrl = localPath
+        isImageLocal = true
+        // }
         dismiss(animated: true, completion: nil)
-//        saveAction(nil)
+        //        saveAction(nil)
         showAlertButtonTapped(saveButton)
     }
 }
