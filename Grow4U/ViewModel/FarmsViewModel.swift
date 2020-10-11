@@ -12,20 +12,20 @@ class FarmsViewModel {
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-    private var farms_model = [FarmsModel.Data]()
-    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/3")
+    var farms_model = [FarmsModel.Data]()
+    private var products = [FarmsModel.products_info]()
+    private var offered_products = [[FarmsModel.products_info]]()
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
     
     init(){
-    
         self.loadJsonData()
-
     }
     private func loadJsonData() {
         self.downloadJson(url: self.farmUrl!)
         
     }
     
-    private func downloadJson(url: URL?){
+    func downloadJson(url: URL?){
         guard let downloadURL = url else {
             return
         }
@@ -55,14 +55,17 @@ class FarmsViewModel {
         return (self.farms_model)
         
     }
-    func getAllFarmsData()->(id:[String],images_Url: [String], farms_name: [String], farms_ratings: [String]){
+    func getAllFarmsData()->(id:[String],images_Url: [String], farms_name: [String], farms_ratings: [String], offered_products: [[FarmsModel.products_info]] ){
         for data in farms_model{
             self.id.append(data.id!)
             self.farmsImagesUrl.append(data.img_url!)
             self.farms_name.append(data.name!)
             self.farms_ratings.append(data.rating!)
-            
+            for productData in data.products! {
+                self.products.append(productData)
+            }
+            self.offered_products.append(self.products)
         }
-        return(id,farmsImagesUrl,farms_name,farms_ratings)
+        return(id,farmsImagesUrl,farms_name,farms_ratings,offered_products)
     }
 }

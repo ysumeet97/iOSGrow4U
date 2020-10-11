@@ -19,7 +19,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     private var downloadedProducts =  (products: [SearchResultModel](), farms: [FarmsModel.Data]())
     private var searchProducts = [SearchResultModel]()
     private var searching = false
-    private var searchViewModel =  SearchViewModel(fileName: (products: "prodcuts", farmers: "farms"))
+    private var searchViewModel =  SearchViewModel()
     private var displayNoResults = false
     private let noImageName = "noResult.jpeg"
     private var noImageView: UIView!
@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         let noImage = UIImage(named: noImageName)
         noImageView = UIImageView(image: noImage!)
         noImageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300
-            )
+        )
         noImageView.isHidden = true
         self.tableView.addSubview(noImageView)
         noImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,8 +84,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         cell.productPrice.text = "Price: " + products[indexPath.row].price + products[indexPath.row].currency + " / " + products[indexPath.row].unit
         setImage(from:products[indexPath.row].img_url ,  imageViewToSet: cell.productImg)
         cell.backgroundColor = UIColor.white
-        
-        
         return cell
     }
     
@@ -131,19 +129,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
                                       completion: nil)
                 }
             }  else {
-                    URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                        if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
-                            let cachedData = CachedURLResponse(response: response, data: data)
-                            cache.storeCachedResponse(cachedData, for: request)
-                            DispatchQueue.main.async {
-                                UIView.transition(with: imageViewToSet, duration: 0.2,
-                                options: [.transitionCrossDissolve],
-                                animations: { imageViewToSet.image = image
-                                },
-                                completion: nil)
-                            }
+                URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                    if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
+                        let cachedData = CachedURLResponse(response: response, data: data)
+                        cache.storeCachedResponse(cachedData, for: request)
+                        DispatchQueue.main.async {
+                            UIView.transition(with: imageViewToSet, duration: 0.2,
+                                              options: [.transitionCrossDissolve],
+                                              animations: { imageViewToSet.image = image
+                            },
+                                              completion: nil)
                         }
-                    }).resume()
+                    }
+                }).resume()
             }
         }
     }
