@@ -16,6 +16,8 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var farmImage: UIImageView!
     var farmID:String?
     var cellImageName:String?
+    @IBOutlet weak var Name: UILabel!
+    @IBOutlet weak var view: UIView!
     
     class var CustomCell : CustomFarmCollectionViewCell {
         
@@ -26,11 +28,15 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
+        farmName.textColor = .white
+        Name.textColor = .white
+        
         
     }
+    
     //update the cell
-    func updateCellWithImage(image_name:String, image_label:String, id: String) {
+    func updateCellWithImage(image_name:String, image_label:String, id: String,name:String) {
         farmID = id
         self.cellImageName = image_name
         let PictureURL = URL(string: image_name)!
@@ -38,8 +44,29 @@ class CustomFarmCollectionViewCell: UICollectionViewCell {
         let Picture = UIImage(data: PictureData! as Data)
         self.farmImage.image = Picture
         self.farmImage.contentMode = .scaleToFill
-        farmName.text = image_label
-        farmName.sizeToFit()
+        self.farmImage.translatesAutoresizingMaskIntoConstraints = false
+        self.farmImage.layer.cornerRadius = 30.0
+        self.farmImage.clipsToBounds = true
+       // view.clipsToBounds = true
+        view.layer.cornerRadius = 30
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+
+        farmName.text = "Rating: " + image_label + "/5"
+        farmName.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.015)
+        Name.font =  UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
+        self.Name.text = name.capitalized + " Farm"
     }
     
+}
+extension UIView {
+    func roundedCorners(top: Bool){
+        let corners:UIRectCorner = (top ? [.topLeft , .topRight] : [.bottomRight , .bottomLeft])
+        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: corners,
+                                     cornerRadii:CGSize(width:30.0, height:30.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPAth1.cgPath
+        self.layer.mask = maskLayer1
+    }
 }

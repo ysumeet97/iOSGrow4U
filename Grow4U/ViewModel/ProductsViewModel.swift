@@ -12,18 +12,7 @@ class ProductsViewModel {
     private var jsonProducts = [ProductDataModel.Data]()
     private var jsonVegetables =  [ProductDataModel.Data]()
     private var jsonFruits =  [ProductDataModel.Data]()
-    private var id = [String]()
-    private var image_url = [String]()
-    private var type = [String]()
-    private var name = [String]()
-    private var availability = [String]()
-    private var max_quantity = [String]()
-    private var description = [String]()
-    private var price = [String]()
-    private var unit = [String]()
-    private var Currency = [String]()
-    private var location = [String]()
-    private var farmers = [String]()
+ 
     private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
 
     
@@ -51,7 +40,8 @@ class ProductsViewModel {
             do {
                 
                  self.jsonProducts = try JSONDecoder().decode(ProductDataModel.self, from: data).products!
-                
+                self.setAllFruitsData()
+                self.setAllVegetableData()
             } catch {
                 print("decode error: \(error)")
             }
@@ -82,81 +72,32 @@ class ProductsViewModel {
         return num
     }
     
-    func getAllVegetableData() -> (id : [String],image_url : [String], type : [String],name : [String]
-        ,availability : [String], max_quantity : [String], description : [String], price : [String],unit : [String]
-        ,Currency : [String] , location : [String], farmers : [String]){
-            removeAllData()
+    func setAllVegetableData() -> (){
+           
             for products in jsonProducts{
                 
                 if products.type == "vegetable"{
                     jsonVegetables.append(products)
-                    id.append(products.id!)
-                    image_url.append(products.img_url!)
-                    type.append(products.type!)
-                    name.append(products.name!)
-                    availability.append(products.availability!)
-                    max_quantity.append(products.max_quantity!)
-                    description.append(products.description!)
-                    unit.append(products.unit!)
-                    price.append(products.price!)
-                    Currency.append(products.currency!)
-                    for locations in products.locations{
-                        location.append(locations!)
-                    }
-                    for farmer in products.farmers{
-                        farmers.append(farmer!)
-                    }
-                    
-                    
+     
                 }
                 
             }
             
-            return(id , image_url , type , name , availability , max_quantity, description , price , unit , Currency , location , farmers )
+          
     }
-    private func removeAllData(){
-        id.removeAll()
-        image_url.removeAll()
-        type.removeAll()
-        name.removeAll()
-        availability.removeAll()
-        max_quantity.removeAll()
-        description.removeAll()
-        unit.removeAll()
-        price.removeAll()
-        Currency.removeAll()
-        location.removeAll()
-        farmers.removeAll()
-    }
-    func getAllFruitsData() -> (id : [String],image_url : [String], type : [String],name : [String]
-        ,availability : [String], max_quantity : [String], description : [String], price : [String],unit : [String]
-        ,Currency : [String] , location : [String], farmers : [String]){
-            removeAllData()
+  
+    func setAllFruitsData() -> (){
+        
             for products in jsonProducts{
                 if products.type == "fruit"{
                     jsonFruits.append(products)
-                    id.append(products.id!)
-                    image_url.append(products.img_url!)
-                    type.append(products.type!)
-                    name.append(products.name!)
-                    availability.append(products.availability!)
-                    max_quantity.append(products.max_quantity!)
-                    description.append(products.description!)
-                    unit.append(products.unit!)
-                    price.append(products.price!)
-                    Currency.append(products.currency!)
-                    for locations in products.locations{
-                        location.append(locations!)
-                    }
-                    for farmer in products.farmers{
-                        farmers.append(farmer!)
-                    }
-                }
+                    
                 
             }
-            return(id , image_url , type , name , availability , max_quantity, description , price , unit , Currency , location , farmers )
+        
+        }
+        
     }
-    
     // This method is returns the vegetables data
     public func getVegetableData() -> ([ProductDataModel.Data]){
         return (self.jsonVegetables)

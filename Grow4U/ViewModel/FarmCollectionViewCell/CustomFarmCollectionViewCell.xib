@@ -19,47 +19,62 @@
                 <rect key="frame" x="0.0" y="0.0" width="279" height="298"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ada-i8-TCM">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ada-i8-TCM">
                         <rect key="frame" x="0.0" y="0.0" width="279" height="298"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Ada-i8-TCM" secondAttribute="height" multiplier="279:298" id="TOO-fM-tJO"/>
-                        </constraints>
                     </imageView>
-                    <view clipsSubviews="YES" alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNu-Ps-a6p">
-                        <rect key="frame" x="0.0" y="228" width="276" height="70"/>
+                    <view clipsSubviews="YES" alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNu-Ps-a6p">
+                        <rect key="frame" x="0.0" y="227.5" width="279" height="70.5"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6O-FY-eyY">
+                                <rect key="frame" x="8" y="0.0" width="279" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAX-bv-jhl">
-                                <rect key="frame" x="120" y="7" width="36.5" height="21"/>
+                                <rect key="frame" x="8" y="29" width="279" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SAX-bv-jhl" firstAttribute="bottom" secondItem="gNu-Ps-a6p" secondAttribute="bottomMargin" id="TtA-EH-Wr0"/>
-                            <constraint firstAttribute="width" secondItem="gNu-Ps-a6p" secondAttribute="height" multiplier="138:35" id="cNG-vj-EYZ"/>
-                            <constraint firstItem="SAX-bv-jhl" firstAttribute="centerX" secondItem="gNu-Ps-a6p" secondAttribute="centerX" id="tnF-I5-zMX"/>
+                            <constraint firstItem="B6O-FY-eyY" firstAttribute="top" secondItem="gNu-Ps-a6p" secondAttribute="top" id="4JX-3Z-FLB"/>
+                            <constraint firstAttribute="bottom" secondItem="SAX-bv-jhl" secondAttribute="bottom" constant="20.5" id="E3r-MR-XzM"/>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="width" secondItem="gNu-Ps-a6p" secondAttribute="width" id="IQP-2S-KyW"/>
+                            <constraint firstAttribute="bottom" secondItem="B6O-FY-eyY" secondAttribute="bottom" constant="50" id="Uck-vd-fnR"/>
+                            <constraint firstItem="B6O-FY-eyY" firstAttribute="width" secondItem="gNu-Ps-a6p" secondAttribute="width" id="coe-3F-0GT"/>
+                            <constraint firstItem="B6O-FY-eyY" firstAttribute="leading" secondItem="gNu-Ps-a6p" secondAttribute="leading" constant="8" id="gYc-bG-RGB"/>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="leading" secondItem="gNu-Ps-a6p" secondAttribute="leading" constant="8" id="hpG-1M-OaK"/>
+                            <constraint firstItem="SAX-bv-jhl" firstAttribute="top" secondItem="gNu-Ps-a6p" secondAttribute="top" constant="29" id="pbd-lK-XVe"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="gNu-Ps-a6p" secondAttribute="bottom" id="2gS-i2-830"/>
-                <constraint firstItem="gNu-Ps-a6p" firstAttribute="leading" secondItem="Ada-i8-TCM" secondAttribute="leading" id="R2E-AH-ci2"/>
-                <constraint firstAttribute="bottom" secondItem="Ada-i8-TCM" secondAttribute="bottom" id="TLn-19-zqn"/>
-                <constraint firstItem="Ada-i8-TCM" firstAttribute="top" secondItem="lfq-jL-SN7" secondAttribute="top" id="eAB-6T-Lx6"/>
-                <constraint firstAttribute="trailing" secondItem="gNu-Ps-a6p" secondAttribute="trailing" constant="3" id="gq5-3t-yDc"/>
-                <constraint firstItem="Ada-i8-TCM" firstAttribute="leading" secondItem="lfq-jL-SN7" secondAttribute="leading" id="rAC-Oe-Twu"/>
-                <constraint firstAttribute="trailing" secondItem="Ada-i8-TCM" secondAttribute="trailing" id="vRx-BA-Ce8"/>
+                <constraint firstItem="Ada-i8-TCM" firstAttribute="height" secondItem="lfq-jL-SN7" secondAttribute="height" id="4jL-mA-34E"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="bottom" secondItem="Ada-i8-TCM" secondAttribute="bottom" id="9VE-pl-mWy"/>
+                <constraint firstItem="Ada-i8-TCM" firstAttribute="width" secondItem="lfq-jL-SN7" secondAttribute="width" id="HXo-12-0Bo"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="leading" secondItem="lfq-jL-SN7" secondAttribute="leading" id="JXm-zW-Xfm"/>
+                <constraint firstAttribute="trailing" secondItem="gNu-Ps-a6p" secondAttribute="trailing" id="Jar-fU-d4T"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="bottom" secondItem="Ada-i8-TCM" secondAttribute="bottom" id="Jme-RI-CwI"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="trailing" secondItem="Ada-i8-TCM" secondAttribute="trailing" id="NHr-0o-9WB"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="leading" secondItem="Ada-i8-TCM" secondAttribute="leading" id="Z3q-xW-xNC"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="width" secondItem="Ada-i8-TCM" secondAttribute="width" id="a7u-K5-061"/>
+                <constraint firstItem="gNu-Ps-a6p" firstAttribute="width" secondItem="JDL-Lr-4b9" secondAttribute="width" id="agV-SM-B3G"/>
+                <constraint firstAttribute="bottom" secondItem="gNu-Ps-a6p" secondAttribute="bottom" id="bWl-7v-ILc"/>
+                <constraint firstItem="Ada-i8-TCM" firstAttribute="width" secondItem="JDL-Lr-4b9" secondAttribute="width" id="izT-7C-u9e"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="JDL-Lr-4b9"/>
             <size key="customSize" width="276" height="298"/>
             <connections>
+                <outlet property="Name" destination="B6O-FY-eyY" id="Uyv-XE-Fl0"/>
                 <outlet property="farmImage" destination="Ada-i8-TCM" id="N2e-8y-aVc"/>
                 <outlet property="farmName" destination="SAX-bv-jhl" id="giS-i8-Ca7"/>
+                <outlet property="view" destination="gNu-Ps-a6p" id="flq-L8-twy"/>
             </connections>
-            <point key="canvasLocation" x="277.60000000000002" y="57.571214392803604"/>
+            <point key="canvasLocation" x="277.536231884058" y="56.919642857142854"/>
         </collectionViewCell>
     </objects>
 </document>

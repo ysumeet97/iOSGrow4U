@@ -67,8 +67,9 @@ class CustomFarmTableViewCell:UITableViewCell, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as? CustomFarmCollectionViewCell
         let label = self.aCategory?.prodDescription[indexPath.item]
         let id = self.aCategory?.prod_ID[indexPath.item]
+        let name = self.aCategory?.name[indexPath.item]
         if let categoryImageName = self.aCategory?.prodItems[indexPath.item] {
-            cell?.updateCellWithImage(image_name: categoryImageName, image_label:label!, id: id! )
+            cell?.updateCellWithImage(image_name: categoryImageName, image_label:label!, id: id!,name:name! )
         }
         return cell!
     }

@@ -30,34 +30,38 @@ class ProductsTableViewController: UIViewController {
     var farmsData: [FarmsModel.Data]?
     let tableView = UITableView()
     let headerReuseId = "TableHeaderViewReuseId"
-    let navBar = UINavigationBar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
-            print("here")
+        self.activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
         
-        let products_data = ProductsTableViewController.products_model.getAllVegetableData()
-        let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
-        let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
-            print("fruit count", ProductsTableViewController.products_model.getFruitsCount())
-        self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
+        let products_data = ProductsTableViewController.products_model.getVegetableData()
+            let fruits_data = ProductsTableViewController.products_model.getFruitData()
+        let farms_data = ProductsTableViewController.farms_model.getFarmsData()
+           
+        self.setFarmsData(data:farms_data)
+        self.setFruitData(data: fruits_data)
+        self.setVegetableData(data: products_data)
         self.view.backgroundColor = .white
 
     
         self.setupTableView()
+            
             }
+            self.activityIndicator.stopAnimating()
             
         }
         else{
-            let products_data = ProductsTableViewController.products_model.getAllVegetableData()
-            let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
-            let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
             
-            self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-            self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
+            let products_data = ProductsTableViewController.products_model.getVegetableData()
+            let fruits_data = ProductsTableViewController.products_model.getFruitData()
+            let farms_data = ProductsTableViewController.farms_model.getFarmsData()
+            
+            self.setFarmsData(data: farms_data)
+            self.setFruitData(data: fruits_data)
+            self.setVegetableData(data: products_data)
             self.view.backgroundColor = .white
             
             
@@ -66,22 +70,34 @@ class ProductsTableViewController: UIViewController {
     
     }
     
-    private func setFarmsData(id:[String],images_Url: [String], name: [String], farm_ratings: [String]) {
-        self.FarmsID = id
-        self.farmsImagesUrl = images_Url
-        self.farms_name = name
-        self.farms_ratings = farm_ratings
+    private func setFarmsData(data:[FarmsModel.Data]) {
+        for farm in data{
+            self.FarmsID.append(farm.id!)
+            self.farmsImagesUrl.append(farm.img_url!)
+            self.farms_name.append(farm.name!)
+            self.farms_ratings.append(farm.rating!)
+        }
     }
-    
-    private func setProductsData(vegetable_ID:[String],fruits_ID:[String],images_Url: [String], name: [String], type_price: [String],fruits_images_Url: [String], fruits_name: [String], fruits_type_price : [String]) {
-        self.vegetablesID = vegetable_ID
-        self.fruitsID = fruits_ID
-        self.fruitsImagesUrl = fruits_images_Url
-        self.fruitsType = fruits_name // here type means the fruit name
-        self.fruits_type_price = fruits_type_price
-        self.imagesUrl = images_Url
-        self.type = name // here type means the vegetable name
-        self.type_price = type_price
+    private func setFruitData(data:[ProductDataModel.Data]){
+        for fruit in data{
+            self.fruitsID.append(fruit.id!)
+            self.fruitsImagesUrl.append(fruit.img_url!)
+            self.fruitsType.append(fruit.name!) // here type means the fruit name
+            self.fruits_type_price.append(fruit.price!)
+        }
+        
+    }
+    private func setVegetableData(data:[ProductDataModel.Data]) {
+        for veg in data{
+          
+            self.vegetablesID.append(veg.id!)
+            
+            self.imagesUrl.append(veg.img_url!)
+            self.type.append(veg.name!)  // here type means the vegetable name
+            self.type_price.append(veg.price!)
+        }
+        
+       
 
     }
     
@@ -91,7 +107,7 @@ class ProductsTableViewController: UIViewController {
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 44.0).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10.0).isActive = true
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -222,7 +238,7 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         if section == 0 {
             return 0
         }
-        return 30
+        return UIScreen.main.bounds.height * 0.06
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -235,6 +251,19 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         view?.headerLabel.text = aCategory.type
         return view
     }
+    
+    fileprivate var activityIndicator: UIActivityIndicatorView {
+        get {
+            let activityIndicator = UIActivityIndicatorView(style: .gray)
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.center = CGPoint(x:UIScreen.main.bounds.width/2,
+                                               y: UIScreen.main.bounds.height/2)
+            activityIndicator.stopAnimating()
+            self.view.addSubview(activityIndicator)
+            return activityIndicator
+        }
+    }
+
     
 }
 extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
