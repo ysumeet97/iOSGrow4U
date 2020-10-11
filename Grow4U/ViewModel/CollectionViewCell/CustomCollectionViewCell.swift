@@ -22,6 +22,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         // Initialization code
         self.backgroundColor = UIColor.red
         
+        
     }
     // update the cell
     
@@ -33,7 +34,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let Picture = UIImage(data: PictureData! as Data)
         self.cellImageView.image = Picture
         self.cellImageView.contentMode = .scaleToFill
-        
+       
         let price = "$"+image_price+" /kg"
         var pos = 0
         for p in price{
@@ -43,8 +44,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
             }
             pos = pos + 1
         }
+        
         label.text = imageOf
-        label2.font = UIFont(name: "HelveticaNeue-Bold", size: 11)
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
+        label2.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.015)
         label2.setAttributedTextWithSubscripts(text: price, indicesOfSubscripts: [pos,pos+1,pos+2])
     
         }

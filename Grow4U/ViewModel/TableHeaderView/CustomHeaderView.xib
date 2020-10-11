@@ -28,6 +28,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fCV-Ab-G9a" firstAttribute="height" secondItem="5mr-PJ-r1I" secondAttribute="height" id="do1-gQ-ngn"/>
                 <constraint firstItem="fCV-Ab-G9a" firstAttribute="top" secondItem="FwS-gH-RaE" secondAttribute="top" constant="4" id="rlp-UJ-jMc"/>
                 <constraint firstItem="fCV-Ab-G9a" firstAttribute="leading" secondItem="FwS-gH-RaE" secondAttribute="leading" constant="10" id="yVx-xU-WqR"/>
             </constraints>

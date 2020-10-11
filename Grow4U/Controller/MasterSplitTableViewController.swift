@@ -11,7 +11,14 @@ import UIKit
 class MasterSplitTableViewController: UITableViewController,UISplitViewControllerDelegate  {
     let allList = values
     override func viewDidLoad() {
-        super.viewDidLoad()
+
+             super.viewDidLoad()
+        
+        self.splitViewController?.preferredPrimaryColumnWidthFraction = 0.3
+        self.splitViewController?.maximumPrimaryColumnWidth = 0.3 * UIScreen.main.bounds.width
+ 
+        
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
