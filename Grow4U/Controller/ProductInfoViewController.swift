@@ -20,7 +20,6 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var information: UITextView!
     @IBOutlet weak var farmersInfo: UITextView!
-    
     @IBOutlet weak var l_product_image: UIImageView!
     @IBOutlet weak var l_name: UILabel!
     @IBOutlet weak var l_price: UILabel!
@@ -29,23 +28,12 @@ class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropShadow(layer: innerScrollView.layer)
-            self.updateData()
+        self.updateData()
     }
     
     public func updateData() {
         let data = searchRC!.getData()
         self.setupData(name: data.name, price: data.price, information: data.information, img_url: data.img_url, farmers: data.farmers)
-    }
-    
-    public func dropShadow(layer: CALayer, scale: Bool = true) {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 1
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
     public func setSearchVC(searchVC: SearchResultController) {

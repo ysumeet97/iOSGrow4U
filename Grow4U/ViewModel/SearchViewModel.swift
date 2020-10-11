@@ -10,21 +10,18 @@ import Foundation
 
 class SearchViewModel {
     private var searcResultModel:  SearchResultModel?
-    private var fileName : (products: String, farmers: String)
-    private var jsonProducts =  [SearchResultModel]()
-    private var jsonFarmers =  [FarmsModel.Data]()
-    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/4")
-    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/2")
-
+    var jsonProducts =  [SearchResultModel]()
+    var jsonFarmers =  [FarmsModel.Data]()
+    private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f82ee18302a837e9578059e")
+    private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f82f1b0302a837e957807eb")
     
-    init(fileName: (products: String, farmers: String)) {
-        self.fileName.products = fileName.products
-        self.fileName.farmers = fileName.farmers
+    
+    init() {
         loadJsonData()
     }
     
     // This method is used to load the json data from the file
-    private func loadJsonData() {
+    func loadJsonData() {
         self.downloadJson(url: prodUrl!, isProduct: true)
         self.downloadJson(url: farmUrl!, isProduct: false)
     }
@@ -47,7 +44,7 @@ class SearchViewModel {
             } catch {
                 print("decode error: \(error)")
             }
-        }.resume()
+            }.resume()
     }
     
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
     
     // MARK: -Properties
     @IBOutlet var tableView: UITableView!
@@ -19,14 +19,29 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     private var downloadedProducts =  (products: [SearchResultModel](), farms: [FarmsModel.Data]())
     private var searchProducts = [SearchResultModel]()
     private var searching = false
-    private var searchViewModel =  SearchViewModel(fileName: (products: "prodcuts", farmers: "farms"))
+    private var searchViewModel =  SearchViewModel()
+    private var displayNoResults = false
+    private let noImageName = "noResult.jpeg"
+    private var noImageView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         tableView.tableFooterView = UIView()
         searchBar.backgroundImage = UIImage()
+        let noImage = UIImage(named: noImageName)
+        noImageView = UIImageView(image: noImage!)
+        noImageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300
+        )
+        noImageView.isHidden = true
+        self.tableView.addSubview(noImageView)
+        noImageView.translatesAutoresizingMaskIntoConstraints = false
+        noImageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        noImageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        noImageView.centerXAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerXAnchor).isActive = true
+        noImageView.centerYAnchor.constraint(lessThanOrEqualTo: noImageView.superview!.centerYAnchor).isActive = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.searchBar.endEditing(true)
     }
     
     // This function is used to load the data of products
@@ -37,6 +52,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        self.searchBar.endEditing(true)
     }
     
     // This function returns the number of rows in table
@@ -109,19 +129,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
                                       completion: nil)
                 }
             }  else {
-                    URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                        if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
-                            let cachedData = CachedURLResponse(response: response, data: data)
-                            cache.storeCachedResponse(cachedData, for: request)
-                            DispatchQueue.main.async {
-                                UIView.transition(with: imageViewToSet, duration: 0.2,
-                                options: [.transitionCrossDissolve],
-                                animations: { imageViewToSet.image = image
-                                },
-                                completion: nil)
-                            }
+                URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                    if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
+                        let cachedData = CachedURLResponse(response: response, data: data)
+                        cache.storeCachedResponse(cachedData, for: request)
+                        DispatchQueue.main.async {
+                            UIView.transition(with: imageViewToSet, duration: 0.2,
+                                              options: [.transitionCrossDissolve],
+                                              animations: { imageViewToSet.image = image
+                            },
+                                              completion: nil)
                         }
-                    }).resume()
+                    }
+                }).resume()
             }
         }
     }
@@ -131,9 +151,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     func searchBar (_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             searchProducts = products.filter({$0.name.lowercased().contains(searchText.lowercased())})
+            if (!displayNoResults &&  searchProducts.count<1) {
+                displayNoResults = true
+                self.noImageView.isHidden = false
+            } else if (displayNoResults && searchProducts.count>0){
+                displayNoResults = false
+                self.noImageView.isHidden = true
+            }
             searching = true
         } else {
             searching = false
+            if (displayNoResults){
+                displayNoResults = false
+                self.noImageView.isHidden = true
+            }
         }
         tableView.reloadData()
     }
@@ -142,6 +173,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UISearchBar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
+        if (displayNoResults){
+            displayNoResults = false
+            self.noImageView.isHidden = true
+        }
         tableView.reloadData()
     }
     
