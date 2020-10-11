@@ -20,7 +20,6 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var information: UITextView!
     @IBOutlet weak var farmersInfo: UITextView!
-    
     @IBOutlet weak var l_product_image: UIImageView!
     @IBOutlet weak var l_name: UILabel!
     @IBOutlet weak var l_price: UILabel!
@@ -67,11 +66,31 @@ class ProductInfoViewController: UIViewController {
     
     func setImage(from url: String, imageViewToSet: UIImageView) {
         guard let imageURL = URL(string: url) else { return }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                imageViewToSet.image = image
+        let cache = URLCache.shared
+        let request = URLRequest(url: imageURL)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    UIView.transition(with: imageViewToSet, duration: 0.2,
+                                      options: [.transitionCrossDissolve],
+                                      animations: { imageViewToSet.image = image
+                    },
+                                      completion: nil)
+                }
+            }  else {
+                URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                    if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
+                        let cachedData = CachedURLResponse(response: response, data: data)
+                        cache.storeCachedResponse(cachedData, for: request)
+                        DispatchQueue.main.async {
+                            UIView.transition(with: imageViewToSet, duration: 0.2,
+                                              options: [.transitionCrossDissolve],
+                                              animations: { imageViewToSet.image = image
+                            },
+                                              completion: nil)
+                        }
+                    }
+                }).resume()
             }
         }
     }

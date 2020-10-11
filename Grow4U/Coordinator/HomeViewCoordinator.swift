@@ -21,19 +21,5 @@ class HomeViewCoordinator : MainCoordinator {
     func start() {
         window.rootViewController = tabController
         window.makeKeyAndVisible()
-        //showMain()
     }
-    
-//    private func showMain() {
-//
-//        // call the rest api to get the json file and set it in file_name
-//        //file_name = "profile"
-//        //  profile_model.loadJsonFile(file_name: file_name!)
-//    }
-//
-//    func getProfileViewModel() -> ProfileViewModel {
-//        return profile_model!
-//    }
-    
-   
 }

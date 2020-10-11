@@ -22,7 +22,7 @@ class CustomTableViewCell:UITableViewCell, UICollectionViewDataSource, UICollect
         //TODO: need to setup collection view flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/3)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.height/4)
         flowLayout.minimumLineSpacing = 2.0
         flowLayout.minimumInteritemSpacing = 5.0
         self.myCollectionView.collectionViewLayout = flowLayout
@@ -63,11 +63,11 @@ class CustomTableViewCell:UITableViewCell, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as? CustomCollectionViewCell
-        //print(self.aCategory?.prodItems[0] as Any)
         let id = self.aCategory?.prod_ID[indexPath.item]
         let label = self.aCategory?.prodDescription[indexPath.item]
+        let name = self.aCategory?.name[indexPath.item]
         if let categoryImageName = self.aCategory?.prodItems[indexPath.item] {
-            cell?.updateCellWithImage(image_name: categoryImageName, image_label:label!, id: id! )
+            cell?.updateCellWithImage(image_name: categoryImageName, image_price:label!, id: id!,imageOf: name!)
         }
         return cell!
     }

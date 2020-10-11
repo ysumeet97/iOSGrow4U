@@ -22,7 +22,8 @@ class ProductsTableViewController: UIViewController {
     private var farms_ratings = [String]()
     private var file_name: String?
     private var farms_file_name: String?
-    static let products_model = ProductsViewModel() // public because to be accesed by diff classes
+    static let products_model = ProductsViewModel()
+    // public because to be accesed by diff classes
     static let farms_model = FarmsViewModel()
     // public because to be accesed by diff classes
     var categories = [ImageCategory]()
@@ -30,59 +31,83 @@ class ProductsTableViewController: UIViewController {
     var farmsData: [FarmsModel.Data]?
     let tableView = UITableView()
     let headerReuseId = "TableHeaderViewReuseId"
-    let navBar = UINavigationBar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     
     override func viewDidLoad() {
-        
-        if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
-            print("here")
+          super.viewDidLoad()
+        if CheckInternet.Connection(){
+            if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
+        self.activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
         
-        let products_data = ProductsTableViewController.products_model.getAllVegetableData()
-        let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
-        let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
-            print("fruit count", ProductsTableViewController.products_model.getFruitsCount())
-        self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-        self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
+        let products_data = ProductsTableViewController.products_model.getVegetableData()
+            let fruits_data = ProductsTableViewController.products_model.getFruitData()
+        let farms_data = ProductsTableViewController.farms_model.getFarmsData()
+           
+        self.setFarmsData(data:farms_data)
+        self.setFruitData(data: fruits_data)
+        self.setVegetableData(data: products_data)
         self.view.backgroundColor = .white
 
     
         self.setupTableView()
+            
             }
+            self.activityIndicator.stopAnimating()
             
         }
-        else{
-            let products_data = ProductsTableViewController.products_model.getAllVegetableData()
-            let fruits_data = ProductsTableViewController.products_model.getAllFruitsData()
-            let farms_data = ProductsTableViewController.farms_model.getAllFarmsData()
+            else{
+               let products_data = ProductsTableViewController.products_model.getVegetableData()
+            let fruits_data = ProductsTableViewController.products_model.getFruitData()
+            let farms_data = ProductsTableViewController.farms_model.getFarmsData()
             
-            self.setFarmsData(id:farms_data.id, images_Url: farms_data.images_Url, name: farms_data.farms_name, farm_ratings: farms_data.farms_ratings)
-            self.setProductsData(vegetable_ID:products_data.id,fruits_ID:fruits_data.id,images_Url: products_data.image_url, name: products_data.name, type_price: products_data.price, fruits_images_Url: fruits_data.image_url, fruits_name: fruits_data.name, fruits_type_price : fruits_data.price)
+            self.setFarmsData(data: farms_data)
+            self.setFruitData(data: fruits_data)
+            self.setVegetableData(data: products_data)
             self.view.backgroundColor = .white
             
             
             self.setupTableView()
+            }
         }
-    
+        else {
+            self.navBar.isHidden = true
+            let bgView = UIView(frame: UIScreen.main.bounds)
+            bgView.backgroundColor = UIColor(white: 255, alpha: 1)
+            bgView.addToWindow()
+            view.addSubview(bgView)
+            self.Alert(Message: "Your Device is not connected with internet. please check the connectivity and try again!")
+        }
+        
+        
     }
     
-    private func setFarmsData(id:[String],images_Url: [String], name: [String], farm_ratings: [String]) {
-        self.FarmsID = id
-        self.farmsImagesUrl = images_Url
-        self.farms_name = name
-        self.farms_ratings = farm_ratings
+    private func setFarmsData(data:[FarmsModel.Data]) {
+        for farm in data{
+            self.FarmsID.append(farm.id!)
+            self.farmsImagesUrl.append(farm.img_url!)
+            self.farms_name.append(farm.name!)
+            self.farms_ratings.append(farm.rating!)
+        }
     }
-    
-    private func setProductsData(vegetable_ID:[String],fruits_ID:[String],images_Url: [String], name: [String], type_price: [String],fruits_images_Url: [String], fruits_name: [String], fruits_type_price : [String]) {
-        self.vegetablesID = vegetable_ID
-        self.fruitsID = fruits_ID
-        self.fruitsImagesUrl = fruits_images_Url
-        self.fruitsType = fruits_name // here type means the fruit name
-        self.fruits_type_price = fruits_type_price
-        self.imagesUrl = images_Url
-        self.type = name // here type means the vegetable name
-        self.type_price = type_price
 
+    private func setFruitData(data:[ProductDataModel.Data]){
+        for fruit in data{
+            self.fruitsID.append(fruit.id!)
+            self.fruitsImagesUrl.append(fruit.img_url!)
+            self.fruitsType.append(fruit.name!) // here type means the fruit name
+            self.fruits_type_price.append(fruit.price!)
+        }
+        
+    }
+    private func setVegetableData(data:[ProductDataModel.Data]) {
+        for veg in data{
+          
+            self.vegetablesID.append(veg.id!)
+            
+            self.imagesUrl.append(veg.img_url!)
+            self.type.append(veg.name!)  // here type means the vegetable name
+            self.type_price.append(veg.price!)
+        }
     }
     
     func setupTableView() {
@@ -91,7 +116,7 @@ class ProductsTableViewController: UIViewController {
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 44.0).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10.0).isActive = true
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -144,13 +169,50 @@ class ProductsTableViewController: UIViewController {
     
     func setImage(from url: String, imageViewToSet: UIImageView) {
         guard let imageURL = URL(string: url) else { return }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                imageViewToSet.image = image
+        let cache = URLCache.shared
+        let request = URLRequest(url: imageURL)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    UIView.transition(with: imageViewToSet, duration: 0.2,
+                                      options: [.transitionCrossDissolve],
+                                      animations: { imageViewToSet.image = image
+                    },
+                                      completion: nil)
+                }
+            }  else {
+                URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                    if let data = data, let response = response, ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300, let image = UIImage(data: data) {
+                        let cachedData = CachedURLResponse(response: response, data: data)
+                        cache.storeCachedResponse(cachedData, for: request)
+                        DispatchQueue.main.async {
+                            UIView.transition(with: imageViewToSet, duration: 0.2,
+                                              options: [.transitionCrossDissolve],
+                                              animations: { imageViewToSet.image = image
+                            },
+                                              completion: nil)
+                        }
+                    }
+                }).resume()
             }
         }
+    }
+    
+    func Alert (Message: String) {
+        let alert = UIAlertController(title: "Oops!", message: Message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Exit", style: .destructive, handler: { action in
+            switch action.style{
+            case .default:
+                return
+            case .cancel:
+                return
+            case .destructive:
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    exit(0)
+                }
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -165,21 +227,16 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 0){
-            return UIScreen.main.bounds.width/2
+            return UIScreen.main.bounds.height/3
         }
-        return UIScreen.main.bounds.width/3
+        return UIScreen.main.bounds.height/4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomFarmTableViewCell") as? CustomFarmTableViewCell
-            
             if cell == nil {
-                
                 cell = CustomFarmTableViewCell.customCell
             }
-            
-            
             let aCategory = self.categories[indexPath.section]
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
@@ -187,11 +244,9 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         }
         else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell
-            
             if cell == nil {
                 cell = CustomTableViewCell.customCell
             }
-            
             let aCategory = self.categories[indexPath.section]
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
@@ -202,11 +257,10 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         if section == 0 {
             return 0
         }
-        return 30
+        return UIScreen.main.bounds.height * 0.06
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
         var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerReuseId) as? CustomHeaderView
         if view == nil {
             view = CustomHeaderView.customView
@@ -216,27 +270,45 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         return view
     }
     
-}
-extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
-    func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
-                let id = collectioncell?.farmID
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
-                print(id!)
-                detailController!.id = id
-                self.navigationController?.pushViewController(detailController!, animated: true)
-        
+    fileprivate var activityIndicator: UIActivityIndicatorView {
+        get {
+            let activityIndicator = UIActivityIndicatorView(style: .gray)
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.center = CGPoint(x:UIScreen.main.bounds.width/2,
+                                               y: UIScreen.main.bounds.height/2)
+            activityIndicator.stopAnimating()
+            self.view.addSubview(activityIndicator)
+            return activityIndicator
         }
     }
 
+    
+}
+extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
+    func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
+        let id = collectioncell?.farmID
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
+        detailController!.id = id
+        self.navigationController?.pushViewController(detailController!, animated: true)
+    }
+}
+
 extension ProductsTableViewController:CustomCollectionCellDelegate {
     func collectionView(collectioncell: CustomCollectionViewCell?, didTappedInTableview TableCell: CustomTableViewCell) {
-            let id = collectioncell?.ID
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
-            print(id!)
-            detailController!.id = id
-            detailController!.categories = self.categories
+        let id = collectioncell?.ID
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
+        detailController!.id = id
+        detailController!.categories = self.categories
         self.navigationController?.pushViewController(detailController!, animated: true)
-        }
     }
+}
+
+extension UIView {
+    func addToWindow()  {
+        let window = UIApplication.shared.keyWindow!
+        self.frame = window.bounds
+        window.addSubview(self)
+    }
+}
