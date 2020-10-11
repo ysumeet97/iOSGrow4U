@@ -22,7 +22,8 @@ class ProductsTableViewController: UIViewController {
     private var farms_ratings = [String]()
     private var file_name: String?
     private var farms_file_name: String?
-    static let products_model = ProductsViewModel() // public because to be accesed by diff classes
+    static let products_model = ProductsViewModel()
+    // public because to be accesed by diff classes
     static let farms_model = FarmsViewModel()
     // public because to be accesed by diff classes
     var categories = [ImageCategory]()
@@ -32,8 +33,9 @@ class ProductsTableViewController: UIViewController {
     let headerReuseId = "TableHeaderViewReuseId"
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
+          super.viewDidLoad()
+        if CheckInternet.Connection(){
+            if (ProductsTableViewController.farms_model.getFarmsData().count < 1 && ProductsTableViewController.products_model.getFruitData().count < 1){
         self.activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
         
@@ -53,9 +55,8 @@ class ProductsTableViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             
         }
-        else{
-            
-            let products_data = ProductsTableViewController.products_model.getVegetableData()
+            else{
+               let products_data = ProductsTableViewController.products_model.getVegetableData()
             let fruits_data = ProductsTableViewController.products_model.getFruitData()
             let farms_data = ProductsTableViewController.farms_model.getFarmsData()
             
@@ -66,8 +67,18 @@ class ProductsTableViewController: UIViewController {
             
             
             self.setupTableView()
+            }
         }
-    
+        else {
+            self.navBar.isHidden = true
+            let bgView = UIView(frame: UIScreen.main.bounds)
+            bgView.backgroundColor = UIColor(white: 255, alpha: 1)
+            bgView.addToWindow()
+            view.addSubview(bgView)
+            self.Alert(Message: "Your Device is not connected with internet. please check the connectivity and try again!")
+        }
+        
+        
     }
     
     private func setFarmsData(data:[FarmsModel.Data]) {
@@ -78,6 +89,7 @@ class ProductsTableViewController: UIViewController {
             self.farms_ratings.append(farm.rating!)
         }
     }
+
     private func setFruitData(data:[ProductDataModel.Data]){
         for fruit in data{
             self.fruitsID.append(fruit.id!)
@@ -96,9 +108,6 @@ class ProductsTableViewController: UIViewController {
             self.type.append(veg.name!)  // here type means the vegetable name
             self.type_price.append(veg.price!)
         }
-        
-       
-
     }
     
     func setupTableView() {
@@ -189,6 +198,23 @@ class ProductsTableViewController: UIViewController {
         }
     }
     
+    func Alert (Message: String) {
+        let alert = UIAlertController(title: "Oops!", message: Message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Exit", style: .destructive, handler: { action in
+            switch action.style{
+            case .default:
+                return
+            case .cancel:
+                return
+            case .destructive:
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    exit(0)
+                }
+            }}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -207,15 +233,10 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomFarmTableViewCell") as? CustomFarmTableViewCell
-            
             if cell == nil {
-                
                 cell = CustomFarmTableViewCell.customCell
             }
-            
-            
             let aCategory = self.categories[indexPath.section]
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
@@ -223,11 +244,9 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
         }
         else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell
-            
             if cell == nil {
                 cell = CustomTableViewCell.customCell
             }
-            
             let aCategory = self.categories[indexPath.section]
             cell?.updateCellWith(category: aCategory)
             cell?.cellDelegate = self
@@ -242,7 +261,6 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
         var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerReuseId) as? CustomHeaderView
         if view == nil {
             view = CustomHeaderView.customView
@@ -268,23 +286,29 @@ extension ProductsTableViewController: UITableViewDelegate,UITableViewDataSource
 }
 extension ProductsTableViewController:CustomFarmCollectionCellDelegate {
     func collectionView(collectioncell: CustomFarmCollectionViewCell?, didTappedInTableview TableCell: CustomFarmTableViewCell) {
-                let id = collectioncell?.farmID
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
-                detailController!.id = id
-                self.navigationController?.pushViewController(detailController!, animated: true)
-        
-        }
+        let id = collectioncell?.farmID
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
+        detailController!.id = id
+        self.navigationController?.pushViewController(detailController!, animated: true)
     }
+}
 
 extension ProductsTableViewController:CustomCollectionCellDelegate {
     func collectionView(collectioncell: CustomCollectionViewCell?, didTappedInTableview TableCell: CustomTableViewCell) {
-            let id = collectioncell?.ID
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
-            print(id!)
-            detailController!.id = id
-            detailController!.categories = self.categories
+        let id = collectioncell?.ID
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
+        detailController!.id = id
+        detailController!.categories = self.categories
         self.navigationController?.pushViewController(detailController!, animated: true)
-        }
     }
+}
+
+extension UIView {
+    func addToWindow()  {
+        let window = UIApplication.shared.keyWindow!
+        self.frame = window.bounds
+        window.addSubview(self)
+    }
+}

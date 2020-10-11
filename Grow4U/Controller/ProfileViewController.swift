@@ -66,8 +66,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UITableView
         tableView.dataSource = self
     }
     
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

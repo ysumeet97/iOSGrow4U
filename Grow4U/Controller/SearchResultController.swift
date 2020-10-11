@@ -16,7 +16,6 @@ class SearchResultController: UITableViewCell {
     var indexPath: IndexPath?
     var data: (name: String, price: String, information: String, img_url: String, farmers: [(name: String, rating: String, contact: String, offered_price: String)])?
     
-    
     // MARK:- Properties
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productName: UILabel!

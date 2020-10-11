@@ -19,14 +19,12 @@
 		C419727E2504C72600AE2A18 /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C419727C2504C72600AE2A18 /* CustomHeaderView.xib */; };
 		C41972822504C76800AE2A18 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41972802504C76800AE2A18 /* CustomTableViewCell.swift */; };
 		C41972832504C76800AE2A18 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41972812504C76800AE2A18 /* CustomTableViewCell.xib */; };
-		C4197289250500BE00AE2A18 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4197288250500BE00AE2A18 /* NavController.swift */; };
 		C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B469724EF304500870CA3 /* AppDelegate.swift */; };
 		C44B469D24EF304500870CA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44B469B24EF304500870CA3 /* Main.storyboard */; };
 		C44B46A224EF304A00870CA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44B46A024EF304A00870CA3 /* LaunchScreen.storyboard */; };
 		C44B46AD24EF304A00870CA3 /* Grow4UTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46AC24EF304A00870CA3 /* Grow4UTests.swift */; };
 		C44B46B824EF304A00870CA3 /* Grow4UUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46B724EF304A00870CA3 /* Grow4UUITests.swift */; };
 		C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B46CB24EF721300870CA3 /* MainCoordinator.swift */; };
-		C47EDC5D2504AC9D00E11480 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */; };
 		C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC5E2504AD0200E11480 /* DetailViewController.swift */; };
 		C47EDC612504AD3D00E11480 /* ProductsLandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */; };
 		C47EDC632504ADE200E11480 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */; };
@@ -88,7 +86,6 @@
 		C419727C2504C72600AE2A18 /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
 		C41972802504C76800AE2A18 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C41972812504C76800AE2A18 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
-		C4197288250500BE00AE2A18 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		C44B469424EF304500870CA3 /* Grow4U.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grow4U.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44B469724EF304500870CA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C44B469C24EF304500870CA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,7 +98,6 @@
 		C44B46B724EF304A00870CA3 /* Grow4UUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grow4UUITests.swift; sourceTree = "<group>"; };
 		C44B46B924EF304A00870CA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44B46CB24EF721300870CA3 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C47EDC5E2504AD0200E11480 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsLandscapeViewController.swift; sourceTree = "<group>"; };
 		C47EDC622504ADE200E11480 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
@@ -360,7 +356,6 @@
 				C47EDC5E2504AD0200E11480 /* DetailViewController.swift */,
 				CE50D74324FA82FD00CBDD95 /* HomeViewController.swift */,
 				C47EDC642504AE0E00E11480 /* MasterSplitTableViewController.swift */,
-				C4197288250500BE00AE2A18 /* NavController.swift */,
 				CEF39F6225030B8A005D9EE5 /* ProductInfoViewController.swift */,
 				CEF39F6025030B56005D9EE5 /* ProductNavController.swift */,
 				C47EDC602504AD3D00E11480 /* ProductsLandscapeViewController.swift */,
@@ -368,7 +363,6 @@
 				CEF39F5A25027511005D9EE5 /* ProfileViewController.swift */,
 				CEAF178A250074A7008E37C4 /* SearchResultController.swift */,
 				CEB3A47824F3ECA40025C58F /* SearchViewController.swift */,
-				C47EDC5C2504AC9D00E11480 /* SplitViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -532,7 +526,6 @@
 				CEF39F5B25027511005D9EE5 /* ProfileViewController.swift in Sources */,
 				C4B0646A25315D45006F391F /* FarmDetailViewController.swift in Sources */,
 				C4CA225B252A896E00B99703 /* ProfileData+CoreDataClass.swift in Sources */,
-				C4197289250500BE00AE2A18 /* NavController.swift in Sources */,
 				C47EDC5F2504AD0200E11480 /* DetailViewController.swift in Sources */,
 				CE6853DF2502580B00000A7D /* SearchViewModel.swift in Sources */,
 				C44B46CC24EF721300870CA3 /* MainCoordinator.swift in Sources */,
@@ -542,7 +535,6 @@
 				C419727D2504C72600AE2A18 /* CustomHeaderView.swift in Sources */,
 				CEF7C0302503B7FE007C05E9 /* FarmsViewModel.swift in Sources */,
 				C44B469824EF304500870CA3 /* AppDelegate.swift in Sources */,
-				C47EDC5D2504AC9D00E11480 /* SplitViewController.swift in Sources */,
 				C41972732504C62600AE2A18 /* CustomFarmCollectionViewCell.swift in Sources */,
 				CEF39F6125030B56005D9EE5 /* ProductNavController.swift in Sources */,
 				C4CA225E252A8A4000B99703 /* CodingUserInfoKey+Util.swift in Sources */,

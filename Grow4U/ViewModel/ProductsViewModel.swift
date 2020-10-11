@@ -8,27 +8,25 @@
 
 import Foundation
 class ProductsViewModel {
-    
     private var jsonProducts = [ProductDataModel.Data]()
     private var jsonVegetables =  [ProductDataModel.Data]()
     private var jsonFruits =  [ProductDataModel.Data]()
- 
     private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
-
+    
     
     init(){
-      
+        
         self.loadJsonData()
         
     }
     
     private func loadJsonData() {
-     
-            self.downloadJson(url: self.prodUrl!)
+        
+        self.downloadJson(url: self.prodUrl!)
         
     }
     
-    private func downloadJson(url: URL?){
+    func downloadJson(url: URL?){
         guard let downloadURL = url else {
             return
         }
@@ -38,7 +36,6 @@ class ProductsViewModel {
                 return
             }
             do {
-                
                  self.jsonProducts = try JSONDecoder().decode(ProductDataModel.self, from: data).products!
                 self.setAllFruitsData()
                 self.setAllVegetableData()
@@ -68,7 +65,6 @@ class ProductsViewModel {
             }
             
         }
-        print("fruit count", num)
         return num
     }
     
@@ -82,8 +78,6 @@ class ProductsViewModel {
                 }
                 
             }
-            
-          
     }
   
     func setAllFruitsData() -> (){

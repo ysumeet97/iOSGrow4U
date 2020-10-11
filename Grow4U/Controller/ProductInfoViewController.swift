@@ -20,7 +20,6 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var information: UITextView!
     @IBOutlet weak var farmersInfo: UITextView!
-    
     @IBOutlet weak var l_product_image: UIImageView!
     @IBOutlet weak var l_name: UILabel!
     @IBOutlet weak var l_price: UILabel!

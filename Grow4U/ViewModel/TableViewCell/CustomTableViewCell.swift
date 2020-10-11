@@ -63,7 +63,6 @@ class CustomTableViewCell:UITableViewCell, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as? CustomCollectionViewCell
-        //print(self.aCategory?.prodItems[0] as Any)
         let id = self.aCategory?.prod_ID[indexPath.item]
         let label = self.aCategory?.prodDescription[indexPath.item]
         let name = self.aCategory?.name[indexPath.item]

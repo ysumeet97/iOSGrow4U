@@ -29,13 +29,12 @@ class HomeViewController: UITabBarController {
         tabBar.barTintColor = UIColor.white.withAlphaComponent(0.92)
         file_name = "profile"
         profile_model = ProfileViewModel(file_name: file_name!)
-    
+        
         productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController")
         profileVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController)
         pronavVC = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductNavController") as! ProductNavController)
         self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
-//        UIApplication.statusBarBackgroundColor = UIColor(red: 21/255, green: 178/255, blue: 65/255, alpha: 1)
-      
+ 
     
     
     
@@ -60,9 +59,7 @@ class HomeViewController: UITabBarController {
             productVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavController")
             self.setViewControllers([productVC! as! UIViewController, pronavVC!, profileVC!], animated: true)
             
-        }
-        
-        
+        }   
     }
     
     fileprivate var activityIndicator: UIActivityIndicatorView {
@@ -76,6 +73,5 @@ class HomeViewController: UITabBarController {
             return activityIndicator
         }
     }
-    
 }
 

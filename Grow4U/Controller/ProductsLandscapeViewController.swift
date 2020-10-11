@@ -16,7 +16,7 @@ class ProductsLandscapeViewController: UIViewController{
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-
+    
     private var id = [String]()
     private var farms_file_name: String?
     private var num : Int?
@@ -187,7 +187,7 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
             name.text = text
             name_price.setAttributedTextWithSubscripts(text: price, indicesOfSubscripts: [pos,pos+1,pos+2])
             let PictureURL = URL(string: imagesUrl[indexPath.item])!
-            let PictureData = NSData(contentsOf: PictureURL as URL) // nil
+            let PictureData = NSData(contentsOf: PictureURL as URL) 
             let Picture = UIImage(data: PictureData! as Data)
             cell.bg.image = Picture
             cell.bg.layer.cornerRadius = 30.0
@@ -213,7 +213,7 @@ class CustomSplitCell: UICollectionViewCell {
         }
     }
     
-    
+
     
    
     fileprivate let bg: UIImageView = {
@@ -224,15 +224,13 @@ class CustomSplitCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-      
+
         contentView.addSubview(bg)
     
-
         bg.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         bg.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         bg.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -240,5 +238,4 @@ class CustomSplitCell: UICollectionViewCell {
     }
     
 }
-
 
