@@ -16,7 +16,7 @@ class ProductsLandscapeViewController: UIViewController{
     private var farmsImagesUrl = [String]()
     private var farms_name = [String]()
     private var farms_ratings = [String]()
-
+    
     private var id = [String]()
     private var farms_file_name: String?
     private var num : Int?
@@ -92,17 +92,15 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
             let id = self.id[indexPath.item]
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let detailController = storyBoard.instantiateViewController(withIdentifier:"FarmDetailViewController") as? FarmDetailViewController
-            print(id)
             detailController!.id = id
             self.navigationController?.pushViewController(detailController!, animated: true)
         }
         else{
-        let id = self.id[indexPath.item]
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
-        print(id)
-        detailController!.id = id
-        self.navigationController?.pushViewController(detailController!, animated: true)
+            let id = self.id[indexPath.item]
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let detailController = storyBoard.instantiateViewController(withIdentifier:"DetailViewController") as? DetailViewController
+            detailController!.id = id
+            self.navigationController?.pushViewController(detailController!, animated: true)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -125,7 +123,7 @@ extension ProductsLandscapeViewController: UICollectionViewDelegateFlowLayout, U
             cell.ID = id[indexPath.item]
             cell.titleLabel.text =  type[indexPath.item]
             let PictureURL = URL(string: imagesUrl[indexPath.item])!
-            let PictureData = NSData(contentsOf: PictureURL as URL) // nil
+            let PictureData = NSData(contentsOf: PictureURL as URL) 
             let Picture = UIImage(data: PictureData! as Data)
             cell.bg.image = Picture
             return cell
@@ -144,7 +142,6 @@ class CustomSplitCell: UICollectionViewCell {
             
         }
     }
-    
     
     var titleLabel:UILabel = {
         let label = UILabel(frame: CGRect(x:50, y: 160, width: UIScreen.main.bounds.width , height: 40))
@@ -167,15 +164,12 @@ class CustomSplitCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
         contentView.addSubview(bg)
         contentView.addSubview(self.titleLabel)
-        
         bg.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         bg.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         bg.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -183,6 +177,3 @@ class CustomSplitCell: UICollectionViewCell {
     }
     
 }
-
-
-

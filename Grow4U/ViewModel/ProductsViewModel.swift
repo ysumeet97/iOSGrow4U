@@ -25,17 +25,17 @@ class ProductsViewModel {
     private var location = [String]()
     private var farmers = [String]()
     private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
-
+    
     
     init(){
-      
+        
         self.loadJsonData()
         
     }
     
     private func loadJsonData() {
-     
-            self.downloadJson(url: self.prodUrl!)
+        
+        self.downloadJson(url: self.prodUrl!)
         
     }
     
@@ -50,7 +50,7 @@ class ProductsViewModel {
             }
             do {
                 
-                 self.jsonProducts = try JSONDecoder().decode(ProductDataModel.self, from: data).products!
+                self.jsonProducts = try JSONDecoder().decode(ProductDataModel.self, from: data).products!
                 
             } catch {
                 print("decode error: \(error)")
@@ -78,7 +78,6 @@ class ProductsViewModel {
             }
             
         }
-        print("fruit count", num)
         return num
     }
     

@@ -15,7 +15,7 @@ class SearchViewModel {
     private var jsonFarmers =  [FarmsModel.Data]()
     private final let prodUrl = URL (string: "https://api.jsonbin.io/b/5f7d3dd97243cd7e824bfd61/5")
     private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
-
+    
     
     init(fileName: (products: String, farmers: String)) {
         self.fileName.products = fileName.products
@@ -47,7 +47,7 @@ class SearchViewModel {
             } catch {
                 print("decode error: \(error)")
             }
-        }.resume()
+            }.resume()
     }
     
     

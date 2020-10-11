@@ -9,7 +9,7 @@
 import UIKit
 
 class FarmDetailViewController: UIViewController {
-
+    
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var rating: UILabel!
@@ -45,7 +45,6 @@ class FarmDetailViewController: UIViewController {
         let farmData = farms_model.getFarmsData()
         if( id!.contains("FA")){
             type = "farms"
-            print("farms")
         }
         else if((id!.contains("FR"))){
             type = "fruit"
@@ -108,7 +107,7 @@ class FarmDetailViewController: UIViewController {
         
         setImage(from: self.image_url!, imageViewToSet: self.image)
         setImage(from: self.image_url!, imageViewToSet: self.l_image)
-       self.name.text = self.click_name
+        self.name.text = self.click_name
         self.l_name.text = self.click_name
         self.rating.text = self.farmer_rating!+" /5"
         self.l_rating.text = self.farmer_rating!+" /5"
@@ -116,7 +115,7 @@ class FarmDetailViewController: UIViewController {
         for location in self.farmer_location{
             text = text + "\n"  + location
         }
-       self.information.text = text
+        self.information.text = text
         self.l_information.text = text
         var prodText = ""
         for product in vegetableData{
@@ -147,9 +146,5 @@ class FarmDetailViewController: UIViewController {
                 imageViewToSet.image = image
             }
         }
-    
-
     }
-    
-
 }

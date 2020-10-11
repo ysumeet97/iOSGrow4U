@@ -50,51 +50,49 @@ class ProfileViewModel {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
         } else{
-        do {
-            let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let url = documentsDirectory.appendingPathComponent("\(file_name).json")
-            print(url)
-            var p: [ProfileData]?
-            fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
-            p = try managedObjectContext.fetch(fetchRequest)
-            decoded_data = p![0]
-        } catch  {
+            do {
+                let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                let url = documentsDirectory.appendingPathComponent("\(file_name).json")
+                var p: [ProfileData]?
+                fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
+                p = try managedObjectContext.fetch(fetchRequest)
+                decoded_data = p![0]
+            } catch  {
                 print(error)
-        }
+            }
         }
         let documentsDirectory = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = documentsDirectory.appendingPathComponent("\(file_name).json")
-        print(url)
         setupProfileData(first_name: decoded_data!.first_name!, last_name: decoded_data!.last_name!, email: decoded_data!.email!, phone: decoded_data!.phone!, address: decoded_data!.address!, preferences: decoded_data!.preferences!)
     }
     
     public func writeJsonFile(profile: Dictionary<String, String>, preferences: [String]) {
         var fetchRequest: NSFetchRequest<ProfileData>
         var pr: [ProfileData]?
+        do {
+            fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
+            pr = try managedObjectContext.fetch(fetchRequest)
             do {
+                if(pr!.count > 1) {
+                    let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ProfileData")
+                    let request = NSBatchDeleteRequest(fetchRequest: fetch)
+                    try managedObjectContext.execute(request)
+                    try managedObjectContext.save()
+                }
+                
                 fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
                 pr = try managedObjectContext.fetch(fetchRequest)
-                do {
-                    if(pr!.count > 1) {
-                        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ProfileData")
-                        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-                        try managedObjectContext.execute(request)
-                        try managedObjectContext.save()
-                    }
-                    
-                    fetchRequest = NSFetchRequest<ProfileData>(entityName: "ProfileData")
-                    pr = try managedObjectContext.fetch(fetchRequest)
-                    pr![0].setValue(profile["first_name"], forKey: "first_name")
-                    pr![0].setValue(profile["last_name"], forKey: "last_name")
-                    pr![0].setValue(profile["email"], forKey: "email")
-                    pr![0].setValue(profile["phone"], forKey: "phone")
-                    pr![0].setValue(profile["address"], forKey: "address")
-                    pr![0].setValue(preferences, forKey: "preferences")
-                   try managedObjectContext.save()
-                }
-            } catch {
-                print(error)
+                pr![0].setValue(profile["first_name"], forKey: "first_name")
+                pr![0].setValue(profile["last_name"], forKey: "last_name")
+                pr![0].setValue(profile["email"], forKey: "email")
+                pr![0].setValue(profile["phone"], forKey: "phone")
+                pr![0].setValue(profile["address"], forKey: "address")
+                pr![0].setValue(preferences, forKey: "preferences")
+                try managedObjectContext.save()
             }
+        } catch {
+            print(error)
+        }
     }
     
     public func setupProfileData(first_name: String, last_name: String, email: String, phone: String, address: String, preferences: [String]) {

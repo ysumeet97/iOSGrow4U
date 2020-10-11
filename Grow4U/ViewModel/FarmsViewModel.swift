@@ -18,9 +18,7 @@ class FarmsViewModel {
     private final let farmUrl = URL (string: "https://api.jsonbin.io/b/5f7d3e3d302a837e95760f33/4")
     
     init(){
-    
         self.loadJsonData()
-
     }
     private func loadJsonData() {
         self.downloadJson(url: self.farmUrl!)

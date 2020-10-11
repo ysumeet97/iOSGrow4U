@@ -22,6 +22,4 @@ struct ProductDataModel: Decodable {
         let farmers: [String?]
     }
     let products: [Data]?
-    
-    
 }
